@@ -1,0 +1,20 @@
+[gd_resource type="Shortcut" load_steps=5 format=3 uid="uid://w7c8i8qndv0f"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_nkud1"]
+device = -1
+physical_keycode = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_yq1se"]
+device = -1
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventScreenTouch" id="InputEventScreenTouch_woo2q"]
+index = 2
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_vlg1s"]
+button_index = 6
+pressed = true
+
+[resource]
+events = [SubResource("InputEventKey_nkud1"), SubResource("InputEventKey_yq1se"), SubResource("InputEventScreenTouch_woo2q"), SubResource("InputEventJoypadButton_vlg1s")]

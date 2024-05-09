@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://xsry48jtqlo4"]
+
+[node name="flag" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+
+[connection signal="body_entered" from="." to="." method="BodyColl"]

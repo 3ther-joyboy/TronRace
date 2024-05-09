@@ -1,0 +1,352 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck77cigib7f0k"]
+
+[ext_resource type="Theme" uid="uid://bew7hm00raokh" path="res://scapped_things/test-theme.tres" id="1_g0er5"]
+[ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="2_djvo2"]
+[ext_resource type="Shortcut" uid="uid://w7c8i8qndv0f" path="res://scapped_things/escape.tres" id="3_jgfle"]
+[ext_resource type="Shortcut" uid="uid://ce1hmwgahi8vu" path="res://scapped_things/restart.tres" id="5_prvnf"]
+
+[node name="Gui" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_g0er5")
+
+[node name="Pause" type="Button" parent="ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 146.0
+grow_horizontal = 0
+scale = Vector2(0.455, 0.455)
+pivot_offset = Vector2(136, 1)
+shortcut = ExtResource("3_jgfle")
+icon = ExtResource("2_djvo2")
+flat = true
+icon_alignment = 1
+
+[node name="PausedMenu" type="Control" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="middletop" type="VBoxContainer" parent="ui/PausedMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Play" type="Button" parent="ui/PausedMenu/middletop"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../middlebottom/Settings")
+focus_neighbor_bottom = NodePath("../Restart")
+shortcut = ExtResource("3_jgfle")
+text = "Resume
+"
+
+[node name="Restart" type="Button" parent="ui/PausedMenu/middletop"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../../middlebottom/Menu")
+shortcut = ExtResource("5_prvnf")
+text = "Restart"
+
+[node name="middlebottom" type="VBoxContainer" parent="ui/PausedMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.6
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Settings" type="Button" parent="ui/PausedMenu/middlebottom"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Menu")
+focus_neighbor_bottom = NodePath("../../middletop/Play")
+text = "Settings
+"
+
+[node name="Menu" type="Button" parent="ui/PausedMenu/middlebottom"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../middletop/Restart")
+focus_neighbor_bottom = NodePath("../Settings")
+text = "Menu
+"
+
+[node name="Settings" type="Control" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="middletop" type="VBoxContainer" parent="ui/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Back" type="Button" parent="ui/Settings/middletop"]
+layout_mode = 2
+shortcut = ExtResource("3_jgfle")
+text = "Back
+"
+
+[node name="Controls" type="Button" parent="ui/Settings/middletop"]
+layout_mode = 2
+text = "Controls"
+
+[node name="middlebottom" type="VBoxContainer" parent="ui/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.6
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Video" type="Button" parent="ui/Settings/middlebottom"]
+layout_mode = 2
+text = "Video"
+
+[node name="Audio" type="Button" parent="ui/Settings/middlebottom"]
+layout_mode = 2
+text = "Audio"
+
+[node name="VideoSettings" type="Control" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/VideoSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Back" type="Button" parent="ui/VideoSettings/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="CheckBox" type="CheckBox" parent="ui/VideoSettings/VBoxContainer"]
+layout_mode = 2
+text = "Full Screan"
+
+[node name="fps" type="OptionButton" parent="ui/VideoSettings/VBoxContainer"]
+layout_mode = 2
+item_count = 6
+selected = 2
+popup/item_0/text = "15 fps"
+popup/item_0/id = 0
+popup/item_1/text = "30 fps"
+popup/item_1/id = 1
+popup/item_2/text = "60 fps"
+popup/item_2/id = 2
+popup/item_3/text = "69 fps"
+popup/item_3/id = 3
+popup/item_4/text = "120 fps"
+popup/item_4/id = 4
+popup/item_5/text = "240 fps"
+popup/item_5/id = 5
+
+[node name="AudioSettings" type="Control" parent="ui"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="middle bottom" type="VBoxContainer" parent="ui/AudioSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.6
+anchor_right = 0.55
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="Button" parent="ui/AudioSettings/middle bottom"]
+layout_mode = 2
+text = "UI Test"
+
+[node name="middle top" type="VBoxContainer" parent="ui/AudioSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Back" type="Button" parent="ui/AudioSettings/middle top"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Audio1" type="HBoxContainer" parent="ui/AudioSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 0.4
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Master" type="VSlider" parent="ui/AudioSettings/Audio1"]
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Label" type="Label" parent="ui/AudioSettings/Audio1/Master"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Main"
+horizontal_alignment = 1
+
+[node name="SFXUI" type="VSlider" parent="ui/AudioSettings/Audio1"]
+layout_mode = 2
+max_value = 2.0
+step = 0.05
+value = 0.8
+
+[node name="Label" type="Label" parent="ui/AudioSettings/Audio1/SFXUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Menu
+"
+horizontal_alignment = 1
+
+[node name="Audio2" type="HBoxContainer" parent="ui/AudioSettings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="SFX" type="VSlider" parent="ui/AudioSettings/Audio2"]
+layout_mode = 2
+max_value = 5.0
+step = 0.0
+value = 3.0
+
+[node name="Label" type="Label" parent="ui/AudioSettings/Audio2/SFX"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="Music" type="VSlider" parent="ui/AudioSettings/Audio2"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+value = 5.5
+
+[node name="Label" type="Label" parent="ui/AudioSettings/Audio2/Music"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Music
+"
+horizontal_alignment = 1
+
+[node name="Audio" type="AudioStreamPlayer" parent="ui"]
+
+[connection signal="pressed" from="ui/Pause" to="ui" method="Pause"]
+[connection signal="pressed" from="ui/PausedMenu/middletop/Play" to="ui" method="TogglePause"]
+[connection signal="pressed" from="ui/PausedMenu/middletop/Restart" to="ui" method="Restart"]
+[connection signal="pressed" from="ui/PausedMenu/middlebottom/Settings" to="ui" method="Settings"]
+[connection signal="pressed" from="ui/PausedMenu/middlebottom/Menu" to="ui" method="Menu"]
+[connection signal="pressed" from="ui/Settings/middletop/Back" to="ui" method="FromSettingsToMenu"]
+[connection signal="pressed" from="ui/Settings/middlebottom/Video" to="ui" method="ToVideoSettings"]
+[connection signal="pressed" from="ui/Settings/middlebottom/Audio" to="ui" method="ToAudioSettings"]
+[connection signal="pressed" from="ui/VideoSettings/VBoxContainer/Back" to="ui" method="Settings"]
+[connection signal="toggled" from="ui/VideoSettings/VBoxContainer/CheckBox" to="ui" method="FullScreeen"]
+[connection signal="item_selected" from="ui/VideoSettings/VBoxContainer/fps" to="ui" method="ChangeFPS"]
+[connection signal="pressed" from="ui/AudioSettings/middle bottom/UI" to="ui" method="Beep"]
+[connection signal="pressed" from="ui/AudioSettings/middle top/Back" to="ui" method="Settings"]
+[connection signal="value_changed" from="ui/AudioSettings/Audio1/Master" to="ui" method="AudioMain"]
+[connection signal="value_changed" from="ui/AudioSettings/Audio1/SFXUI" to="ui" method="AudioUI"]
+[connection signal="value_changed" from="ui/AudioSettings/Audio2/SFX" to="ui" method="AudioSFX"]
+[connection signal="value_changed" from="ui/AudioSettings/Audio2/Music" to="ui" method="AudioMusick"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bfdr8itx4j7il"]
+
+[node name="move" type="RigidBody2D"]
+gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 5
+contact_monitor = true
+
+[connection signal="body_entered" from="." to="." method="Collision"]

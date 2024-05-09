@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1yybg8yw63h6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_et4nh"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_m34v4"]
+font_size = 13
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23kv5"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lchsx"]
+bg_color = Color(1, 1, 1, 0.603922)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="Player" type="Node"]
+
+[node name="drag" type="CanvasLayer" parent="."]
+layer = 5
+visible = false
+
+[node name="start" type="Panel" parent="drag"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_et4nh")
+
+[node name="Label" type="Label" parent="drag/start"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "-420°"
+label_settings = SubResource("LabelSettings_m34v4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="drag/start"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_23kv5")
+
+[node name="Panel2" type="Panel" parent="drag/start"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 39.0
+offset_right = 21.0
+offset_bottom = 43.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_23kv5")
+
+[node name="Panel3" type="Panel" parent="drag/start"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 19.0
+offset_right = 3.0
+offset_bottom = 23.0
+rotation = 1.57079
+theme_override_styles/panel = SubResource("StyleBoxFlat_23kv5")
+
+[node name="Panel4" type="Panel" parent="drag/start"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 19.0
+offset_right = 45.0
+offset_bottom = 23.0
+rotation = 1.57079
+theme_override_styles/panel = SubResource("StyleBoxFlat_23kv5")
+
+[node name="cur" type="Panel" parent="drag"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lchsx")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dt8vi8w2wo53"]
+
+[node name="MoveTo" type="Area2D"]
+collision_mask = 3
+
+[node name="Cast" type="RayCast2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+top_level = true
+collision_mask = 3
+
+[node name="CurrentAim" type="RayCast2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+light_mask = 0
+z_index = 10
+enabled = false
+exclude_parent = false
+target_position = Vector2(200, 0)
+collision_mask = 0
+collide_with_bodies = false

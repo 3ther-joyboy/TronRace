@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://h4q7roc775mk"]
+
+[ext_resource type="Script" path="res://game/components/move/move.cs" id="1_spg1m"]
+[ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://game/components/health/health.tscn" id="2_01qej"]
+[ext_resource type="Texture2D" uid="uid://dwyii7r7ojrxv" path="res://game/sprites/icon.svg" id="2_l6j8w"]
+[ext_resource type="Material" uid="uid://dof0nmg7nck0k" path="res://game/player/bubbles.tres" id="4_ygga5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v71o6"]
+radius = 19.0
+
+[node name="bumper" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 3
+mass = 0.01
+gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_spg1m")
+startingVelocity = Vector2(700, 0)
+additionalCollision = 1
+pushForce = 1000
+
+[node name="health" parent="." instance=ExtResource("2_01qej")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57079
+scale = Vector2(0.296875, 0.296875)
+texture = ExtResource("2_l6j8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v71o6")
+debug_color = Color(0.986685, 0, 0.321019, 0.42)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 16
+process_material = ExtResource("4_ygga5")
+texture = ExtResource("2_l6j8w")
+
+[connection signal="body_entered" from="." to="." method="Collision"]

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bcibwvn4fi8pl"]
+
+[node name="visual" type="Node2D"]
+
+[node name="blink" type="Timer" parent="."]
+
+[connection signal="timeout" from="blink" to="." method="BlinkEnd"]

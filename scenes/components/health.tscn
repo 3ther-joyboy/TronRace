@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://gitc6e0qxk5q"]
+
+[node name="health" type="Node"]
+
+[node name="invincibility" type="Timer" parent="."]
+one_shot = true
+
+[node name="die" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="invincibility" to="." method="InvincibilityEnd"]
+[connection signal="timeout" from="die" to="." method="QF"]
