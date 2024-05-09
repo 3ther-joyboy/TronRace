@@ -118,4 +118,5 @@ public partial class move_component : RigidBody2D
 	public void MovingStateSet(bool x) {movingState = x;}
 	public bool MovingStateGet() {return movingState;}
 	public bool GetRotationMode() {return lockedToRotation;}
+	public int GetAcceleration() {return acceleration;}
 }
