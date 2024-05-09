@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public partial class End : Area2D
+public partial class end : Area2D
 {
 	[ExportCategory("Audio")]
 	[Export(PropertyHint.File, "*.mp3,")]
-	private AudioStreamMP3 beep = "res://assets/audio/beep.mp3";
+	private AudioStreamMP3 beep;
 	[Export(PropertyHint.File, "*.mp3,")]
-	private AudioStreamMP3 finish = "res://assets/audio/beep.mp3";
+	private AudioStreamMP3 finish;
 
 	int countDown = 3;
 
@@ -59,7 +59,7 @@ public partial class End : Area2D
 			if (GetParent().HasNode("flags") ) {
 				Node flags = GetParent().GetNode("flags");
 
-				if ( (int)flags.Call("GetLoops") * (int)flags.Call("GetTotal") <= (int)flags.Call("GetCount") )
+				if ( (int)flags.Call("GetLoops") * (int)flags.Call("GetTotal") >= (int)flags.Call("GetCount") )
 					Finish(player);
 				else
 				    GD.PrintRich("[pulse] nu - uh [/pulse]");
@@ -69,7 +69,7 @@ public partial class End : Area2D
 	}
 	private void Finish(Node player) {
 		if (player.HasNode("Replay") ) {
-			int ticksPassed = player.GetNode<replay>("Replay").Length();
+			int ticksPassed = player.GetNode<replay_component>("Replay").Length();
 			float tickPerSecond = (float)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second");
 			GD.Print("Finished in: " + (ticksPassed / tickPerSecond) + " S, (" + ticksPassed + " ticks, " + tickPerSecond + " T/S)" ); 
 		} else

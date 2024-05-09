@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class visual : Node2D
+public partial class visual_component : Node2D
 {
 	[Export(PropertyHint.Range, "0,3,0.1")]	
 		private float blinkSeconds { get; set; } = 0.2f;

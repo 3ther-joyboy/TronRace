@@ -1,6 +1,7 @@
 using Godot;
 using System;
-public partial class health : Node
+
+public partial class health_component : Node
 {
 	[ExportCategory("Health")]
 	[Export(PropertyHint.Range, "1,10,1,or_greater")]

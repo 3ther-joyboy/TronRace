@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfeh62ujfx7by"]
+
+[ext_resource type="Script" path="res://scripts/game_control/flag_control.cs" id="1_01h7i"]
+
+[node name="flag control" type="Node"]
+script = ExtResource("1_01h7i")

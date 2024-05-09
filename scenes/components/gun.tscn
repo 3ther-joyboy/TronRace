@@ -1,8 +1,16 @@
-[gd_scene format=3 uid="uid://b4mlx2rrin7j4"]
+[gd_scene load_steps=2 format=3 uid="uid://b4mlx2rrin7j4"]
+
+[ext_resource type="Script" path="res://scripts/components/gun_component.cs" id="1_nysng"]
 
 [node name="Gun" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_nysng")
+shootInterval = null
+barrage = null
+barrageInterval = null
+name = &"Gun"
+seeOverLand = null
 
 [node name="Cast" type="RayCast2D" parent="."]
 modulate = Color(1, 1, 0, 1)

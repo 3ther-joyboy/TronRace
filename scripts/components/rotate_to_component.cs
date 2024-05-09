@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MoveTo : Area2D
+public partial class rotate_to_component : Area2D
 {	
 	// node "CurrentAim" is just visual note for debbuging
 	[ExportCategory("Aiming")]

@@ -1,9 +1,20 @@
-[gd_scene format=3 uid="uid://bfdr8itx4j7il"]
+[gd_scene load_steps=2 format=3 uid="uid://bfdr8itx4j7il"]
+
+[ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_lgudc"]
 
 [node name="move" type="RigidBody2D"]
 gravity_scale = 0.0
 can_sleep = false
 max_contacts_reported = 5
 contact_monitor = true
+script = ExtResource("1_lgudc")
+startingVelocity = null
+movingState = null
+lockedToRotation = null
+direction = null
+acceleration = null
+collisionThreshold = null
+additionalCollision = null
+pushForce = null
 
 [connection signal="body_entered" from="." to="." method="Collision"]

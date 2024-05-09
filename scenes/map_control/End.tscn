@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqhtoweajmmxg"]
+[gd_scene load_steps=4 format=3 uid="uid://bqhtoweajmmxg"]
+
+[ext_resource type="Script" path="res://scripts/game_control/end.cs" id="1_j3igt"]
 
 [sub_resource type="FontVariation" id="FontVariation_mptdd"]
 variation_embolden = 1.44
@@ -9,13 +11,11 @@ font_size = 200
 outline_size = 100
 outline_color = Color(0, 0, 0, 1)
 
-[node name="End" type="Area2D"]
+[node name="Finish" type="Area2D"]
 process_mode = 3
 collision_layer = 2
 collision_mask = 2
-
-[node name="Cam" type="Camera2D" parent="."]
-enabled = false
+script = ExtResource("1_j3igt")
 
 [node name="Start" type="CanvasLayer" parent="."]
 process_mode = 3

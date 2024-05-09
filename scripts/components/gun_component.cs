@@ -1,8 +1,7 @@
-
 using Godot;
 using System;
 
-public partial class gun : Area2D
+public partial class gun_component : Area2D
 {
 	[ExportCategory("Shooting")]
 	[Export]

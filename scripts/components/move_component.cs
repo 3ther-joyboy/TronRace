@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class move : RigidBody2D
+public partial class move_component : RigidBody2D
 {	
 	[ExportCategory("Physic")]
 	[Export]
@@ -14,13 +14,13 @@ public partial class move : RigidBody2D
 	private Vector2 direction = Vector2.Up;
 	[Export]
 	private int acceleration = 10; 
-	[Export]
-	private int maxSpeed = 30;
+//	[Export(PropertyHint.Range, "0,1,or_greater")]
+//	private float friction = 0.05f;
 
 	[ExportCategory("Collisions")]
 	[Export(PropertyHint.Range, "0,1,or_greater")]
 	// speed threshold to take damage
-		private int collisionThreshold = 0;
+	private int collisionThreshold = 0;
 	// no - 0, add.. - 1, set - 2
 	[Export(PropertyHint.Enum, "No,Additional,Set")]
 	private int additionalCollision = 0;
@@ -31,9 +31,9 @@ public partial class move : RigidBody2D
 	[ExportCategory("Audio")]
 	private bool audioPlaing = false;
 	[Export(PropertyHint.File, "*.mp3,")]
-	private AudioStreamMP3 movingStartSoundEffect = "res://assets/audio/beep.mp3";
+	private AudioStreamMP3 movingStartSoundEffect;
 	[Export(PropertyHint.File, "*.mp3,")]
-	private AudioStreamMP3 movingGoingSoundEffect = "res://assets/audio/beep.mp3";
+	private AudioStreamMP3 movingGoingSoundEffect;
 
 	private AudioStreamPlayer2D audioNode = new AudioStreamPlayer2D();
 
@@ -52,8 +52,7 @@ public partial class move : RigidBody2D
 		if(lockedToRotation)
 			direction = Vector2.FromAngle(this.Rotation);
 		// accelereation
-		bool slowingDown = ((LinearVelocity + direction).Length() < LinearVelocity.Length());
-		if(movingState && (LinearVelocity.Project(direction).Length() < maxSpeed || slowingDown))
+		if (movingState)
 			ApplyCentralForce((float)delta*acceleration*direction);
 		Audio();
 	}

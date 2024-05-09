@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1yybg8yw63h6"]
+[gd_scene load_steps=6 format=3 uid="uid://b1yybg8yw63h6"]
+
+[ext_resource type="Script" path="res://scripts/components/player_componentcs.cs" id="1_bn65d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_et4nh"]
 draw_center = false
@@ -31,6 +33,8 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
 [node name="Player" type="Node"]
+script = ExtResource("1_bn65d")
+drawSircle = null
 
 [node name="drag" type="CanvasLayer" parent="."]
 layer = 5

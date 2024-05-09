@@ -1,15 +1,14 @@
 using Godot;
 using System;
 
-public partial class replay : Node
+public partial class replay_component : Node
 {
-
 	[Export(PropertyHint.Enum, "Record,Play Back")]
 	private int Mode = 1;
 	[Export]
 	private bool print = false;
 
-	private move target;
+	private move_component target;
 	// true -> move.direction  false -> Rotation
 	private bool recordMode;
 
@@ -20,7 +19,7 @@ public partial class replay : Node
 	private int timeOfDir = 1;
 
 	public override void _Ready() {
-		target = GetParent<move>();		
+		target = GetParent<move_component>();		
 		recordMode = !target.GetRotationMode();
 	}
 

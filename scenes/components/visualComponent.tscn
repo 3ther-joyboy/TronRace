@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bcibwvn4fi8pl"]
+[gd_scene load_steps=2 format=3 uid="uid://bcibwvn4fi8pl"]
+
+[ext_resource type="Script" path="res://scripts/components/effects/visual_component.cs" id="1_aa746"]
 
 [node name="visual" type="Node2D"]
+script = ExtResource("1_aa746")
 
 [node name="blink" type="Timer" parent="."]
 

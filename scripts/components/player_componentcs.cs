@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class player : Node
+public partial class player_componentcs : Node
 {
 	[Export]
 	bool drawSircle = false;

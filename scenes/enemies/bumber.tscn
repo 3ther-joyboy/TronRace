@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://h4q7roc775mk"]
 
-[ext_resource type="Script" path="res://game/components/move/move.cs" id="1_spg1m"]
-[ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://game/components/health/health.tscn" id="2_01qej"]
-[ext_resource type="Texture2D" uid="uid://dwyii7r7ojrxv" path="res://game/sprites/icon.svg" id="2_l6j8w"]
-[ext_resource type="Material" uid="uid://dof0nmg7nck0k" path="res://game/player/bubbles.tres" id="4_ygga5"]
+[ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_spg1m"]
+[ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="2_01qej"]
+[ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="2_l6j8w"]
+[ext_resource type="Material" uid="uid://dof0nmg7nck0k" path="res://assets/particles/bubbles.tres" id="4_ygga5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v71o6"]
 radius = 19.0
@@ -22,6 +22,10 @@ additionalCollision = 1
 pushForce = 1000
 
 [node name="health" parent="." instance=ExtResource("2_01qej")]
+hp = 1
+invincibilitySeconds = 0.0
+ragdollOnDeath = false
+ragdollSeconds = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.57079

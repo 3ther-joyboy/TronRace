@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://1y6q3x2q6aaf"]
+[gd_scene load_steps=2 format=3 uid="uid://1y6q3x2q6aaf"]
+
+[ext_resource type="Script" path="res://scripts/components/record/replay_component.cs" id="1_vdof7"]
 
 [node name="Replay" type="Node"]
+script = ExtResource("1_vdof7")

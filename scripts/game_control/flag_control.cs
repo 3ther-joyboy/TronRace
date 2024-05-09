@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class flags : Node
+public partial class flag_control : Node
 {
 	[Export(PropertyHint.Range,"1,10,or_grater")]
 	private int loop = 1;
