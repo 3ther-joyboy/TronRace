@@ -20,7 +20,7 @@ boot_splash/show_image=false
 window/size/viewport_width=500
 window/size/viewport_height=900
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
 
