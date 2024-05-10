@@ -18,9 +18,8 @@ public partial class flag_control : Node
 		_touchedFlags = 0;
 		_currentLoop++;
 		var _childrns = GetChildren();
-		for (int i = 0; i < GetChildCount(); i++)
-			if (_childrns[i].GetClass() == "flag")
-				((flag) _childrns[i]).Restart();
+		for (int i = 0; i < this.GetChildCount(); i++)
+			((flag)_childrns[i]).Restart();
 			
 	}
 

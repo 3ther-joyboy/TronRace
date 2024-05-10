@@ -11,12 +11,12 @@ public partial class flag : Area2D
 	}
 
 	private void BodyColl(Node2D collider) {
-		if (!_touched && collider.HasNode("Player"))
-			par.Count();
+		bool placeholder = _touched;
 		_touched = true;
+		if (!placeholder && collider.HasNode("Player"))
+			par.Count();
 	}
 	public void Restart(){
-		GD.Print("owo");
 		_touched = false;
 	}
 }
