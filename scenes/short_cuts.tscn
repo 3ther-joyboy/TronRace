@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx7vfhoah1sex"]
+
+[ext_resource type="Script" path="res://scripts/short_cuts.cs" id="1_0h6wh"]
+
+[node name="ShortCuts" type="Node"]
+script = ExtResource("1_0h6wh")

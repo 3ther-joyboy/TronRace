@@ -35,7 +35,7 @@ collisionThreshold = 1000
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 script = ExtResource("3_kd17b")
-_zoom = 1.4
+_speed = 100
 
 [node name="Replay" parent="player" instance=ExtResource("3_51fdw")]
 Mode = 0
