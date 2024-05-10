@@ -57,7 +57,6 @@ finish = ExtResource("6_4x8h0")
 shape = SubResource("CircleShape2D_dof7s")
 
 [node name="flag control" parent="." instance=ExtResource("5_v07uj")]
-_loop = 2
 
 [node name="flag" parent="flag control" instance=ExtResource("6_jv71h")]
 position = Vector2(1474, 412)
