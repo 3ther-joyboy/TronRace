@@ -11,7 +11,7 @@ public partial class short_cuts : Node
 		}
 
 		if (@event is InputEventScreenTouch eventTouch) {
-			if (eventTouch.Index == 3)
+			if (eventTouch.Index == 2) // starts from 0
 				_Restart();
 			
 		}
