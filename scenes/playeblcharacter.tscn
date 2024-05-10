@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://di1iawws2d8ni"]
+[gd_scene load_steps=10 format=3 uid="uid://di1iawws2d8ni"]
 
 [ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_5ybk6"]
 [ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="2_yrd2b"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="3_ylnb7"]
 [ext_resource type="Script" path="res://scripts/components/effects/particles.cs" id="4_5pevn"]
-[ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="5_p3kdq"]
 [ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="5_psujs"]
 [ext_resource type="PackedScene" uid="uid://b1yybg8yw63h6" path="res://scenes/components/player.tscn" id="7_ss4xq"]
 
@@ -457,9 +456,9 @@ script = ExtResource("4_5pevn")
 [node name="variable" type="Node2D" parent="visual"]
 
 [node name="Sprite2D" type="Sprite2D" parent="visual/variable"]
-rotation = -1.5708
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_p3kdq")
+rotation = 1.5708
+scale = Vector2(0.276855, 0.362764)
+texture = ExtResource("3_ylnb7")
 
 [node name="Player" parent="." instance=ExtResource("7_ss4xq")]
 drawSircle = true

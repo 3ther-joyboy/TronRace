@@ -21,7 +21,7 @@ public partial class autoload : Node
 		using var file = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Write);
 		String objs = "";
 		for (int i = 0; i < replay.Length; i++)
-			objs += "\"time\":" + replay[i].time + ", \"dir\":[" + replay[i].dir.X + ", " + replay[i].dir.Y + "],\n";
-		file.StoreLine("{[ \n" + objs + "]}");
+			objs += "{\"time\": " + replay[i].time + ", \"dir\": [" + replay[i].dir.X + ", " + replay[i].dir.Y + "]},\n";
+		file.StoreLine("[\n" + objs + "]");
 	}
 }
