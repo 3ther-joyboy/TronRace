@@ -56,10 +56,8 @@ public partial class end : Area2D
 
 	private void Entered(Node2D player) {
 		if (player.HasNode("Player") )
-			if (GetParent().HasNode("flags") ) {
-				Node flags = GetParent().GetNode("flags");
-
-				if ( (int)flags.Call("GetLoops") * (int)flags.Call("GetTotal") >= (int)flags.Call("GetCount") )
+			if (HasNode("../flag control") ) {
+				if (GetNode<flag_control>("../flag control").Complete() )
 					Finish(player);
 				else
 				    GD.PrintRich("[pulse] nu - uh [/pulse]");
@@ -74,6 +72,6 @@ public partial class end : Area2D
 			GD.Print("Finished in: " + (ticksPassed / tickPerSecond) + " S, (" + ticksPassed + " ticks, " + tickPerSecond + " T/S)" ); 
 		} else
 			GD.Print("Finished"); 
-	}
+	} 
 
 }

@@ -4,25 +4,27 @@ using System;
 public partial class flag_control : Node
 {
 	[Export(PropertyHint.Range,"1,10,or_grater")]
-	private int loop = 1;
-	private int count = 0;
-	private int current = 0;
+	private int _loop = 1;
+	private int _currentLoop = 0;
+	private int _touchedFlags = 0;
 
-	public void Add(){
-		count++;
-	}
 	public void Count(){
-		current++;
-		GD.Print( "Loop: " + current + "/" + count*loop );
+		_touchedFlags++;
+		GD.Print( (_currentLoop * GetChildCount() + _touchedFlags) + " / " + (_loop * GetChildCount()) );
+		if (_touchedFlags >= this.GetChildCount() )
+			_Looped();
 	}
-	public int GetTotal(){
-		return count;
-	}
-	public int GetCount(){
-		return current;
-	}
-	public int GetLoops(){
-		return loop;
+	private void _Looped(){
+		_touchedFlags = 0;
+		_currentLoop++;
+		var _childrns = GetChildren();
+		for (int i = 0; i < GetChildCount(); i++)
+			if (_childrns[i].GetClass() == "flag")
+				((flag) _childrns[i]).Restart();
+			
 	}
 
+	public bool Complete() {
+		return _currentLoop >= _loop;
+	}
 }
