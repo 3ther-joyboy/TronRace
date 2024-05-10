@@ -3,28 +3,42 @@ using System;
 
 public partial class replay_component : Node
 {
-	[Export(PropertyHint.Enum, "Record,Play Back")]
-	private int Mode = 1;
 	[Export]
 	private bool print = false;
+
+	private bool _mode = false;
 
 	private move_component target;
 	// true -> move.direction  false -> Rotation
 	private bool recordMode;
 
-	public RecordFormat[] recording = {new RecordFormat(0,Vector2.Zero) };
+	public RecordFormat[] recording;
 
 	// variables
 	private Vector2 currentDir = Vector2.Zero;
 	private int timeOfDir = 1;
 
 	public override void _Ready() {
+		recording = GetNode<autoload>("/root/Autoload").GetReplay();
+		_mode = recording == null ? true:false;
+		if (_mode)
+			recording = new RecordFormat[]{ new RecordFormat(0,Vector2.Zero)};
 		target = GetParent<move_component>();		
 		recordMode = !target.GetRotationMode();
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		
+		if (_mode)
+			_Record();
+		else
+			_Play();
+	}
+
+	private void _Play() {
+		GD.Print("Play");
+	}
+
+	private void _Record() {
 		if (currentDir != GetRotation() ) {
 			// GD.Print(currentDir + " || " + GetRotation() + " -> " + timeOfDir);
 			Array.Resize(ref recording,recording.Length + 1);
@@ -42,6 +56,7 @@ public partial class replay_component : Node
 				randomString += recording[i].time + " " + recording[i].dir + ", ";
 			GD.Print(randomString + timeOfDir + " " + currentDir);
 		}
+
 	}
 
 	private Vector2 GetRotation() {

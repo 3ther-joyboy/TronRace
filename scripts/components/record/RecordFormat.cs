@@ -8,7 +8,6 @@ public class RecordFormat
 
 	public RecordFormat(int time, Vector2 dir) {
 		this.time = time; 
-		// if something dont work, remove the .Normalized() part, tho it should work
 		this.dir = dir.Normalized();
 	}
 }
