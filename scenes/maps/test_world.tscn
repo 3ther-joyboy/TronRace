@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=15 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -9,13 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://bfeh62ujfx7by" path="res://scenes/map_control/flag/flag_control.tscn" id="5_v07uj"]
 [ext_resource type="AudioStream" uid="uid://cyen0qnn2t1bv" path="res://assets/audio/finish.mp3" id="6_4x8h0"]
 [ext_resource type="PackedScene" uid="uid://xsry48jtqlo4" path="res://scenes/map_control/flag/flag.tscn" id="6_jv71h"]
+[ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="10_jv7mi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dof7s"]
 radius = 240.3
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ww0el"]
-a = Vector2(241, -108)
-b = Vector2(252, 182)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oip5j"]
+a = Vector2(141, 171)
+b = Vector2(229, -111)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_l3j21"]
+a = Vector2(16, 223)
+b = Vector2(235, 583)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wtwcb"]
+a = Vector2(333, 173)
+b = Vector2(-2, 225)
 
 [node name="TestWorld" type="Node2D"]
 
@@ -35,7 +44,6 @@ collisionThreshold = 1000
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 script = ExtResource("3_kd17b")
-_speed = 100
 
 [node name="Replay" parent="player" instance=ExtResource("3_51fdw")]
 Mode = 0
@@ -49,9 +57,25 @@ finish = ExtResource("6_4x8h0")
 shape = SubResource("CircleShape2D_dof7s")
 
 [node name="flag control" parent="." instance=ExtResource("5_v07uj")]
+_loop = 2
 
 [node name="flag" parent="flag control" instance=ExtResource("6_jv71h")]
 position = Vector2(1474, 412)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flag control/flag"]
-shape = SubResource("SegmentShape2D_ww0el")
+shape = SubResource("SegmentShape2D_oip5j")
+
+[node name="flag2" parent="flag control" instance=ExtResource("6_jv71h")]
+position = Vector2(3152, 473)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flag control/flag2"]
+shape = SubResource("SegmentShape2D_l3j21")
+
+[node name="flag3" parent="flag control" instance=ExtResource("6_jv71h")]
+position = Vector2(2264, 828)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flag control/flag3"]
+position = Vector2(0, 1)
+shape = SubResource("SegmentShape2D_wtwcb")
+
+[node name="ShortCuts" parent="." instance=ExtResource("10_jv7mi")]
