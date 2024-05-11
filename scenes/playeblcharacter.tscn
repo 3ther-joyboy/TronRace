@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://di1iawws2d8ni"]
+[gd_scene load_steps=11 format=3 uid="uid://di1iawws2d8ni"]
 
 [ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_5ybk6"]
 [ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="2_yrd2b"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="3_ylnb7"]
 [ext_resource type="Script" path="res://scripts/components/effects/particles.cs" id="4_5pevn"]
+[ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="5_537cm"]
 [ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="5_psujs"]
 [ext_resource type="PackedScene" uid="uid://b1yybg8yw63h6" path="res://scenes/components/player.tscn" id="7_ss4xq"]
 
@@ -428,8 +429,9 @@ shader_parameter/emission_sphere_radius = 19.51
 shader_parameter/color_value = Color(0.172549, 0.690196, 1, 1)
 shader_parameter/gravity = Vector3(0, -1e-06, 0)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_up3xq"]
-radius = 17.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijlei"]
+radius = 15.0
+height = 70.0
 
 [node name="player" type="RigidBody2D"]
 collision_layer = 2
@@ -456,9 +458,9 @@ script = ExtResource("4_5pevn")
 [node name="variable" type="Node2D" parent="visual"]
 
 [node name="Sprite2D" type="Sprite2D" parent="visual/variable"]
-rotation = 1.5708
-scale = Vector2(0.276855, 0.362764)
-texture = ExtResource("3_ylnb7")
+rotation = -1.5708
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_537cm")
 
 [node name="Player" parent="." instance=ExtResource("7_ss4xq")]
 drawSircle = true
@@ -470,6 +472,7 @@ ragdollOnDeath = false
 ragdollSeconds = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_up3xq")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ijlei")
 
 [connection signal="body_entered" from="." to="." method="Collision"]
