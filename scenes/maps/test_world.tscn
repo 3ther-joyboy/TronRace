@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=16 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
 [ext_resource type="PackedScene" uid="uid://1y6q3x2q6aaf" path="res://scenes/components/replay.tscn" id="3_51fdw"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="3_632hh"]
 [ext_resource type="Script" path="res://scripts/moving_camera.cs" id="3_kd17b"]
+[ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="4_ti344"]
 [ext_resource type="AudioStream" uid="uid://daca0dsogmw03" path="res://assets/audio/beep.mp3" id="5_kssyl"]
 [ext_resource type="PackedScene" uid="uid://bfeh62ujfx7by" path="res://scenes/map_control/flag/flag_control.tscn" id="5_v07uj"]
 [ext_resource type="AudioStream" uid="uid://cyen0qnn2t1bv" path="res://assets/audio/finish.mp3" id="6_4x8h0"]
@@ -44,6 +45,8 @@ collisionThreshold = 1000
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 script = ExtResource("3_kd17b")
+
+[node name="Pause" parent="player/Camera2D" instance=ExtResource("4_ti344")]
 
 [node name="Replay" parent="player" instance=ExtResource("3_51fdw")]
 
