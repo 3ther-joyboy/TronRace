@@ -33,6 +33,7 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
 [node name="Player" type="Node"]
+process_mode = 3
 script = ExtResource("1_bn65d")
 
 [node name="drag" type="CanvasLayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=19 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://cyen0qnn2t1bv" path="res://assets/audio/finish.mp3" id="6_4x8h0"]
 [ext_resource type="PackedScene" uid="uid://xsry48jtqlo4" path="res://scenes/map_control/flag/flag.tscn" id="6_jv71h"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="10_jv7mi"]
+[ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="11_7ulno"]
+[ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="12_8t0bo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dof7s"]
 radius = 240.3
@@ -25,6 +27,21 @@ b = Vector2(235, 583)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wtwcb"]
 a = Vector2(333, 173)
 b = Vector2(-2, 225)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cf5l"]
+radius = 445.082
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k57sb"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 300.0
+emission_ring_inner_radius = 200.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -300.0
+scale_min = 0.0
+scale_max = 0.3
 
 [node name="TestWorld" type="Node2D"]
 
@@ -77,3 +94,15 @@ position = Vector2(0, 1)
 shape = SubResource("SegmentShape2D_wtwcb")
 
 [node name="ShortCuts" parent="." instance=ExtResource("10_jv7mi")]
+
+[node name="PushFeald" parent="." instance=ExtResource("11_7ulno")]
+position = Vector2(3126, 1461)
+_pushForce = 2000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushFeald"]
+shape = SubResource("CircleShape2D_3cf5l")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PushFeald"]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_k57sb")
+texture = ExtResource("12_8t0bo")

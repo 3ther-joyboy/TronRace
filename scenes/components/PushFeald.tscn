@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://behv7vvb4csu4"]
+
+[ext_resource type="Script" path="res://scripts/components/push_feald_component.cs" id="1_r6wkb"]
+
+[node name="PushFeald" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_r6wkb")
+
+[node name="Ray" type="RayCast2D" parent="."]
+collision_mask = 9

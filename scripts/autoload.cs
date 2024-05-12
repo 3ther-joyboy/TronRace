@@ -5,21 +5,17 @@ using System.Text.Json;
 public partial class autoload : Node
 {
 	private String path = "res://replay_test.json";
-	//public String replayJson = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Read).GetAsText();
+	public String replayJson = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Read).GetAsText();
 
 	public override void _Ready(){
 
 	}
 
 	public RecordFormat[] GetReplay() {
-//		using JsonDocument doc = JsonDocument.Parse(replayJson);
-//		JsonElement replay = doc.RootElement;
-//
-//		RecordFormat[] recording = {};
-//		for (int i = 0; i < replay.GetArrayLength(); i++)
-//			recording[i] = new RecordFormat(replay[i]);
-//
-//
+
+//		RecordFormat[] kys = JsonSerializer.Deserialize<RecordFormat[]>(replayJson);
+//		GD.Print(kys[0].time);
+
 		return null;
 	}
 	public void SaveReplay(RecordFormat[] replay) {
