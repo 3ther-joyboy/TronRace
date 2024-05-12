@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://eqwcewka68ie"]
+[gd_scene load_steps=7 format=3 uid="uid://eqwcewka68ie"]
 
-[ext_resource type="Texture2D" uid="uid://dimh3wjemaex4" path="res://assets/textures/pause.png" id="1_2qxij"]
+[ext_resource type="Theme" uid="uid://bew7hm00raokh" path="res://assets/themes/test-theme.tres" id="1_5gwio"]
 [ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
+[ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="3_82el2"]
+[ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="4_5rxhk"]
+[ext_resource type="Texture2D" uid="uid://baj56ovdl2rkq" path="res://assets/textures/ui/home.png" id="5_v1wi6"]
+[ext_resource type="Texture2D" uid="uid://cst4oim7ec8nb" path="res://assets/textures/ui/resume.png" id="6_pti4l"]
 
 [node name="Pause" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,9 +19,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("1_5gwio")
 script = ExtResource("1_n8xp6")
 
 [node name="Menu" type="Control" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,19 +31,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="ButtonSettings" type="Button" parent="Control/Menu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("4_5rxhk")
+expand_icon = true
+
+[node name="ButtonHome" type="Button" parent="Control/Menu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("5_v1wi6")
+expand_icon = true
+
+[node name="ButtonResume" type="Button" parent="Control/Menu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("6_pti4l")
+expand_icon = true
+
+[node name="ButtonPause" type="TextureButton" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -60.0
+offset_left = -70.0
 offset_top = 20.0
-offset_right = 60.0
-offset_bottom = 140.0
+offset_right = 442.0
+offset_bottom = 532.0
 grow_horizontal = 0
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.1, 0.1)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("1_2qxij")
+texture_normal = ExtResource("3_82el2")
 
-[connection signal="pressed" from="Control/TextureButton" to="Control" method="Pause"]
+[connection signal="pressed" from="Control/Menu/VBoxContainer/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
+[connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
