@@ -429,8 +429,8 @@ shader_parameter/emission_sphere_radius = 19.51
 shader_parameter/color_value = Color(0.172549, 0.690196, 1, 1)
 shader_parameter/gravity = Vector3(0, -1e-06, 0)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6mhlk"]
-radius = 18.0278
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fg1hb"]
+height = 50.0
 
 [node name="player" type="RigidBody2D"]
 collision_layer = 10
@@ -438,10 +438,10 @@ collision_mask = 17
 mass = 0.01
 gravity_scale = 0.0
 can_sleep = false
-lock_rotation = true
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_5ybk6")
+lockedToRotation = false
 acceleration = 1000
 
 [node name="visual" parent="." instance=ExtResource("2_yrd2b")]
@@ -472,6 +472,6 @@ ragdollSeconds = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource("CircleShape2D_6mhlk")
+shape = SubResource("CapsuleShape2D_fg1hb")
 
 [connection signal="body_entered" from="." to="." method="Collision"]

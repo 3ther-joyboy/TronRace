@@ -49,11 +49,11 @@ public partial class move_component : RigidBody2D
 
 	public override void _PhysicsProcess(double delta){
 		CollisionDamage(delta);
-		if(lockedToRotation)
-			direction = Vector2.FromAngle(this.Rotation);
+		if(!lockedToRotation)
+			direction = Vector2.FromAngle(this.GlobalRotation);
 		// accelereation
 		if (movingState)
-			ApplyCentralForce((float)delta*acceleration*direction);
+			ApplyCentralForce((float)delta * acceleration * direction);
 		Audio();
 	}
 	private void Audio(){
