@@ -18,13 +18,13 @@ public partial class pause : Control
 	{
 		_button.Hide();
 		_menu.Show();
-		GetTree().Paused = !GetTree().Paused;
+		GetTree().Paused = true;
 	}
 
 	private void UnPause()
 	{
 		_menu.Hide();
 		_button.Show();
-		GetTree().Paused = !GetTree().Paused;
+		GetTree().Paused = false;
 	}
 }
