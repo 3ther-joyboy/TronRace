@@ -56,16 +56,15 @@ layer_1/tile_data = PackedInt32Array(262146, 262144, 8, 262147, 65536, 4, 262148
 
 [node name="player" parent="." instance=ExtResource("2_200pc")]
 position = Vector2(534, 438)
-lockedToRotation = false
 acceleration = 500
 collisionThreshold = 1000
+
+[node name="Replay" parent="player" instance=ExtResource("3_51fdw")]
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 script = ExtResource("3_kd17b")
 
 [node name="Pause" parent="player/Camera2D" instance=ExtResource("4_ti344")]
-
-[node name="Replay" parent="player" instance=ExtResource("3_51fdw")]
 
 [node name="Finish" parent="." instance=ExtResource("3_632hh")]
 position = Vector2(970, 977)
@@ -99,7 +98,7 @@ shape = SubResource("SegmentShape2D_wtwcb")
 [node name="ShortCuts" parent="." instance=ExtResource("10_jv7mi")]
 
 [node name="PushFeald" parent="." instance=ExtResource("11_7ulno")]
-position = Vector2(3126, 1461)
+position = Vector2(3148, 1461)
 _pushForce = 2000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushFeald"]

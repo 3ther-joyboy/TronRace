@@ -11,6 +11,12 @@ public partial class player_componentcs : Node
 	private Vector2 start = new Vector2(0,0);
 	private Vector2 current = new Vector2(0,0);
 	private Vector2 dir = Vector2.Right;
+
+	private bool _fixedRotation = false;
+
+	public override void _Ready(){
+		_fixedRotation = ((move_component)GetParent()).GetRotationMode();
+	}
 	public override void _PhysicsProcess(double delta){
 
 		if(Input.IsActionJustPressed("tap")) start = GetViewport().GetMousePosition();		
@@ -33,8 +39,14 @@ public partial class player_componentcs : Node
 		GetParent().Call("MovingStateSet",Input.IsActionPressed("tap") || dir != Vector2.Zero);
 		if (Input.IsActionPressed("tap") || other != Vector2.Zero) {
 
-			GetParent().Call("DirectionSet",dir.Angle());	
-			GetParent().GetNode<Node2D>("visual").Call("RotateDir",dir);
+			GetParent<RigidBody2D>().AngularVelocity = 0f;
+
+			if (_fixedRotation) {
+				GetParent().Call("DirectionSet",dir.Angle());	
+				GetParent().GetNode<Node2D>("visual").Call("RotateDir",dir);
+			} else
+				GetParent<Node2D>().Rotation = dir.Angle();    
+
 		}
 	}
 
