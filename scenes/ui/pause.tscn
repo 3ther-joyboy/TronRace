@@ -79,16 +79,16 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ButtonSettings" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-icon = ExtResource("4_5rxhk")
-expand_icon = true
-
 [node name="ButtonHome" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 icon = ExtResource("5_v1wi6")
+expand_icon = true
+
+[node name="ButtonSettings" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("4_5rxhk")
 expand_icon = true
 
 [node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
@@ -134,6 +134,7 @@ step = 0.01
 value = 1.0
 
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Master" to="Control" method="SetVolumeMaster"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Music" to="Control" method="SetVolumeMusic"]

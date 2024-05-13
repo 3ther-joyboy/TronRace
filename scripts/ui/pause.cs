@@ -28,6 +28,11 @@ public partial class pause : Control
 		GetTree().Paused = false;
 	}
 
+	private void GoHome()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
+	}
+
 	private void SetVolume(float val, String name)
 	{
 		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(name),Mathf.LinearToDb(val));
