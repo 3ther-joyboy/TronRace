@@ -12,8 +12,6 @@ public partial class pause : Control
 		_timer = GetNode<Label>("Timer");
         _menu = GetNode<Control>("MenuMain");
 		_button = GetNode<TextureButton>("ButtonPause");
-
-		_timer.Text = "Nevim";
     }
 
     private void Pause()
