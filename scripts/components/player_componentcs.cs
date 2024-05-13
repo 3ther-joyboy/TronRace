@@ -6,6 +6,8 @@ public partial class player_componentcs : Node
 	[Export]
 	bool drawSircle = false;
 
+	private bool _firstTap = true; 
+
 	private Vector2 start = new Vector2(0,0);
 	private Vector2 current = new Vector2(0,0);
 	private Vector2 dir = Vector2.Right;

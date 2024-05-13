@@ -15,6 +15,10 @@ run/main_scene="res://scenes/maps/test_world.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 boot_splash/show_image=false
 
+[audio]
+
+buses/default_bus_layout="res://assets/default_bus_layout.tres"
+
 [autoload]
 
 Autoload="*res://scripts/autoload.cs"

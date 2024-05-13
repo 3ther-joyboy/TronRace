@@ -1,27 +1,34 @@
 using Godot;
 using System;
+using System.Text.Json;
 
 public partial class autoload : Node
 {
-	public String replayJson;
+	private String path = "res://replay_test.json";
+	public String replayJson = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Read).GetAsText();
 
 	public override void _Ready(){
 
 	}
 
-
 	public RecordFormat[] GetReplay() {
-		//		Variant _out = Json.ParseString(replayJson);
-		//		GD.Print(_out.VariantType == Variant.Type.Nil ? "No Replay input": "Replay sucesfully loaded");
+
+//		RecordFormat[] kys = JsonSerializer.Deserialize<RecordFormat[]>(replayJson);
+//		GD.Print(kys[0].time);
+
 		return null;
 	}
 	public void SaveReplay(RecordFormat[] replay) {
 		GD.Print("Saving Replay");
 
-		using var file = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Write);
+		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
 		String objs = "";
 		for (int i = 0; i < replay.Length; i++)
-			objs += "{\"time\": " + replay[i].time + ", \"dir\": [" + replay[i].dir.X + ", " + replay[i].dir.Y + "]},\n";
-		file.StoreLine("[\n" + objs + "]");
+			objs += "{\"time\":" + replay[i].time + ", \"dir\": [" + replay[i].dir.X + "," + replay[i].dir.Y + "]},";
+		file.StoreString("[" + objs + "]");
+
+		GD.Print("Replay Saved");
+
+
 	}
 }
