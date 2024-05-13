@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=20 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -99,7 +99,7 @@ shape = SubResource("SegmentShape2D_wtwcb")
 [node name="ShortCuts" parent="." instance=ExtResource("10_jv7mi")]
 
 [node name="PushFeald" parent="." instance=ExtResource("11_7ulno")]
-position = Vector2(3126, 1461)
+position = Vector2(3148, 1461)
 _pushForce = 2000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushFeald"]
