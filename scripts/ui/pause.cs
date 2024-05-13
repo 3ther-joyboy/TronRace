@@ -33,8 +33,7 @@ public partial class pause : Control
 		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(name),Mathf.LinearToDb(val));
 	}
 	
-	private void SetVolumeMain(float val) { SetVolume(val, "Master"); }
-	private void SetVolumeUI(float val) { SetVolume(val, "SFXUI"); }
-	private void SetVolumeMusick(float val) { SetVolume(val, "Music"); }
+	private void SetVolumeMaster(float val) { SetVolume(val, "Master"); }
+	private void SetVolumeMusic(float val) { SetVolume(val, "Music"); }
 	private void SetVolumeSFX(float val) { SetVolume(val, "SFX"); }
 }

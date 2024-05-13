@@ -103,20 +103,38 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MenuMain/VBoxContainer/Audio"]
 layout_mode = 2
 
+[node name="LabelMaster" type="Label" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
 [node name="Master" type="HSlider" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+value = 1.0
+
+[node name="LabelMusic" type="Label" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "Music"
 
 [node name="Music" type="HSlider" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+value = 0.8
+
+[node name="LabelSFX" type="Label" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
 
 [node name="SFX" type="HSlider" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+value = 1.0
 
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
+[connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Master" to="Control" method="SetVolumeMaster"]
+[connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Music" to="Control" method="SetVolumeMusic"]
+[connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/SFX" to="Control" method="SetVolumeSFX"]
