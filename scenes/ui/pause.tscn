@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://eqwcewka68ie"]
 
-[ext_resource type="Theme" uid="uid://bew7hm00raokh" path="res://assets/themes/test-theme.tres" id="1_5gwio"]
+[ext_resource type="Theme" uid="uid://bew7hm00raokh" path="res://scapped_things/test-theme.tres" id="1_5gwio"]
 [ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="3_82el2"]
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="4_5rxhk"]
@@ -22,6 +22,17 @@ size_flags_vertical = 0
 theme = ExtResource("1_5gwio")
 script = ExtResource("1_n8xp6")
 
+[node name="Timer" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_top = 30.0
+offset_right = 0.5
+offset_bottom = 53.0
+grow_horizontal = 2
+
 [node name="ButtonPause" type="TextureButton" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
@@ -37,7 +48,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_82el2")
 
-[node name="Menu" type="Control" parent="Control"]
+[node name="MenuMain" type="Control" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +57,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MenuMain"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,31 +71,31 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/Menu/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/MenuMain/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Menu/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MenuMain/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ButtonSettings" type="Button" parent="Control/Menu/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="ButtonSettings" type="Button" parent="Control/MenuMain/VBoxContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 icon = ExtResource("4_5rxhk")
 expand_icon = true
 
-[node name="ButtonHome" type="Button" parent="Control/Menu/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="ButtonHome" type="Button" parent="Control/MenuMain/VBoxContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 icon = ExtResource("5_v1wi6")
 expand_icon = true
 
-[node name="ButtonResume" type="Button" parent="Control/Menu/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 icon = ExtResource("6_pti4l")
 expand_icon = true
 
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
-[connection signal="pressed" from="Control/Menu/VBoxContainer/PanelContainer/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/PanelContainer/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
