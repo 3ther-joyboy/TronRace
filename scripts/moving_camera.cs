@@ -15,7 +15,6 @@ public partial class moving_camera : Camera2D
 	private Vector2 _currentOffset = Vector2.Zero;
 
 	public override void _Ready(){
-		this.TopLevel = true;
 		_follower = GetParent<move_component>();
 	}
 
