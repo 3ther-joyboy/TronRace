@@ -27,4 +27,14 @@ public partial class pause : Control
 		_button.Show();
 		GetTree().Paused = false;
 	}
+
+	private void SetVolume(float val, String name)
+	{
+		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(name),Mathf.LinearToDb(val));
+	}
+	
+	private void SetVolumeMain(float val) { SetVolume(val, "Master"); }
+	private void SetVolumeUI(float val) { SetVolume(val, "SFXUI"); }
+	private void SetVolumeMusick(float val) { SetVolume(val, "Music"); }
+	private void SetVolumeSFX(float val) { SetVolume(val, "SFX"); }
 }

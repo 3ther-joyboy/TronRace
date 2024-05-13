@@ -49,6 +49,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("3_82el2")
 
 [node name="MenuMain" type="Control" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
