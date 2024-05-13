@@ -62,6 +62,7 @@ collisionThreshold = 1000
 [node name="Replay" parent="player" instance=ExtResource("3_51fdw")]
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(39, 0)
 script = ExtResource("3_kd17b")
 
 [node name="Pause" parent="player/Camera2D" instance=ExtResource("4_ti344")]
