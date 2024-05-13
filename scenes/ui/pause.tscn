@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://eqwcewka68ie"]
+
+[ext_resource type="Texture2D" uid="uid://dimh3wjemaex4" path="res://assets/textures/pause.png" id="1_2qxij"]
+[ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
+
+[node name="Pause" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_n8xp6")
+
+[node name="Menu" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 140.0
+grow_horizontal = 0
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_2qxij")
+
+[connection signal="pressed" from="Control/TextureButton" to="Control" method="Pause"]
