@@ -56,11 +56,11 @@ layer_1/tile_data = PackedInt32Array(262146, 262144, 8, 262147, 65536, 4, 262148
 
 [node name="player" parent="." instance=ExtResource("2_200pc")]
 position = Vector2(534, 438)
-lockedToRotation = false
 acceleration = 500
 collisionThreshold = 1000
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-535, -438)
 script = ExtResource("3_kd17b")
 
 [node name="Pause" parent="player/Camera2D" instance=ExtResource("4_ti344")]

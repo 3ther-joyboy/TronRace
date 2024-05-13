@@ -12,13 +12,17 @@ public partial class moving_camera : Camera2D
 
 	private move_component _follower;
 
+	private Vector2 _currentOffset = Vector2.Zero;
+
 	public override void _Ready(){
+		this.TopLevel = true;
 		_follower = GetParent<move_component>();
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		this.Position += this.Position.DirectionTo( _follower.LinearVelocity * _offset ) * _speed * (float)delta;
+		GlobalPosition = _follower.GlobalPosition + _currentOffset;
+		_currentOffset += _currentOffset.DirectionTo( _follower.LinearVelocity * _offset ) * _speed * (float)delta;
 
-		this.Zoom = Vector2.One - ( Vector2.One * this.Position.Length()/_follower.GetAcceleration() ) * _zoom;
+		this.Zoom = Vector2.One - ( Vector2.One * _currentOffset.Length()/_follower.GetAcceleration() ) * _zoom;
 	}
 }

@@ -38,6 +38,9 @@ public partial class player_componentcs : Node
 
 		GetParent().Call("MovingStateSet",Input.IsActionPressed("tap") || dir != Vector2.Zero);
 		if (Input.IsActionPressed("tap") || other != Vector2.Zero) {
+
+			GetParent<RigidBody2D>().AngularVelocity = 0f;
+
 			if (_fixedRotation) {
 				GetParent().Call("DirectionSet",dir.Angle());	
 				GetParent().GetNode<Node2D>("visual").Call("RotateDir",dir);
