@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://di1iawws2d8ni"]
+[gd_scene load_steps=14 format=3 uid="uid://di1iawws2d8ni"]
 
 [ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_5ybk6"]
 [ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="2_yrd2b"]
@@ -6,7 +6,13 @@
 [ext_resource type="Script" path="res://scripts/components/effects/particles.cs" id="4_5pevn"]
 [ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="5_p3kdq"]
 [ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="5_psujs"]
+[ext_resource type="Script" path="res://scripts/moving_camera.cs" id="6_vxjcf"]
 [ext_resource type="PackedScene" uid="uid://b1yybg8yw63h6" path="res://scenes/components/player.tscn" id="7_ss4xq"]
+[ext_resource type="PackedScene" uid="uid://1y6q3x2q6aaf" path="res://scenes/components/replay.tscn" id="9_65w53"]
+[ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="10_cp3uk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fg1hb"]
+height = 50.0
 
 [sub_resource type="Shader" id="Shader_lfogg"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's ParticleProcessMaterial.
@@ -429,9 +435,6 @@ shader_parameter/emission_sphere_radius = 19.51
 shader_parameter/color_value = Color(0.172549, 0.690196, 1, 1)
 shader_parameter/gravity = Vector3(0, -1e-06, 0)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fg1hb"]
-height = 50.0
-
 [node name="player" type="RigidBody2D"]
 collision_layer = 10
 collision_mask = 17
@@ -443,6 +446,10 @@ contact_monitor = true
 script = ExtResource("1_5ybk6")
 lockedToRotation = false
 acceleration = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fg1hb")
 
 [node name="visual" parent="." instance=ExtResource("2_yrd2b")]
 
@@ -461,6 +468,11 @@ rotation = -1.5708
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_p3kdq")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
+top_level = true
+script = ExtResource("6_vxjcf")
+
 [node name="Player" parent="." instance=ExtResource("7_ss4xq")]
 drawSircle = true
 
@@ -470,8 +482,9 @@ invincibilitySeconds = 0.0
 ragdollOnDeath = false
 ragdollSeconds = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_fg1hb")
+[node name="Replay" parent="." instance=ExtResource("9_65w53")]
+
+[node name="Pause" parent="." instance=ExtResource("10_cp3uk")]
+layer = 10
 
 [connection signal="body_entered" from="." to="." method="Collision"]

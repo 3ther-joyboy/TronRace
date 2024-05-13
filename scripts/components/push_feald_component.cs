@@ -7,6 +7,7 @@ public partial class push_feald_component : Area2D
 	private bool _toPoint = true;
 	[Export]
 	private int _pushForce = 1000;
+	[Export] bool _sight = true;
 
 	private Vector2 _point = Vector2.Zero;
 	private RayCast2D _ray;
@@ -22,9 +23,12 @@ public partial class push_feald_component : Area2D
 		for (int i = 0; i < push.Count; i++)
 			if (push[i].IsClass("RigidBody2D")) {
 				RigidBody2D obj = (RigidBody2D)push[i];
-				_ray.TargetPosition = obj.GlobalPosition - this.GlobalPosition;
+				if (_sight) {
+					_ray.TargetPosition = obj.GlobalPosition - this.GlobalPosition;
 					if (_ray.GetCollider() == obj)
 						obj.ApplyCentralForce( _pushForce * _GetDirection( push[i] ) * (float)delta);
+				} else
+					obj.ApplyCentralForce( _pushForce * _GetDirection( push[i] ) * (float)delta);
 			}
 	}
 
