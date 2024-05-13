@@ -3,17 +3,30 @@ using System;
 
 public partial class pause : Control
 {
+	private Label _timer;
 	private Control _menu;
+	private TextureButton _button;
 
     public override void _Ready()
     {
-        _menu = GetNode<Control>("Menu");
+		_timer = GetNode<Label>("Timer");
+        _menu = GetNode<Control>("MenuMain");
+		_button = GetNode<TextureButton>("ButtonPause");
+
+		_timer.Text = "Nevim";
     }
 
     private void Pause()
 	{
-		GetTree().Paused = !GetTree().Paused;
-		Hide();
+		_button.Hide();
 		_menu.Show();
+		GetTree().Paused = !GetTree().Paused;
+	}
+
+	private void UnPause()
+	{
+		_menu.Hide();
+		_button.Show();
+		GetTree().Paused = !GetTree().Paused;
 	}
 }
