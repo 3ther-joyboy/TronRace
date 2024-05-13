@@ -458,7 +458,7 @@ script = ExtResource("4_5pevn")
 
 [node name="Sprite2D" type="Sprite2D" parent="visual/variable"]
 rotation = -1.5708
-scale = Vector2(0.109076, 0.142922)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_p3kdq")
 
 [node name="Player" parent="." instance=ExtResource("7_ss4xq")]
