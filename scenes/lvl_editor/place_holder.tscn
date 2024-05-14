@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu23xox47uqr1"]
+
+[ext_resource type="Script" path="res://scripts/lvl_editor_place_holder.cs" id="1_dyks0"]
+
+[node name="PlaceHolder" type="Node2D"]
+script = ExtResource("1_dyks0")

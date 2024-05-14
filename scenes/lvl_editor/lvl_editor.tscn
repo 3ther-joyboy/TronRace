@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c435vimyuknml"]
 
-[ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_02uep"]
-[ext_resource type="PackedScene" uid="uid://bfeh62ujfx7by" path="res://scenes/map_control/flag/flag_control.tscn" id="2_ihh5w"]
+[ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_bhw4f"]
+[ext_resource type="PackedScene" uid="uid://bfeh62ujfx7by" path="res://scenes/map_control/flag/flag_control.tscn" id="2_6ndrc"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -50,9 +50,9 @@ max_columns = 4
 same_column_width = true
 icon_mode = 0
 item_0/text = "wfjůkljqůlkewjr"
-item_0/icon = ExtResource("1_02uep")
+item_0/icon = ExtResource("1_bhw4f")
 item_1/text = ""
-item_1/icon = ExtResource("1_02uep")
+item_1/icon = ExtResource("1_bhw4f")
 
 [node name="Enemies" type="TabBar" parent="Bottom/TabContainer"]
 visible = false
@@ -63,4 +63,4 @@ layout_mode = 2
 [node name="TileMap" type="TileMap" parent="lvl"]
 format = 2
 
-[node name="flag control" parent="lvl" instance=ExtResource("2_ihh5w")]
+[node name="flag control" parent="lvl" instance=ExtResource("2_6ndrc")]
