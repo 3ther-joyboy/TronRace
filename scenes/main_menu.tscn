@@ -23,31 +23,92 @@ offset_bottom = 85.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="Main" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Main"]
 layout_mode = 2
 
-[node name="ButtonSolo" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="ButtonSolo" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Solo"
 
-[node name="ButtonOnline" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="ButtonOnline" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Online"
 
-[node name="ButtonEditor" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="ButtonEditor" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Editor"
 
-[node name="ButtonProfile" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="ButtonProfile" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Profile"
 
-[node name="ButtonQuit" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/PanelContainer/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
+[node name="Solo" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Solo"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Solo/VBoxContainer"]
+layout_mode = 2
+text = "test_world"
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Solo/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Online" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Online"]
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Online/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Editor" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Editor"]
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Editor/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Profile" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Profile"]
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Profile/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSolo" to="." method="SoloMenu"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonOnline" to="." method="OnlineMenu"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonEditor" to="." method="EditorMenu"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonProfile" to="." method="ProfileMenu"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
+[connection signal="pressed" from="VBoxContainer/Solo/VBoxContainer/Button" to="." method="SoloPlay" binds= ["test_world"]]
+[connection signal="pressed" from="VBoxContainer/Solo/VBoxContainer/ButtonBack" to="." method="Back"]
+[connection signal="pressed" from="VBoxContainer/Online/VBoxContainer/ButtonBack" to="." method="Back"]
+[connection signal="pressed" from="VBoxContainer/Editor/VBoxContainer/ButtonBack" to="." method="Back"]
+[connection signal="pressed" from="VBoxContainer/Profile/VBoxContainer/ButtonBack" to="." method="Back"]
