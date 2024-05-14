@@ -16,9 +16,12 @@ public partial class pause : Control
 
     private void Pause()
 	{
-		_button.Hide();
-		_menu.Show();
-		GetTree().Paused = true;
+		if (!GetTree().Paused)
+		{
+			_button.Hide();
+			_menu.Show();
+			GetTree().Paused = true;
+		}
 	}
 
 	private void UnPause()
