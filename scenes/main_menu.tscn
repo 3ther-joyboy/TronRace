@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://btaurnw0kga5f"]
+[gd_scene load_steps=3 format=3 uid="uid://btaurnw0kga5f"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.cs" id="1_dfcg4"]
+[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_n0607")
 script = ExtResource("1_dfcg4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
