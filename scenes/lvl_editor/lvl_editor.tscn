@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c435vimyuknml"]
+[gd_scene load_steps=5 format=3 uid="uid://c435vimyuknml"]
 
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_bhw4f"]
 [ext_resource type="PackedScene" uid="uid://bfeh62ujfx7by" path="res://scenes/map_control/flag/flag_control.tscn" id="2_6ndrc"]
+[ext_resource type="PackedScene" uid="uid://cu23xox47uqr1" path="res://scenes/lvl_editor/place_holder.tscn" id="3_upixd"]
+[ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="4_lfsup"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -64,3 +66,7 @@ layout_mode = 2
 format = 2
 
 [node name="flag control" parent="lvl" instance=ExtResource("2_6ndrc")]
+
+[node name="PlaceHolder" parent="lvl" instance=ExtResource("3_upixd")]
+position = Vector2(218, 235)
+_packed = ExtResource("4_lfsup")
