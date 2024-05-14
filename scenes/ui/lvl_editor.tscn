@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://c435vimyuknml"]
+
+[ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_02uep"]
+[ext_resource type="PackedScene" uid="uid://bfeh62ujfx7by" path="res://scenes/map_control/flag/flag_control.tscn" id="2_ihh5w"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.191
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 2
+
+[node name="lvl Control" type="TabBar" parent="Bottom/TabContainer"]
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="Bottom/TabContainer/lvl Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 2
+max_columns = 4
+same_column_width = true
+icon_mode = 0
+item_0/text = "wfjůkljqůlkewjr"
+item_0/icon = ExtResource("1_02uep")
+item_1/text = ""
+item_1/icon = ExtResource("1_02uep")
+
+[node name="Enemies" type="TabBar" parent="Bottom/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="lvl" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="lvl"]
+format = 2
+
+[node name="flag control" parent="lvl" instance=ExtResource("2_ihh5w")]

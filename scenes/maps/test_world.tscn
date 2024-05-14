@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=15 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -14,17 +14,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dof7s"]
 radius = 240.3
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_oip5j"]
-a = Vector2(141, 171)
-b = Vector2(229, -111)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_l3j21"]
-a = Vector2(16, 223)
-b = Vector2(235, 583)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_wtwcb"]
-a = Vector2(333, 173)
-b = Vector2(-2, 225)
+[sub_resource type="CircleShape2D" id="CircleShape2D_y5jin"]
+radius = 236.136
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3cf5l"]
 radius = 445.082
@@ -67,23 +58,10 @@ shape = SubResource("CircleShape2D_dof7s")
 [node name="flag control" parent="." instance=ExtResource("5_v07uj")]
 
 [node name="flag" parent="flag control" instance=ExtResource("6_jv71h")]
-position = Vector2(1474, 412)
+position = Vector2(1986, 1023)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flag control/flag"]
-shape = SubResource("SegmentShape2D_oip5j")
-
-[node name="flag2" parent="flag control" instance=ExtResource("6_jv71h")]
-position = Vector2(3152, 473)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flag control/flag2"]
-shape = SubResource("SegmentShape2D_l3j21")
-
-[node name="flag3" parent="flag control" instance=ExtResource("6_jv71h")]
-position = Vector2(2264, 828)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flag control/flag3"]
-position = Vector2(0, 1)
-shape = SubResource("SegmentShape2D_wtwcb")
+shape = SubResource("CircleShape2D_y5jin")
 
 [node name="ShortCuts" parent="." instance=ExtResource("10_jv7mi")]
 

@@ -20,10 +20,13 @@ public partial class flag_control : Node
 		var _childrns = GetChildren();
 		for (int i = 0; i < this.GetChildCount(); i++)
 			((flag)_childrns[i]).Restart();
-			
+
 	}
 
 	public bool Complete() {
-		return _currentLoop >= _loop;
+		if (this.GetChildCount() > 0)
+			return _currentLoop >= _loop;
+		else 
+			return true;
 	}
 }
