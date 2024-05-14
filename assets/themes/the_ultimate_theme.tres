@@ -1,8 +1,21 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://mcohagi4iqke"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://mcohagi4iqke"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgs2c"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5gyq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrusn"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.666667, 0.8, 0.25098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.666667, 0.8, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reyln"]
 content_margin_left = 8.0
@@ -18,6 +31,39 @@ border_width_bottom = 2
 border_color = Color(0, 0.666667, 0.8, 1)
 corner_radius_top_left = 20
 corner_radius_bottom_right = 20
+corner_detail = 1
+
+[sub_resource type="ImageTexture" id="ImageTexture_eptsp"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_cfm2j"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_7mqj4"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_v67qd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjtww"]
+bg_color = Color(0, 0.666667, 0.8, 0.25098)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmsji"]
+bg_color = Color(0, 0.666667, 0.8, 0.501961)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdqbs"]
+content_margin_top = 14.0
+content_margin_bottom = 14.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.666667, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de1k8"]
@@ -37,8 +83,15 @@ corner_detail = 1
 
 [resource]
 Button/styles/focus = SubResource("StyleBoxEmpty_pgs2c")
-Button/styles/hover = SubResource("StyleBoxEmpty_n5gyq")
+Button/styles/hover = SubResource("StyleBoxFlat_hrusn")
 Button/styles/normal = SubResource("StyleBoxFlat_reyln")
-HBoxContainer/constants/separation = 12
+HBoxContainer/constants/separation = 16
+HSlider/icons/grabber = SubResource("ImageTexture_eptsp")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_cfm2j")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_7mqj4")
+HSlider/icons/tick = SubResource("ImageTexture_v67qd")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_fjtww")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cmsji")
+HSlider/styles/slider = SubResource("StyleBoxFlat_bdqbs")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_de1k8")
-VBoxContainer/constants/separation = 12
+VBoxContainer/constants/separation = 16
