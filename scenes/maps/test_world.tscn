@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=21 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://xsry48jtqlo4" path="res://scenes/map_control/flag/flag.tscn" id="6_jv71h"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="10_jv7mi"]
 [ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="11_7ulno"]
+[ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="11_aoc2f"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="12_8t0bo"]
+[ext_resource type="PackedScene" uid="uid://b4mlx2rrin7j4" path="res://scenes/components/gun.tscn" id="12_nvk4o"]
+[ext_resource type="PackedScene" uid="uid://h4q7roc775mk" path="res://scenes/enemies/bumber.tscn" id="13_i2von"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dof7s"]
 radius = 240.3
@@ -35,6 +38,12 @@ emission_sphere_radius = 128.0
 gravity = Vector3(-200, -50, 0)
 scale_min = 0.0
 scale_max = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3u67d"]
+radius = 503.271
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lxa8"]
+radius = 425.603
 
 [node name="TestWorld" type="Node2D"]
 
@@ -100,3 +109,23 @@ texture = ExtResource("12_8t0bo")
 
 [node name="Marker2D" type="Marker2D" parent="PushFeald2"]
 position = Vector2(-148, -82)
+
+[node name="Gun" parent="." instance=ExtResource("12_nvk4o")]
+position = Vector2(2595, 490)
+projectiles = ExtResource("13_i2von")
+shootInterval = 0.2
+barrage = 3
+barrageInterval = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun"]
+shape = SubResource("CircleShape2D_3u67d")
+
+[node name="RotateTo" parent="Gun" instance=ExtResource("11_aoc2f")]
+AimingSpeedDegS = 100
+velocityAim = 0.3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun/RotateTo"]
+shape = SubResource("CircleShape2D_0lxa8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+texture = ExtResource("12_8t0bo")

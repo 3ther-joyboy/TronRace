@@ -1,16 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4mlx2rrin7j4"]
+[gd_scene load_steps=3 format=3 uid="uid://b4mlx2rrin7j4"]
 
 [ext_resource type="Script" path="res://scripts/components/gun_component.cs" id="1_nysng"]
+[ext_resource type="AudioStream" uid="uid://bttyllsb1r6r1" path="res://assets/audio/gun-placeholder.mp3" id="2_107gc"]
 
 [node name="Gun" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_nysng")
-shootInterval = null
-barrage = null
-barrageInterval = null
-name = &"Gun"
-seeOverLand = null
+_shootingSound = Array[AudioStreamMP3]([ExtResource("2_107gc")])
 
 [node name="Cast" type="RayCast2D" parent="."]
 modulate = Color(1, 1, 0, 1)
@@ -22,6 +19,9 @@ one_shot = true
 
 [node name="Barrage" type="Timer" parent="."]
 one_shot = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="timeout" from="Shoot" to="." method="StartShooting"]
 [connection signal="timeout" from="Barrage" to="." method="Shoot"]
