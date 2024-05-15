@@ -6,19 +6,13 @@
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_6eh2e")
-seeOverLand = null
-AimingSpeedDegS = null
-velocityAim = null
-aimOffSet = null
-aimingPosition = null
-name = &"RotateTo"
 
 [node name="Cast" type="RayCast2D" parent="."]
 modulate = Color(1, 1, 0, 1)
 top_level = true
 light_mask = 0
 visibility_layer = 3
-collision_mask = 2
+collision_mask = 3
 
 [node name="CurrentAim" type="RayCast2D" parent="."]
 modulate = Color(1, 0, 0, 1)
