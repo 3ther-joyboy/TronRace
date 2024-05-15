@@ -45,6 +45,7 @@ public partial class main_menu : Control
 	private void ProfileMenu()
 	{
 		_menu.Hide();
+		GetNode<LineEdit>("VBoxContainer/Profile/VBoxContainer/LineEdit").Text = config.user_name;
 		_profile.Show();
 	}
 
