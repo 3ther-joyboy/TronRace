@@ -31,6 +31,11 @@ public partial class pause : Control
 		GetTree().Paused = false;
 	}
 
+	private void Restart()
+	{
+		GetTree().ReloadCurrentScene();
+	}
+
 	private void GoHome()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
