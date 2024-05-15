@@ -5,6 +5,8 @@ public partial class player_componentcs : Node
 {
 	[Export]
 	bool drawSircle = false;
+	[Export]
+	int _maxDragLenght = 100;
 
 	private bool _firstTap = true; 
 
@@ -51,11 +53,18 @@ public partial class player_componentcs : Node
 	}
 
 	private void DrawDrag() {
+		// sory Franto za hnusně pojemnovane proměne
 		var node = GetNode<CanvasLayer>("drag");
 		node.Visible = true;
 		Vector2 offset = new Vector2(-20,-20);
-		node.GetNode<Panel>("start").Position = start + offset;
+		Panel _target = node.GetNode<Panel>("start");
+	 	_target.Position = start + offset;
 		node.GetNode<Panel>("start").GetNode<Label>("Label").Text = (int)(Mathf.RadToDeg(dir.Angle() )) + "°";
-		node.GetNode<Panel>("cur").Position = current + offset;
+		Panel _target2 = node.GetNode<Panel>("cur");
+		if ((start - current).Length() < _maxDragLenght)
+			_target2.Position = current + offset;
+		else
+			_target2.Position = start.DirectionTo(current) * _maxDragLenght + offset + start;
+
 	}
 }
