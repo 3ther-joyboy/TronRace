@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class config : Node
+public partial class server : Node
 {
 	public static ConfigFile conf = new ConfigFile();
 	public static int user_id;

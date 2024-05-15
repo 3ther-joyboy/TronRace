@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cfiafiun18wxd"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://mcohagi4iqke"]
+
+[ext_resource type="StyleBox" uid="uid://b55g02e4y8j8n" path="res://assets/themes/style_box_flat.tres" id="1_h7ih5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgs2c"]
 
@@ -8,22 +10,6 @@ content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(0, 0.666667, 0.8, 0.25098)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.666667, 0.8, 1)
-corner_radius_top_left = 20
-corner_radius_bottom_right = 20
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reyln"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0, 0.666667, 0.8, 0.12549)
-draw_center = false
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -66,6 +52,8 @@ corner_radius_top_left = 12
 corner_radius_bottom_right = 12
 corner_detail = 1
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtk46"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de1k8"]
 content_margin_left = 20.0
 content_margin_top = 22.0
@@ -84,7 +72,8 @@ corner_detail = 1
 [resource]
 Button/styles/focus = SubResource("StyleBoxEmpty_pgs2c")
 Button/styles/hover = SubResource("StyleBoxFlat_hrusn")
-Button/styles/normal = SubResource("StyleBoxFlat_reyln")
+Button/styles/normal = ExtResource("1_h7ih5")
+Button/styles/pressed = ExtResource("1_h7ih5")
 HBoxContainer/constants/separation = 16
 HSlider/icons/grabber = SubResource("ImageTexture_eptsp")
 HSlider/icons/grabber_disabled = SubResource("ImageTexture_cfm2j")
@@ -93,5 +82,7 @@ HSlider/icons/tick = SubResource("ImageTexture_v67qd")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_fjtww")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cmsji")
 HSlider/styles/slider = SubResource("StyleBoxFlat_bdqbs")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_vtk46")
+LineEdit/styles/normal = ExtResource("1_h7ih5")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_de1k8")
 VBoxContainer/constants/separation = 16
