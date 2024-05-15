@@ -67,6 +67,7 @@ public partial class main_menu : Control
 		{
 			config.user_name = input;
 			config.conf.SetValue("Player", "username", input);
+			config.conf.Save("user://config.ini");
 			Back();
 		} 
 
