@@ -55,15 +55,14 @@ public partial class end : Area2D
 	}
 
 	private void Entered(Node2D player) {
-		if (player.HasNode("Player") )
+		if (player.HasNode("Player") ) {
 			if (HasNode("../flag control") ) {
-				if (GetNode<flag_control>("../flag control").Complete() )
-					Finish(player);
-				else
-				    GD.PrintRich("[pulse] nu - uh [/pulse]");
-			} else
-				Finish(player);
-
+				if (GetNode<flag_control>("../flag control").Complete()) Finish(player);
+				else GD.PrintRich("[pulse] nu - uh [/pulse]");
+			}
+			
+			else Finish(player);
+		}
 	}
 	private void Finish(Node player) {
 
@@ -73,8 +72,9 @@ public partial class end : Area2D
 			int ticksPassed = player.GetNode<replay_component>("Replay").Length();
 			float tickPerSecond = (float)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second");
 			GD.Print("Finished in: " + (ticksPassed / tickPerSecond) + " S, (" + ticksPassed + " ticks, " + tickPerSecond + " T/S)" ); 
+
+			autoload.time = ticksPassed / tickPerSecond;
 		} else
 			GD.Print("Finished"); 
 	} 
-
 }

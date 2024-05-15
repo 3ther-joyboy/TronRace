@@ -57,6 +57,13 @@ public partial class main_menu : Control
 		_menu.Show();
 	}
 
+	private void BackProfile()
+	{
+		autoload.user_name = GetNode<LineEdit>("VBoxContainer/Profile/VBoxContainer/LineEdit").Text;
+		GD.Print(autoload.user_name);
+		Back();
+	}
+
 	private void QuitGame()
 	{
 		GetTree().Quit();
