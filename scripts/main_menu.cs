@@ -65,7 +65,7 @@ public partial class main_menu : Control
 		if (input != "")
 		{
 			config.user_name = input;
-			GD.Print(config.user_name);
+			config.conf.SetValue("Player", "username", input);
 			Back();
 		} 
 
