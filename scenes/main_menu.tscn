@@ -103,6 +103,11 @@ size_flags_vertical = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Profile"]
 layout_mode = 2
 
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Profile/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Username"
+max_length = 20
+
 [node name="ButtonBack" type="Button" parent="VBoxContainer/Profile/VBoxContainer"]
 layout_mode = 2
 text = "Back"
@@ -116,4 +121,4 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/Solo/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Online/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Editor/VBoxContainer/ButtonBack" to="." method="Back"]
-[connection signal="pressed" from="VBoxContainer/Profile/VBoxContainer/ButtonBack" to="." method="Back"]
+[connection signal="pressed" from="VBoxContainer/Profile/VBoxContainer/ButtonBack" to="." method="BackProfile"]

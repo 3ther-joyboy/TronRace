@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Xml;
 
 public partial class main_menu : Control
 {
@@ -55,6 +56,20 @@ public partial class main_menu : Control
 		_profile.Hide();
 
 		_menu.Show();
+	}
+
+	private void BackProfile()
+	{
+		string input = GetNode<LineEdit>("VBoxContainer/Profile/VBoxContainer/LineEdit").Text;
+
+		if (input != "")
+		{
+			autoload.user_name = input;
+			GD.Print(autoload.user_name);
+			Back();
+		} 
+
+		else GD.Print("invalid input!");
 	}
 
 	private void QuitGame()

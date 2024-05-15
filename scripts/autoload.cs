@@ -4,6 +4,11 @@ using System.Text.Json;
 
 public partial class autoload : Node
 {
+	// frantovo space
+	public static string user_name;
+	public static float last_time;
+
+	// lukasovo space
 	private String path = "res://replay_test.json";
 	public String replayJson = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Read).GetAsText();
 
@@ -28,7 +33,5 @@ public partial class autoload : Node
 		file.StoreString("[" + objs + "]");
 
 		GD.Print("Replay Saved");
-
-
 	}
 }
