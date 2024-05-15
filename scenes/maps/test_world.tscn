@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=22 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bfeh62ujfx7by" path="res://scenes/map_control/flag/flag_control.tscn" id="5_v07uj"]
 [ext_resource type="AudioStream" uid="uid://cyen0qnn2t1bv" path="res://assets/audio/finish.mp3" id="6_4x8h0"]
 [ext_resource type="PackedScene" uid="uid://xsry48jtqlo4" path="res://scenes/map_control/flag/flag.tscn" id="6_jv71h"]
+[ext_resource type="AudioStream" uid="uid://dvhtqf4eye688" path="res://assets/audio/Bubble Sound Effect.mp3" id="10_cfyn2"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="10_jv7mi"]
 [ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="11_7ulno"]
 [ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="11_aoc2f"]
@@ -82,6 +83,7 @@ shape = SubResource("CircleShape2D_y5jin")
 position = Vector2(1435, 834)
 _toPoint = false
 _pushForce = 600
+_ambient = ExtResource("10_cfyn2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushFeald"]
 shape = SubResource("CircleShape2D_3cf5l")
@@ -98,6 +100,7 @@ position = Vector2(122, 125)
 position = Vector2(1509, 1258)
 _toPoint = false
 _pushForce = 300
+_ambient = ExtResource("10_cfyn2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushFeald2"]
 shape = SubResource("CircleShape2D_3cf5l")
@@ -111,7 +114,7 @@ texture = ExtResource("12_8t0bo")
 position = Vector2(-148, -82)
 
 [node name="Gun" parent="." instance=ExtResource("12_nvk4o")]
-position = Vector2(2595, 490)
+position = Vector2(2604, 490)
 projectiles = ExtResource("13_i2von")
 shootInterval = 0.2
 barrage = 3
