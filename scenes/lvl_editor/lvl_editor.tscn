@@ -23,9 +23,15 @@ script = ExtResource("1_43rrj")
 [node name="Top" type="Control" parent="."]
 layout_mode = 1
 anchor_right = 1.0
-anchor_bottom = 0.191
+anchor_bottom = 0.15
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="spawining_trigger" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.7
 
 [node name="Bottom" type="Control" parent="."]
 layout_mode = 1
@@ -85,3 +91,6 @@ format = 2
 [node name="PlaceHolder" parent="lvl" instance=ExtResource("3_upixd")]
 position = Vector2(218, 235)
 _packed = ExtResource("4_lfsup")
+
+[connection signal="gui_input" from="spawining_trigger" to="." method="_WorldInput"]
+[connection signal="item_clicked" from="Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]

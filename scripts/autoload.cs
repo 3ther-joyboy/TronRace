@@ -23,14 +23,14 @@ public partial class autoload : Node
 		return null;
 	}
 	public void SaveReplay(RecordFormat[] replay) {
-		GD.Print("Saving Replay");
-
-		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
-		String objs = "";
-		for (int i = 0; i < replay.Length; i++)
-			objs += "{\"time\":" + replay[i].time + ", \"dir\": [" + replay[i].dir.X + "," + replay[i].dir.Y + "]},";
-		file.StoreString("[" + objs + "]");
-
-		GD.Print("Replay Saved");
+//		GD.Print("Saving Replay");
+//
+//		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
+//		String objs = "";
+//		for (int i = 0; i < replay.Length; i++)
+//			objs += "{\"time\":" + replay[i].time + ", \"dir\": [" + replay[i].dir.X + "," + replay[i].dir.Y + "]},";
+//		file.StoreString("[" + objs + "]");
+//
+//		GD.Print("Replay Saved");
 	}
 }
