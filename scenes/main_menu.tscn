@@ -1,32 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://btaurnw0kga5f"]
+[gd_scene load_steps=4 format=3 uid="uid://btaurnw0kga5f"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.cs" id="1_dfcg4"]
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
+[ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="3_m4k14"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_n0607")
 script = ExtResource("1_dfcg4")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.5
+offset_top = 140.0
+offset_right = 141.5
+offset_bottom = 325.0
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_m4k14")
+theme_override_font_sizes/font_size = 92
+text = "TRON
+RACE"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -85.5
-offset_bottom = 85.5
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -460.0
+offset_right = 150.0
+offset_bottom = -172.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/separation = 80
 
 [node name="Main" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
