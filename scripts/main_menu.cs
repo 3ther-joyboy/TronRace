@@ -64,8 +64,8 @@ public partial class main_menu : Control
 
 		if (input != "")
 		{
-			autoload.user_name = input;
-			GD.Print(autoload.user_name);
+			config.user_name = input;
+			GD.Print(config.user_name);
 			Back();
 		} 
 

@@ -22,6 +22,7 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 [autoload]
 
 Autoload="*res://scripts/autoload.cs"
+Config="*res://scripts/config.cs"
 
 [display]
 

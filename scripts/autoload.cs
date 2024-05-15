@@ -5,7 +5,6 @@ using System.Text.Json;
 public partial class autoload : Node
 {
 	// frantovo space
-	public static string user_name;
 	public static float last_time;
 
 	// lukasovo space
