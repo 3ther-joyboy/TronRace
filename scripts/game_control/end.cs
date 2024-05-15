@@ -73,7 +73,7 @@ public partial class end : Area2D
 			float tickPerSecond = (float)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second");
 			GD.Print("Finished in: " + (ticksPassed / tickPerSecond) + " S, (" + ticksPassed + " ticks, " + tickPerSecond + " T/S)" ); 
 
-			autoload.time = ticksPassed / tickPerSecond;
+			autoload.last_time = ticksPassed / tickPerSecond;
 		} else
 			GD.Print("Finished"); 
 	} 
