@@ -3,22 +3,33 @@ using System;
 
 public partial class push_feald_component : Area2D
 {
+
+	[ExportCategory("Push")]
 	[Export]
 	private bool _toPoint = true;
 	[Export]
 	private int _pushForce = 1000;
 	[Export] bool _sight = true;
 
+	[Export(PropertyHint.File, "*.mp3,")]
+	private AudioStreamMP3 _ambient;
+	private AudioStreamPlayer2D _audioPlayer; 
+
 	private Vector2 _point = Vector2.Zero;
 	private RayCast2D _ray;
 
 	public override void _Ready(){
+		_audioPlayer = GetNode<AudioStreamPlayer2D >("Audio");
+		_audioPlayer.Stream = _ambient;
+
 		if (HasNode("Marker2D"))
 			_point = GetNode<Marker2D>("Marker2D").Position;
 		_ray = GetNode<RayCast2D>("Ray");
 	}
 
 	public override void _PhysicsProcess(double delta){
+		if (!_audioPlayer.Playing) _audioPlayer.Play();
+
 		var push = this.GetOverlappingBodies();
 		for (int i = 0; i < push.Count; i++)
 			if (push[i].IsClass("RigidBody2D")) {
