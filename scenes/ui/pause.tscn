@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://eqwcewka68ie"]
 
-[ext_resource type="Theme" uid="uid://cfiafiun18wxd" path="res://assets/themes/the_ultimate_theme.tres" id="1_58atc"]
+[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_58atc"]
 [ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="3_82el2"]
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="4_5rxhk"]
@@ -106,6 +106,7 @@ layout_mode = 2
 [node name="LabelMaster" type="Label" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
 text = "Master"
+horizontal_alignment = 1
 
 [node name="Master" type="HSlider" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
@@ -116,6 +117,7 @@ value = 1.0
 [node name="LabelMusic" type="Label" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
 text = "Music"
+horizontal_alignment = 1
 
 [node name="Music" type="HSlider" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
@@ -126,6 +128,7 @@ value = 0.8
 [node name="LabelSFX" type="Label" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2
 text = "SFX"
+horizontal_alignment = 1
 
 [node name="SFX" type="HSlider" parent="Control/MenuMain/VBoxContainer/Audio/VBoxContainer"]
 layout_mode = 2

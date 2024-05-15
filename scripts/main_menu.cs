@@ -5,68 +5,63 @@ using System.Xml;
 public partial class main_menu : Control
 {
 	private PanelContainer _menu;
-	private PanelContainer _solo;
-	private PanelContainer _online;
+	private PanelContainer _official;
+	private PanelContainer _community;
 	private PanelContainer _editor;
-	private PanelContainer _profile;
+	private PanelContainer _settings;
 
 	public override void _Ready()
 	{
 		_menu = GetNode<PanelContainer>("VBoxContainer/Main");
-		_solo = GetNode<PanelContainer>("VBoxContainer/Solo");
-		_online = GetNode<PanelContainer>("VBoxContainer/Online");
+		_official = GetNode<PanelContainer>("VBoxContainer/Official");
+		_community = GetNode<PanelContainer>("VBoxContainer/Community");
 		_editor = GetNode<PanelContainer>("VBoxContainer/Editor");
-		_profile = GetNode<PanelContainer>("VBoxContainer/Profile");
+		_settings = GetNode<PanelContainer>("VBoxContainer/Settings");
 	}
 
-	private void SoloMenu()
-	{
-		_menu.Hide();
-		_solo.Show();
-	}
+	private void ShowOfficial() { _menu.Hide(); _official.Show(); }
+	private void ShowCommunity() { _menu.Hide(); _community.Show(); }
+	private void ShowEditor() { _menu.Hide(); _editor.Show(); }
 
+	// tmp function for starting level
 	private void SoloPlay(string name)
 	{
 		GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
 	}
 
-	private void OnlineMenu()
+	private void ShowSettings()
 	{
 		_menu.Hide();
-		_online.Show();
+		GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit").Text = server.user_name;
+		GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Text = server.custom_ip;
+		_settings.Show();
 	}
 
-	private void EditorMenu()
+	private void ServerOptionSelected(int index)
 	{
-		_menu.Hide();
-		_editor.Show();
-	}
-
-	private void ProfileMenu()
-	{
-		_menu.Hide();
-		GetNode<LineEdit>("VBoxContainer/Profile/VBoxContainer/LineEdit").Text = server.user_name;
-		_profile.Show();
+		if (index == 1) GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Show();
+		else GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Hide();
 	}
 
 	private void Back()
 	{
-		_solo.Hide();
-		_online.Hide();
+		_official.Hide();
+		_community.Hide();
 		_editor.Hide();
-		_profile.Hide();
+		_settings.Hide();
 
 		_menu.Show();
 	}
 
-	private void BackProfile()
+	private void BackSettings()
 	{
-		string input = GetNode<LineEdit>("VBoxContainer/Profile/VBoxContainer/LineEdit").Text;
+		string input = GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit").Text;
 
 		if (input != "")
 		{
 			server.user_name = input;
 			server.conf.SetValue("Player", "username", input);
+			server.conf.SetValue("Server", "ip", GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Text);
 			server.conf.Save("user://config.ini");
 			Back();
 		} 

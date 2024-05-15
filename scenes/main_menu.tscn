@@ -17,14 +17,17 @@ script = ExtResource("1_dfcg4")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -141.5
-offset_top = 140.0
+offset_top = -290.0
 offset_right = 141.5
-offset_bottom = 325.0
+offset_bottom = -105.0
 grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_m4k14")
 theme_override_font_sizes/font_size = 92
@@ -35,17 +38,17 @@ horizontal_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -460.0
+offset_top = 10.0
 offset_right = 150.0
-offset_bottom = -172.0
+offset_bottom = 298.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/separation = 80
 
 [node name="Main" type="PanelContainer" parent="VBoxContainer"]
@@ -55,51 +58,52 @@ size_flags_vertical = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Main"]
 layout_mode = 2
 
-[node name="ButtonSolo" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="ButtonOfficial" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
-text = "Solo"
+text = "Official"
 
-[node name="ButtonOnline" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="ButtonCommunity" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
-text = "Online"
+text = "Community"
 
 [node name="ButtonEditor" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Editor"
 
-[node name="ButtonProfile" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="ButtonSettings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
-text = "Profile"
+text = "Settings
+"
 
 [node name="ButtonQuit" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[node name="Solo" type="PanelContainer" parent="VBoxContainer"]
+[node name="Official" type="PanelContainer" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Solo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Official"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/Solo/VBoxContainer"]
+[node name="Button" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
 layout_mode = 2
 text = "test_world"
 
-[node name="ButtonBack" type="Button" parent="VBoxContainer/Solo/VBoxContainer"]
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
-[node name="Online" type="PanelContainer" parent="VBoxContainer"]
+[node name="Community" type="PanelContainer" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Online"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Community"]
 layout_mode = 2
 
-[node name="ButtonBack" type="Button" parent="VBoxContainer/Online/VBoxContainer"]
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Community/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
@@ -115,30 +119,57 @@ layout_mode = 2
 layout_mode = 2
 text = "Back"
 
-[node name="Profile" type="PanelContainer" parent="VBoxContainer"]
+[node name="Settings" type="PanelContainer" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Profile"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Settings"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Profile/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Settings/VBoxContainer"]
 layout_mode = 2
-placeholder_text = "Username"
+text = "Username"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Your username"
 max_length = 20
 
-[node name="ButtonBack" type="Button" parent="VBoxContainer/Profile/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+text = "Server"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Custom"
+popup/item_1/id = 1
+
+[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/Settings/VBoxContainer"]
+visible = false
+layout_mode = 2
+placeholder_text = "IP Addres"
+max_length = 15
+virtual_keyboard_type = 2
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Settings/VBoxContainer"]
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSolo" to="." method="SoloMenu"]
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonOnline" to="." method="OnlineMenu"]
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonEditor" to="." method="EditorMenu"]
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonProfile" to="." method="ProfileMenu"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonOfficial" to="." method="ShowOfficial"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonCommunity" to="." method="ShowCommunity"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonEditor" to="." method="ShowEditor"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSettings" to="." method="ShowSettings"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
-[connection signal="pressed" from="VBoxContainer/Solo/VBoxContainer/Button" to="." method="SoloPlay" binds= ["test_world"]]
-[connection signal="pressed" from="VBoxContainer/Solo/VBoxContainer/ButtonBack" to="." method="Back"]
-[connection signal="pressed" from="VBoxContainer/Online/VBoxContainer/ButtonBack" to="." method="Back"]
+[connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/Button" to="." method="SoloPlay" binds= ["test_world"]]
+[connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/ButtonBack" to="." method="Back"]
+[connection signal="pressed" from="VBoxContainer/Community/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Editor/VBoxContainer/ButtonBack" to="." method="Back"]
-[connection signal="pressed" from="VBoxContainer/Profile/VBoxContainer/ButtonBack" to="." method="BackProfile"]
+[connection signal="item_selected" from="VBoxContainer/Settings/VBoxContainer/OptionButton" to="." method="ServerOptionSelected"]
+[connection signal="pressed" from="VBoxContainer/Settings/VBoxContainer/ButtonBack" to="." method="BackSettings"]
