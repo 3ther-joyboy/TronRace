@@ -5,6 +5,13 @@ public partial class lvl_editor_place_holder : Node2D
 {
 	[Export(PropertyHint.File, "*.tscn,")]
 	private PackedScene _packed;
+	[Export]
+	private Godot.Texture2D _texture;
+
+
+	public Godot.Texture2D GetTexture() {
+		return _texture;
+	}
 
 	public void Save() {
 		if (HasNode("visual"))

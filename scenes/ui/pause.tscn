@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://eqwcewka68ie"]
 
-[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_kwmfm"]
+[ext_resource type="Theme" uid="uid://cfiafiun18wxd" path="res://assets/themes/the_ultimate_theme.tres" id="1_58atc"]
 [ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="3_82el2"]
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="4_5rxhk"]
@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("1_kwmfm")
+theme = ExtResource("1_58atc")
 script = ExtResource("1_n8xp6")
 
 [node name="Timer" type="Label" parent="Control"]
@@ -70,7 +70,32 @@ offset_right = 124.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 60
+
+[node name="Navigation" type="PanelContainer" parent="Control/MenuMain/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MenuMain/VBoxContainer/Navigation"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ButtonHome" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("5_v1wi6")
+expand_icon = true
+
+[node name="ButtonSettings" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("4_5rxhk")
+expand_icon = true
+
+[node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("6_pti4l")
+expand_icon = true
 
 [node name="Audio" type="PanelContainer" parent="Control/MenuMain/VBoxContainer"]
 layout_mode = 2
@@ -108,35 +133,9 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Navigation" type="PanelContainer" parent="Control/MenuMain/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MenuMain/VBoxContainer/Navigation"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="ButtonHome" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-icon = ExtResource("5_v1wi6")
-expand_icon = true
-
-[node name="ButtonSettings" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-icon = ExtResource("4_5rxhk")
-expand_icon = true
-
-[node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-icon = ExtResource("6_pti4l")
-expand_icon = true
-
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Master" to="Control" method="SetVolumeMaster"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Music" to="Control" method="SetVolumeMusic"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/SFX" to="Control" method="SetVolumeSFX"]
-[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
-[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume" to="Control" method="UnPause"]

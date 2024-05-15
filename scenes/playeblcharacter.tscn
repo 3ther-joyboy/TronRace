@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://di1iawws2d8ni"]
+[gd_scene load_steps=16 format=3 uid="uid://di1iawws2d8ni"]
 
 [ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_5ybk6"]
 [ext_resource type="AudioStream" uid="uid://budmgy8ghp1ja" path="res://assets/audio/start.mp3" id="2_as8no"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://scripts/moving_camera.cs" id="6_vxjcf"]
 [ext_resource type="PackedScene" uid="uid://b1yybg8yw63h6" path="res://scenes/components/player.tscn" id="7_ss4xq"]
 [ext_resource type="PackedScene" uid="uid://1y6q3x2q6aaf" path="res://scenes/components/replay.tscn" id="9_65w53"]
-[ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="10_cp3uk"]
 [ext_resource type="Script" path="res://scripts/lockRotation.cs" id="13_xlog3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fg1hb"]
@@ -489,10 +488,7 @@ ragdollSeconds = 3.0
 
 [node name="Replay" parent="." instance=ExtResource("9_65w53")]
 
-[node name="Pause" parent="." instance=ExtResource("10_cp3uk")]
-layer = 10
-
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
+[node name="audioooo" type="AudioListener2D" parent="."]
 current = true
 script = ExtResource("13_xlog3")
 

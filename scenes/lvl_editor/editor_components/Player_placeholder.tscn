@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxiviur7xigbh"]
+
+[ext_resource type="Script" path="res://scripts/lvl_editor_place_holder.cs" id="1_dxeyv"]
+[ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_kuq0c"]
+[ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="3_vnx06"]
+[ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="4_501dk"]
+
+[node name="PlayerPlaceholder" type="Node2D"]
+script = ExtResource("1_dxeyv")
+_packed = ExtResource("2_kuq0c")
+_texture = ExtResource("4_501dk")
+
+[node name="visual" parent="." instance=ExtResource("3_vnx06")]
+
+[node name="Sprite2D" type="Sprite2D" parent="visual"]
+rotation = -1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_501dk")

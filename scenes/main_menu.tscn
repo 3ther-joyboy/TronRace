@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://btaurnw0kga5f"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.cs" id="1_dfcg4"]
-[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
+[ext_resource type="Theme" uid="uid://cfiafiun18wxd" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
