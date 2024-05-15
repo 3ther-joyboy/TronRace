@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c435vimyuknml"]
+[gd_scene load_steps=11 format=3 uid="uid://c435vimyuknml"]
 
 [ext_resource type="Script" path="res://scripts/lvl_editor.cs" id="1_43rrj"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_bhw4f"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="4_lfsup"]
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="5_7qice"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="6_j8k2c"]
+[ext_resource type="Texture2D" uid="uid://lj3ld0qqvq0r" path="res://assets/textures/ui/arrow-back.png" id="6_nt2ju"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -20,18 +21,53 @@ grow_vertical = 2
 theme = ExtResource("1_su5st")
 script = ExtResource("1_43rrj")
 
-[node name="Top" type="Control" parent="."]
-layout_mode = 1
-anchor_right = 1.0
-anchor_bottom = 0.15
-grow_horizontal = 2
-grow_vertical = 2
+[node name="lvl" type="Node2D" parent="."]
+process_mode = 4
+
+[node name="PlaceHolder2" parent="lvl" instance=ExtResource("3_upixd")]
+_packed = ExtResource("3_gmrj1")
+
+[node name="TileMap" type="TileMap" parent="lvl"]
+format = 2
+
+[node name="PlaceHolder" parent="lvl" instance=ExtResource("3_upixd")]
+position = Vector2(218, 235)
+_packed = ExtResource("4_lfsup")
 
 [node name="spawining_trigger" type="Control" parent="."]
 layout_mode = 1
-anchor_top = 0.15
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.7
+anchor_bottom = 1.0
+
+[node name="Top" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="Top"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Top"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("6_nt2ju")
+expand_icon = true
 
 [node name="Bottom" type="Control" parent="."]
 layout_mode = 1
@@ -78,19 +114,6 @@ item_4/icon = ExtResource("6_j8k2c")
 [node name="Enemies" type="TabBar" parent="Bottom/TabContainer"]
 visible = false
 layout_mode = 2
-
-[node name="lvl" type="Node2D" parent="."]
-process_mode = 4
-
-[node name="PlaceHolder2" parent="lvl" instance=ExtResource("3_upixd")]
-_packed = ExtResource("3_gmrj1")
-
-[node name="TileMap" type="TileMap" parent="lvl"]
-format = 2
-
-[node name="PlaceHolder" parent="lvl" instance=ExtResource("3_upixd")]
-position = Vector2(218, 235)
-_packed = ExtResource("4_lfsup")
 
 [connection signal="gui_input" from="spawining_trigger" to="." method="_WorldInput"]
 [connection signal="item_clicked" from="Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]
