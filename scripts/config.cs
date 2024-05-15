@@ -4,7 +4,7 @@ using System;
 public partial class config : Node
 {
 	public static ConfigFile conf = new ConfigFile();
-	public static string user_id;
+	public static int user_id;
 	public static string user_name;
 
 	public override void _Ready()
@@ -17,11 +17,11 @@ public partial class config : Node
 			int id = ran.Next(100000000, 999999999);
 			conf.SetValue("Player", "id", id);
 			conf.SetValue("Player", "username", id);
+
+			conf.Save("user://config.ini");
 		}
 
-		else
-		{
-			user_name = (string) conf.GetValue("Player", "username");
-		}
+		user_id = (int) conf.GetValue("Player", "id");
+		user_name = (string) conf.GetValue("Player", "username");
 	}
 }

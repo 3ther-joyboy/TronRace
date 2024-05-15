@@ -45,6 +45,7 @@ public partial class main_menu : Control
 	private void ProfileMenu()
 	{
 		_menu.Hide();
+		GetNode<LineEdit>("VBoxContainer/Profile/VBoxContainer/LineEdit").Text = config.user_name;
 		_profile.Show();
 	}
 
@@ -65,7 +66,8 @@ public partial class main_menu : Control
 		if (input != "")
 		{
 			config.user_name = input;
-			GD.Print(config.user_name);
+			config.conf.SetValue("Player", "username", input);
+			config.conf.Save("user://config.ini");
 			Back();
 		} 
 
