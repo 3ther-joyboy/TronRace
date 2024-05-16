@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c435vimyuknml"]
+[gd_scene load_steps=12 format=3 uid="uid://c435vimyuknml"]
 
 [ext_resource type="Script" path="res://scripts/lvl_editor.cs" id="1_43rrj"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_bhw4f"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="5_7qice"]
 [ext_resource type="Texture2D" uid="uid://deakoc8o7vxf8" path="res://assets/textures/ui/arrow.png" id="6_5qmx2"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="6_j8k2c"]
+[ext_resource type="Texture2D" uid="uid://cst4oim7ec8nb" path="res://assets/textures/ui/resume.png" id="7_eibt1"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -42,14 +43,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Top" type="Control" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.1
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="ItemList" type="ItemList" parent="Top"]
+[node name="Top" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -57,7 +68,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Top"]
+[node name="Back" type="Button" parent="MarginContainer/Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -72,15 +83,27 @@ icon = ExtResource("6_5qmx2")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Bottom" type="Control" parent="."]
+[node name="Go" type="Button" parent="MarginContainer/Top"]
 layout_mode = 1
-anchor_top = 0.7
-anchor_right = 1.0
+anchors_preset = -1
+anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = 374.0
+offset_top = 8.0
+offset_right = 460.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+icon = ExtResource("7_eibt1")
+icon_alignment = 2
+expand_icon = true
 
-[node name="TabContainer" type="TabContainer" parent="Bottom"]
+[node name="Bottom" type="Control" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/Bottom"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,10 +112,10 @@ grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
 
-[node name="Objects" type="TabBar" parent="Bottom/TabContainer"]
+[node name="Objects" type="TabBar" parent="MarginContainer/Bottom/TabContainer"]
 layout_mode = 2
 
-[node name="ItemList" type="ItemList" parent="Bottom/TabContainer/Objects"]
+[node name="ItemList" type="ItemList" parent="MarginContainer/Bottom/TabContainer/Objects"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,9 +137,9 @@ item_3/icon = ExtResource("5_7qice")
 item_4/text = "not"
 item_4/icon = ExtResource("6_j8k2c")
 
-[node name="Brushes" type="TabBar" parent="Bottom/TabContainer"]
+[node name="Brushes" type="TabBar" parent="MarginContainer/Bottom/TabContainer"]
 visible = false
 layout_mode = 2
 
 [connection signal="gui_input" from="spawining_trigger" to="." method="_WorldInput"]
-[connection signal="item_clicked" from="Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]
+[connection signal="item_clicked" from="MarginContainer/Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]
