@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cfiafiun18wxd"]
+=======
 [gd_resource type="Theme" load_steps=20 format=3 uid="uid://mcohagi4iqke"]
+>>>>>>> 9fa30a39849cf6a08e228afb958456275e79c92c
 
 [ext_resource type="StyleBox" uid="uid://b55g02e4y8j8n" path="res://assets/themes/style_box_flat.tres" id="1_h7ih5"]
 [ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="2_xi5it"]
