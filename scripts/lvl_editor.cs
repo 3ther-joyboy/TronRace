@@ -41,5 +41,8 @@ public partial class lvl_editor : Control
 		}
 
 	}
+	private void _StartLvl() {
+		GetTree().CallGroup("editor_placeholder", "Save");
+	}
 
 }

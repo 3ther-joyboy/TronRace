@@ -9,10 +9,12 @@ public partial class lvl_editor_place_holder : Node2D
 	private Godot.Texture2D _texture;
 
 
+	public override void _Ready(){
+		AddToGroup("editor_placeholder");
+	}
 	public Godot.Texture2D GetTexture() {
 		return _texture;
 	}
-
 	public void Save() {
 		if (HasNode("visual"))
 			GetNode<visual_component>("visual").QueueFree();
