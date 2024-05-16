@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx2w5gprnvpd7"]
+[gd_scene load_steps=5 format=3 uid="uid://cx2w5gprnvpd7"]
 
 [ext_resource type="Script" path="res://scripts/lvl_editor_place_holder.cs" id="1_3eum3"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="2_eyl8h"]
-[ext_resource type="Texture2D" uid="uid://baj56ovdl2rkq" path="res://assets/textures/ui/home.png" id="3_7iw8l"]
+[ext_resource type="Texture2D" uid="uid://br11n2xrple82" path="res://assets/textures/ui/flag_48dp_FILL1_wght400_GRAD0_opsz48.png" id="3_7us8u"]
+[ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="4_0e1ug"]
 
 [node name="FinishPlaceholder" type="Node2D"]
 script = ExtResource("1_3eum3")
 _packed = ExtResource("2_eyl8h")
-_texture = ExtResource("3_7iw8l")
+_texture = ExtResource("3_7us8u")
+
+[node name="visual" parent="." instance=ExtResource("4_0e1ug")]
+
+[node name="Sprite2D" type="Sprite2D" parent="visual"]
+scale = Vector2(0.0927734, 0.0927734)
+texture = ExtResource("3_7us8u")
