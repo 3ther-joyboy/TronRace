@@ -3,16 +3,22 @@ using System;
 
 public partial class button_sounds : Node
 {
-    public override void _EnterTree()
+    public override void _Ready()
     {
-		var nodes = GetChildren();
+		var parent = GetParent();
+		var nodes = parent.GetChildren();
 
 		foreach (var node in nodes)
 		{
 			if (node.GetType() == typeof(Button))
 			{
-				
+				((Button) node).Pressed += PlaySound;
 			}
 		}
     }
+
+	private void PlaySound()
+	{
+		
+	}
 }

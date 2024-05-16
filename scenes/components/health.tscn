@@ -4,10 +4,6 @@
 
 [node name="health" type="Node"]
 script = ExtResource("1_ldq8u")
-hp = null
-invincibilitySeconds = null
-ragdollOnDeath = null
-ragdollSeconds = null
 
 [node name="invincibility" type="Timer" parent="."]
 one_shot = true

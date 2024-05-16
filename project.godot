@@ -23,7 +23,6 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 Autoload="*res://scripts/autoload.cs"
 Config="*res://scripts/server.cs"
-ButtonSounds="*res://scripts/ui/button_sounds.cs"
 
 [display]
 
