@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://btaurnw0kga5f"]
+[gd_scene load_steps=5 format=3 uid="uid://btaurnw0kga5f"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.cs" id="1_dfcg4"]
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
+[ext_resource type="Script" path="res://scripts/ui/button_sounds.cs" id="2_s06gg"]
 [ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="3_m4k14"]
 
 [node name="MainMenu" type="Control"]
@@ -14,6 +15,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_n0607")
 script = ExtResource("1_dfcg4")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_s06gg")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

@@ -3,22 +3,34 @@ using System;
 
 public partial class button_sounds : Node
 {
+	private Godot.Collections.Array<Node> _node_list = new Godot.Collections.Array<Node>();
+
     public override void _Ready()
     {
 		var parent = GetParent();
-		var nodes = parent.GetChildren();
+		_add_all_children(parent);
 
-		foreach (var node in nodes)
+		foreach (var node in _node_list)
 		{
-			if (node.GetType() == typeof(Button))
-			{
-				((Button) node).Pressed += PlaySound;
-			}
+			if (node.GetType() == typeof(Button)) ((Button) node).Pressed += PlaySound;
 		}
     }
 
+	private void _add_all_children(Node node)
+	{
+		foreach (Node n in node.GetChildren())
+		{
+			_node_list.Add(n);
+			_add_all_children(n);
+		}	
+	}
+
 	private void PlaySound()
 	{
-		
+		AudioStreamPlayer player = new AudioStreamPlayer();
+		player.Stream = ResourceLoader.Load<AudioStream>("res://assets/audio/gun-placeholder.mp3");
+		GD.Print(GetParent().Name);
+		GetParent().AddChild(player);
+		player.Play();
 	}
 }
