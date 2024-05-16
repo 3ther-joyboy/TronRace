@@ -20,7 +20,6 @@ theme = ExtResource("1_su5st")
 script = ExtResource("1_43rrj")
 
 [node name="lvl" type="Node2D" parent="."]
-process_mode = 4
 
 [node name="TileMap" type="TileMap" parent="lvl"]
 format = 2
