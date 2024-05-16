@@ -20,7 +20,6 @@ theme = ExtResource("1_su5st")
 script = ExtResource("1_43rrj")
 
 [node name="lvl" type="Node2D" parent="."]
-process_mode = 4
 
 [node name="TileMap" type="TileMap" parent="lvl"]
 format = 2
@@ -71,11 +70,13 @@ expand_icon = true
 [node name="Go" type="Button" parent="Margin/Top"]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 374.0
+offset_left = -86.0
 offset_top = 8.0
-offset_right = 460.0
+offset_right = -8.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -127,5 +128,6 @@ visible = false
 layout_mode = 2
 
 [connection signal="gui_input" from="Margin/spawining_trigger" to="." method="_WorldInput"]
+[connection signal="button_up" from="Margin/Top/Back" to="." method="_GoBack"]
 [connection signal="button_down" from="Margin/Top/Go" to="." method="_StartLvl"]
 [connection signal="item_clicked" from="Margin/Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]
