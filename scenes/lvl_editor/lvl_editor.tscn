@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c435vimyuknml"]
+[gd_scene load_steps=11 format=3 uid="uid://c435vimyuknml"]
 
 [ext_resource type="Script" path="res://scripts/lvl_editor.cs" id="1_43rrj"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_bhw4f"]
-[ext_resource type="Theme" uid="uid://cfiafiun18wxd" path="res://assets/themes/the_ultimate_theme.tres" id="1_su5st"]
+[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_su5st"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="3_gmrj1"]
+[ext_resource type="PackedScene" uid="uid://cu23xox47uqr1" path="res://scenes/lvl_editor/place_holder.tscn" id="3_upixd"]
 [ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="4_eu0sx"]
+[ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="4_lfsup"]
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="5_7qice"]
 [ext_resource type="Texture2D" uid="uid://deakoc8o7vxf8" path="res://assets/textures/ui/arrow.png" id="6_5qmx2"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="6_j8k2c"]
@@ -20,6 +22,7 @@ theme = ExtResource("1_su5st")
 script = ExtResource("1_43rrj")
 
 [node name="lvl" type="Node2D" parent="."]
+process_mode = 4
 
 [node name="PlaceHolder2" parent="lvl" instance=ExtResource("3_upixd")]
 _packed = ExtResource("3_gmrj1")
@@ -27,9 +30,9 @@ _packed = ExtResource("3_gmrj1")
 [node name="TileMap" type="TileMap" parent="lvl"]
 format = 2
 
-[node name="pause" type="Node2D" parent="lvl"]
-script = ExtResource("3_cml1d")
-_packed = ExtResource("3_gmrj1")
+[node name="PlaceHolder" parent="lvl" instance=ExtResource("3_upixd")]
+position = Vector2(218, 235)
+_packed = ExtResource("4_lfsup")
 
 [node name="spawining_trigger" type="Control" parent="."]
 layout_mode = 1
