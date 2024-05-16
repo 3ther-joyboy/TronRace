@@ -22,7 +22,6 @@ theme = ExtResource("1_su5st")
 script = ExtResource("1_43rrj")
 
 [node name="lvl" type="Node2D" parent="."]
-process_mode = 4
 
 [node name="PlaceHolder2" parent="lvl" instance=ExtResource("3_upixd")]
 _packed = ExtResource("3_gmrj1")
@@ -57,7 +56,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Top"]
+[node name="Back" type="Button" parent="Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -69,6 +68,22 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 icon = ExtResource("6_nt2ju")
+expand_icon = true
+
+[node name="Go" type="Button" parent="Top"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("1_bhw4f")
 expand_icon = true
 
 [node name="Bottom" type="Control" parent="."]
@@ -118,4 +133,5 @@ visible = false
 layout_mode = 2
 
 [connection signal="gui_input" from="spawining_trigger" to="." method="_WorldInput"]
+[connection signal="button_up" from="Top/Go" to="." method="_StartLvl"]
 [connection signal="item_clicked" from="Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]
