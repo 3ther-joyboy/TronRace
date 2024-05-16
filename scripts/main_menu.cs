@@ -21,7 +21,12 @@ public partial class main_menu : Control
 
 	private void ShowOfficial() { _menu.Hide(); _official.Show(); }
 	private void ShowCommunity() { _menu.Hide(); _community.Show(); }
-	private void ShowEditor() { _menu.Hide(); _editor.Show(); }
+	private void ShowEditor()
+	{
+		_menu.Hide();
+		_editor.Show();
+		GetTree().ChangeSceneToFile("res://scenes/lvl_editor/lvl_editor.tscn");
+	}
 
 	// tmp function for starting level
 	private void SoloPlay(string name)
