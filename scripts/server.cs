@@ -6,7 +6,7 @@ public partial class server : Node
 	public static ConfigFile conf = new ConfigFile();
 	public static int user_id;
 	public static string user_name;
-	public static string default_ip = "0.0.0.0";
+	public static string default_ip = "141.145.207.166";
 	public static string custom_ip;
 	public static int port = 25565;
 
