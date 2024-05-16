@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://eqwcewka68ie"]
 
-[ext_resource type="Theme" uid="uid://cfiafiun18wxd" path="res://assets/themes/the_ultimate_theme.tres" id="1_58atc"]
+[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_58atc"]
 [ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="3_82el2"]
-[ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="4_5rxhk"]
+[ext_resource type="Texture2D" uid="uid://daig7rt2lhpn5" path="res://assets/textures/ui/restart.png" id="5_maats"]
 [ext_resource type="Texture2D" uid="uid://baj56ovdl2rkq" path="res://assets/textures/ui/home.png" id="5_v1wi6"]
 [ext_resource type="Texture2D" uid="uid://cst4oim7ec8nb" path="res://assets/textures/ui/resume.png" id="6_pti4l"]
 
@@ -85,10 +85,10 @@ layout_mode = 2
 icon = ExtResource("5_v1wi6")
 expand_icon = true
 
-[node name="ButtonSettings" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+[node name="ButtonRestart" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-icon = ExtResource("4_5rxhk")
+icon = ExtResource("5_maats")
 expand_icon = true
 
 [node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
@@ -135,6 +135,7 @@ value = 1.0
 
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonRestart" to="Control" method="Restart"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Master" to="Control" method="SetVolumeMaster"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Music" to="Control" method="SetVolumeMusic"]
