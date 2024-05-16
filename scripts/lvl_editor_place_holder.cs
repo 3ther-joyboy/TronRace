@@ -27,12 +27,6 @@ public partial class lvl_editor_place_holder : Node2D
 
 		GetParent().AddChild(_spawn);
 
-		for (int i = 0; i < _childerns.Count; i++) {
-			_childerns[i].Reparent(_spawn);
-			if (_childerns[i].GetClass() == "lvl_editor_place_holder")
-				((lvl_editor_place_holder)_childerns[i]).Save();
-		}
-
 		this.QueueFree();
 	}
 }

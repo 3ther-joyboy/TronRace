@@ -43,6 +43,8 @@ public partial class lvl_editor : Control
 	}
 	private void _StartLvl() {
 		GetTree().CallGroup("editor_placeholder", "Save");
+		GetNode<Node2D>("lvl").Reparent(GetTree().Root.GetChild(0));
+		this.QueueFree();
 	}
 
 }
