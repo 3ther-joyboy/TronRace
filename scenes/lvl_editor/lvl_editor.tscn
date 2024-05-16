@@ -113,7 +113,7 @@ item_3/icon = ExtResource("5_7qice")
 item_4/text = "not"
 item_4/icon = ExtResource("6_j8k2c")
 
-[node name="Enemies" type="TabBar" parent="Bottom/TabContainer"]
+[node name="Brushes" type="TabBar" parent="Bottom/TabContainer"]
 visible = false
 layout_mode = 2
 
