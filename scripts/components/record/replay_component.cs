@@ -12,26 +12,19 @@ public partial class replay_component : Node
 	// true -> move.direction  false -> Rotation
 	private bool recordMode;
 
-	public RecordFormat[] recording;
+	public RecordFormat[] recording = { new RecordFormat(0,Vector2.Zero)};
 
 	// variables
 	private Vector2 currentDir = Vector2.Zero;
 	private int timeOfDir = 1;
 
 	public override void _Ready() {
-		recording = GetNode<autoload>("/root/Autoload").GetReplay();
-		_mode = recording == null ? true:false;
-		if (_mode)
-			recording = new RecordFormat[]{ new RecordFormat(0,Vector2.Zero)};
 		target = GetParent<move_component>();		
 		recordMode = !target.GetRotationMode();
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		if (_mode)
-			_Record();
-		else
-			_Play();
+		_Record();
 	}
 
 	private void _Play() {
