@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/lvl_editor.cs" id="1_43rrj"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_bhw4f"]
-[ext_resource type="Theme" uid="uid://cfiafiun18wxd" path="res://assets/themes/the_ultimate_theme.tres" id="1_su5st"]
+[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_su5st"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="3_gmrj1"]
 [ext_resource type="PackedScene" uid="uid://cu23xox47uqr1" path="res://scenes/lvl_editor/place_holder.tscn" id="3_upixd"]
 [ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="4_eu0sx"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="4_lfsup"]
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="5_7qice"]
+[ext_resource type="Texture2D" uid="uid://deakoc8o7vxf8" path="res://assets/textures/ui/arrow.png" id="6_5qmx2"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="6_j8k2c"]
-[ext_resource type="Texture2D" uid="uid://lj3ld0qqvq0r" path="res://assets/textures/ui/arrow-back.png" id="6_nt2ju"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -22,6 +22,7 @@ theme = ExtResource("1_su5st")
 script = ExtResource("1_43rrj")
 
 [node name="lvl" type="Node2D" parent="."]
+process_mode = 4
 
 [node name="PlaceHolder2" parent="lvl" instance=ExtResource("3_upixd")]
 _packed = ExtResource("3_gmrj1")
@@ -56,34 +57,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Back" type="Button" parent="Top"]
+[node name="Button" type="Button" parent="Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 72.0
-offset_bottom = 72.0
+offset_right = 94.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-icon = ExtResource("6_nt2ju")
-expand_icon = true
-
-[node name="Go" type="Button" parent="Top"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-icon = ExtResource("1_bhw4f")
+icon = ExtResource("6_5qmx2")
+icon_alignment = 2
 expand_icon = true
 
 [node name="Bottom" type="Control" parent="."]
@@ -133,5 +119,4 @@ visible = false
 layout_mode = 2
 
 [connection signal="gui_input" from="spawining_trigger" to="." method="_WorldInput"]
-[connection signal="button_up" from="Top/Go" to="." method="_StartLvl"]
 [connection signal="item_clicked" from="Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]
