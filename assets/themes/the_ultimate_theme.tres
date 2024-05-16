@@ -1,6 +1,7 @@
 [gd_resource type="Theme" load_steps=13 format=3 uid="uid://cfiafiun18wxd"]
 
 [ext_resource type="StyleBox" uid="uid://b55g02e4y8j8n" path="res://assets/themes/style_box_flat.tres" id="1_h7ih5"]
+[ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="2_xi5it"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgs2c"]
 
@@ -54,12 +55,27 @@ corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtk46"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de1k8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fs2gs"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_right = 20.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.666667, 0.8, 0.25098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.666667, 0.8, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuu00"]
 content_margin_left = 20.0
 content_margin_top = 22.0
 content_margin_right = 20.0
 content_margin_bottom = 22.0
-bg_color = Color(0, 0.666667, 0.8, 0.12549)
+bg_color = Color(0, 0.666667, 0.8, 0.0627451)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -70,6 +86,7 @@ corner_radius_bottom_right = 30
 corner_detail = 1
 
 [resource]
+default_font = ExtResource("2_xi5it")
 Button/styles/focus = SubResource("StyleBoxEmpty_pgs2c")
 Button/styles/hover = SubResource("StyleBoxFlat_hrusn")
 Button/styles/normal = ExtResource("1_h7ih5")
@@ -84,5 +101,8 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cmsji")
 HSlider/styles/slider = SubResource("StyleBoxFlat_bdqbs")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_vtk46")
 LineEdit/styles/normal = ExtResource("1_h7ih5")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_de1k8")
+OptionButton/constants/arrow_margin = 20
+OptionButton/styles/hover = SubResource("StyleBoxFlat_fs2gs")
+OptionButton/styles/normal = ExtResource("1_h7ih5")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_tuu00")
 VBoxContainer/constants/separation = 16
