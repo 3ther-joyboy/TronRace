@@ -1,12 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c435vimyuknml"]
+[gd_scene load_steps=9 format=3 uid="uid://c435vimyuknml"]
 
 [ext_resource type="Script" path="res://scripts/lvl_editor.cs" id="1_43rrj"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="1_bhw4f"]
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_su5st"]
-[ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="3_gmrj1"]
-[ext_resource type="PackedScene" uid="uid://cu23xox47uqr1" path="res://scenes/lvl_editor/place_holder.tscn" id="3_upixd"]
 [ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="4_eu0sx"]
-[ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="4_lfsup"]
 [ext_resource type="Texture2D" uid="uid://b41lttqi3kl8w" path="res://assets/textures/ui/settings.png" id="5_7qice"]
 [ext_resource type="Texture2D" uid="uid://deakoc8o7vxf8" path="res://assets/textures/ui/arrow.png" id="6_5qmx2"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="6_j8k2c"]
@@ -25,25 +22,10 @@ script = ExtResource("1_43rrj")
 [node name="lvl" type="Node2D" parent="."]
 process_mode = 4
 
-[node name="PlaceHolder2" parent="lvl" instance=ExtResource("3_upixd")]
-_packed = ExtResource("3_gmrj1")
-
 [node name="TileMap" type="TileMap" parent="lvl"]
 format = 2
 
-[node name="PlaceHolder" parent="lvl" instance=ExtResource("3_upixd")]
-position = Vector2(218, 235)
-_packed = ExtResource("4_lfsup")
-
-[node name="spawining_trigger" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,12 +37,15 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Top" type="Control" parent="MarginContainer"]
+[node name="spawining_trigger" type="Control" parent="Margin"]
+layout_mode = 2
+
+[node name="Top" type="Control" parent="Margin"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="ItemList" type="ItemList" parent="MarginContainer/Top"]
+[node name="ItemList" type="ItemList" parent="Margin/Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -68,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Back" type="Button" parent="MarginContainer/Top"]
+[node name="Back" type="Button" parent="Margin/Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -83,7 +68,7 @@ icon = ExtResource("6_5qmx2")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Go" type="Button" parent="MarginContainer/Top"]
+[node name="Go" type="Button" parent="Margin/Top"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -98,12 +83,12 @@ icon = ExtResource("7_eibt1")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Bottom" type="Control" parent="MarginContainer"]
+[node name="Bottom" type="Control" parent="Margin"]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/Bottom"]
+[node name="TabContainer" type="TabContainer" parent="Margin/Bottom"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,10 +97,10 @@ grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
 
-[node name="Objects" type="TabBar" parent="MarginContainer/Bottom/TabContainer"]
+[node name="Objects" type="TabBar" parent="Margin/Bottom/TabContainer"]
 layout_mode = 2
 
-[node name="ItemList" type="ItemList" parent="MarginContainer/Bottom/TabContainer/Objects"]
+[node name="ItemList" type="ItemList" parent="Margin/Bottom/TabContainer/Objects"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,9 +122,10 @@ item_3/icon = ExtResource("5_7qice")
 item_4/text = "not"
 item_4/icon = ExtResource("6_j8k2c")
 
-[node name="Brushes" type="TabBar" parent="MarginContainer/Bottom/TabContainer"]
+[node name="Brushes" type="TabBar" parent="Margin/Bottom/TabContainer"]
 visible = false
 layout_mode = 2
 
-[connection signal="gui_input" from="spawining_trigger" to="." method="_WorldInput"]
-[connection signal="item_clicked" from="MarginContainer/Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]
+[connection signal="gui_input" from="Margin/spawining_trigger" to="." method="_WorldInput"]
+[connection signal="button_down" from="Margin/Top/Go" to="." method="_StartLvl"]
+[connection signal="item_clicked" from="Margin/Bottom/TabContainer/Objects/ItemList" to="." method="_SelectObject"]

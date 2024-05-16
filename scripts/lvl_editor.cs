@@ -18,7 +18,7 @@ public partial class lvl_editor : Control
 		_mode = (int)Mode.ObjectSpawning;
 
 		_objects = DirAccess.GetFilesAt(_path);
-		ItemList target = GetNode<ItemList>("Bottom/TabContainer/Objects/ItemList");
+		ItemList target = GetNode<ItemList>("Margin/Bottom/TabContainer/Objects/ItemList");
 		target.Clear();
 
 		for (int i = 0; i < _objects.Length; i++) {
