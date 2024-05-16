@@ -1,17 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqhtoweajmmxg"]
+[gd_scene load_steps=5 format=3 uid="uid://bqhtoweajmmxg"]
 
 [ext_resource type="Script" path="res://scripts/game_control/end.cs" id="1_j3igt"]
 [ext_resource type="AudioStream" uid="uid://daca0dsogmw03" path="res://assets/audio/beep.mp3" id="2_r70lq"]
 [ext_resource type="AudioStream" uid="uid://cyen0qnn2t1bv" path="res://assets/audio/finish.mp3" id="3_m653s"]
-
-[sub_resource type="FontVariation" id="FontVariation_mptdd"]
-variation_embolden = 1.44
-
-[sub_resource type="LabelSettings" id="LabelSettings_4a65r"]
-font = SubResource("FontVariation_mptdd")
-font_size = 200
-outline_size = 100
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="4_e4sqp"]
 
 [node name="Finish" type="Area2D"]
 process_mode = 3
@@ -50,9 +42,10 @@ offset_right = 59.5
 offset_bottom = 273.0
 grow_horizontal = 2
 pivot_offset = Vector2(59.5, 136.5)
+theme_override_fonts/font = ExtResource("4_e4sqp")
+theme_override_font_sizes/font_size = 86
 text = "3
 "
-label_settings = SubResource("LabelSettings_4a65r")
 horizontal_alignment = 1
 vertical_alignment = 1
 
