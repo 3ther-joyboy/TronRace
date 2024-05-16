@@ -8,8 +8,8 @@ public partial class autoload : Node
 	public static float last_time;
 
 	// lukasovo space
-	private String path = "res://replay_test.json";
-	public String replayJson = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Read).GetAsText();
+//	private String path = "res://replay_test.json";
+//	public String replayJson = FileAccess.Open("res://replay_test.json", FileAccess.ModeFlags.Read).GetAsText();
 
 	public override void _Ready(){
 
