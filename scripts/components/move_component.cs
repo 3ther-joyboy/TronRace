@@ -34,14 +34,21 @@ public partial class move_component : RigidBody2D
 	private AudioStreamMP3 movingStartSoundEffect;
 	[Export(PropertyHint.File, "*.mp3,")]
 	private AudioStreamMP3 movingGoingSoundEffect;
+	[Export(PropertyHint.File, "*.mp3,")]
+	private AudioStreamMP3 _crashSoundEffect;
 
-	private AudioStreamPlayer2D audioNode = new AudioStreamPlayer2D();
+	private AudioStreamPlayer2D _engineAudioNode = new AudioStreamPlayer2D();
+	private AudioStreamPlayer2D _crashAudioNode = new AudioStreamPlayer2D();
 
 
 	public override void _Ready(){
-		AddChild(audioNode);
-		audioNode.Stream = movingStartSoundEffect;
-		audioNode.Bus = "SFX";
+		AddChild(_crashAudioNode);
+		_crashAudioNode.Stream = _crashSoundEffect;
+		_crashAudioNode.Bus = "SFX";
+
+		AddChild(_engineAudioNode);
+		_engineAudioNode.Stream = movingStartSoundEffect;
+		_engineAudioNode.Bus = "SFX";
 		// dont ask
 		this.ApplyCentralForce(lockedToRotation ? startingVelocity.Length() * Vector2.FromAngle(startingVelocity.Angle() + this.GlobalRotation) : startingVelocity);
 
@@ -59,23 +66,24 @@ public partial class move_component : RigidBody2D
 	private void Audio(){
 		if(movingState){
 
-			if(!audioNode.Playing && audioPlaing){
-				audioNode.Stream = movingGoingSoundEffect;
+			if(!_engineAudioNode.Playing && audioPlaing){
+				_engineAudioNode.Stream = movingGoingSoundEffect;
 			}
 
-			if(!audioNode.Playing){
-				audioNode.Play();
+			if(!_engineAudioNode.Playing){
+				_engineAudioNode.Play();
 				audioPlaing = true;
 			}
 		}else{
-			if(audioNode.Playing){
-				audioNode.Stop();
+			if(_engineAudioNode.Playing){
+				_engineAudioNode.Stop();
 				audioPlaing = false;
-				audioNode.Stream = movingStartSoundEffect;
+				_engineAudioNode.Stream = movingStartSoundEffect;
 			}
 		}
 	}
 	private void Collision(Node coll){
+		_crashAudioNode.Play();
 		if(coll.GetClass() == "RigidBody2D"){
 			RigidBody2D collider = (RigidBody2D)coll;
 			Vector2 additionalPush = this.GlobalPosition.DirectionTo(collider.GlobalPosition)*pushForce;
