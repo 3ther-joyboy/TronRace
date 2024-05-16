@@ -8,13 +8,5 @@ can_sleep = false
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_lgudc")
-startingVelocity = null
-movingState = null
-lockedToRotation = null
-direction = null
-acceleration = null
-collisionThreshold = null
-additionalCollision = null
-pushForce = null
 
 [connection signal="body_entered" from="." to="." method="Collision"]
