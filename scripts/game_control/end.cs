@@ -66,8 +66,8 @@ public partial class end : Area2D
 	}
 	private void Finish(Node player) {
 
-		if (player.HasNode("Replay") ) {
-//			GetNode<autoload>("/root/Autoload").SaveReplay(player.GetNode<replay_component>("Replay").recording);
+		if (player.HasNode("Replay") && player.GetNode<replay_component>("Replay").playBackMode) {
+			GetNode<autoload>("/root/Autoload").SaveReplay(player.GetNode<replay_component>("Replay").recording);
 
 			int ticksPassed = player.GetNode<replay_component>("Replay").Length();
 			float tickPerSecond = (float)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second");
