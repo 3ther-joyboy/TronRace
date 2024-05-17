@@ -6,7 +6,6 @@ public partial class main_menu : Control
 	private PanelContainer _menu;
 	private PanelContainer _official;
 	private PanelContainer _community;
-	private PanelContainer _editor;
 	private PanelContainer _settings;
 
 	public override void _Ready()
@@ -14,16 +13,24 @@ public partial class main_menu : Control
 		_menu = GetNode<PanelContainer>("VBoxContainer/Main");
 		_official = GetNode<PanelContainer>("VBoxContainer/Official");
 		_community = GetNode<PanelContainer>("VBoxContainer/Community");
-		_editor = GetNode<PanelContainer>("VBoxContainer/Editor");
 		_settings = GetNode<PanelContainer>("VBoxContainer/Settings");
 	}
 
 	private void ShowOfficial() { _menu.Hide(); _official.Show(); }
 	private void ShowCommunity() { _menu.Hide(); _community.Show(); }
+
+
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventKey eventKey) {
+			if (eventKey.Keycode == (Key)4194338) // f7 tho idk how to acces Key. object
+				ShowEditor();
+		}
+	}
+
 	private void ShowEditor()
 	{
 		_menu.Hide();
-		_editor.Show();
 		GetTree().ChangeSceneToFile("res://scenes/lvl_editor/lvl_editor.tscn");
 	}
 
@@ -51,7 +58,6 @@ public partial class main_menu : Control
 	{
 		_official.Hide();
 		_community.Hide();
-		_editor.Hide();
 		_settings.Hide();
 
 		_menu.Show();

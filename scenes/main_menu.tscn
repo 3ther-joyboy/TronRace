@@ -66,10 +66,6 @@ text = "Official"
 layout_mode = 2
 text = "Community"
 
-[node name="ButtonEditor" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
-layout_mode = 2
-text = "Editor"
-
 [node name="ButtonSettings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Settings
@@ -164,7 +160,6 @@ text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonOfficial" to="." method="ShowOfficial"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonCommunity" to="." method="ShowCommunity"]
-[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonEditor" to="." method="ShowEditor"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSettings" to="." method="ShowSettings"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/test_world" to="." method="SoloPlay" binds= [&"test_world"]]
