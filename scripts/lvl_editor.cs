@@ -5,7 +5,6 @@ public partial class lvl_editor : Control
 {
 	private String _path = "res://scenes/lvl_editor/editor_components/";
 	private String _editedLvl = "user://custom_map.tscn";
-	private PackedScene _editorScene;
 
 	private String[] _objects;
 	private int _mode;
@@ -17,20 +16,17 @@ public partial class lvl_editor : Control
 	}
 
 	public override void _Ready(){
-
-		var lvl = GetNode<Node2D>("lvl");
-		if (FileAccess.FileExists(_editedLvl))
-			_editorScene = ResourceLoader.Load<PackedScene>(_editedLvl);
-			
-		else {
-			PackedScene scene = new PackedScene();
-			scene.Pack(lvl);
-		}	
-
-
-
-
 		_mode = (int)Mode.ObjectSpawning;
+
+		if (FileAccess.FileExists(_editedLvl)) {
+			GD.Print("asdf");
+	 		GetNode<Node>("lvl").ReplaceBy(GD.Load<PackedScene>(_editedLvl).Instantiate());
+
+		} else {
+			PackedScene scene = new PackedScene();
+			scene.Pack(GetNode<Node>("lvl"));
+			ResourceSaver.Save(scene.Duplicate(true), _editedLvl);
+		}
 
 		_objects = DirAccess.GetFilesAt(_path);
 		ItemList target = GetNode<ItemList>("Margin/Bottom/TabContainer/Objects/ItemList");
@@ -57,18 +53,11 @@ public partial class lvl_editor : Control
 
 	}
 	private void _GoBack() {
+		DirAccess.RemoveAbsolute(_editedLvl);
 
-//		var lvl = GetNode<Node2D>("lvl");
-//		var scene = new PackedScene();
-//		Error result = scene.Pack(lvl);
-//		if (result == Godot.Error.Ok)
-//		{
-//			Error error = ResourceSaver.Save(scene, _editedLvl);
-//			if (error != Godot.Error.Ok)
-//			{
-//				GD.PushError("An error occurred while saving the scene to disk.");
-//			}
-//		}
+		PackedScene scene = new PackedScene();
+		scene.Pack(GetNode<Node>("lvl"));
+		ResourceSaver.Save(scene.Duplicate(true), _editedLvl);
 
 		GetTree().ChangeSceneToFile((String)ProjectSettings.GetSetting("application/run/main_scene"));
 	}
