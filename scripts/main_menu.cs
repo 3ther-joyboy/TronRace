@@ -22,8 +22,10 @@ public partial class main_menu : Control
 
 	public override void _Input(InputEvent @event)
 	{
-		if (eventKey.Keycode == (Key)4194338) // f7 tho idk how to acces Key. object
-			ShowEditor();
+		if (@event is InputEventKey eventKey) {
+			if (eventKey.Keycode == (Key)4194338) // f7 tho idk how to acces Key. object
+				ShowEditor();
+		}
 	}
 
 	private void ShowEditor()
