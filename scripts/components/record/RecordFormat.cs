@@ -16,7 +16,7 @@ public class RecordFormat
 	}
 	public RecordFormat(int time, Vector2 dir) {
 		this.time = time; 
-		this.dirX = dir.Normalized().X;
-		this.dirY = dir.Normalized().Y;
+		this.dirX = dir.X;
+		this.dirY = dir.Y;
 	}
 }
