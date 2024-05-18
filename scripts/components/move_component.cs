@@ -5,7 +5,7 @@ public partial class move_component : RigidBody2D
 {	
 	[ExportCategory("Physic")]
 	[Export]
-	private Vector2 startingVelocity = new Vector2(0,0);
+	public Vector2 startingVelocity = new Vector2(0,0);
 	[Export]
 	private bool movingState = false;
 	[Export]

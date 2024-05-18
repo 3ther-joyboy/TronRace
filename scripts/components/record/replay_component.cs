@@ -12,9 +12,6 @@ public partial class replay_component : Node
 	public bool playBackMode = true;
 	private int _playBackTime = 0;
 
-	// variables
-	private RecordFormat _current = new RecordFormat(0,0,false);
-
 	public override void _Ready() {
 		target = GetParent<move_component>();		
 
@@ -31,43 +28,26 @@ public partial class replay_component : Node
 	}
 
 	private void _Play() {
-		recording[_playBackTime].time--;
-		if (recording[_playBackTime].time <= 0) 
-			_playBackTime++;
+		_playBackTime++;
+		target.MovingStateSet(recording[_playBackTime].active);
 
-		RecordFormat current = recording[_playBackTime];
+		target.Rotation = recording[_playBackTime].rotation;
+		target.AngularVelocity = recording[_playBackTime].rotationVel;
 
-		target.MovingStateSet(current.active);
+		target.Position = new Vector2(recording[_playBackTime].positionX,recording[_playBackTime].positionY);
 
-		if (current.active) {
-			GD.Print("for: " + current.time + "\t" + Mathf.RadToDeg(current.rotation) + "°");
-			target.Rotation = current.rotation;
-			target.AngularVelocity = 0f;
-		}else{
-			GD.Print("for: " + current.time + "\twaits");
-		}
-
-
+		target.LinearVelocity = new Vector2(recording[_playBackTime].velocityX,recording[_playBackTime].velocityY);
 	}
 
 	private void _Record() {
-		if (_current.active != target.MovingStateGet() || (target.MovingStateGet() && _current.rotation != target.Rotation)) {
-
 			Array.Resize(ref recording,recording.Length + 1);
-			recording[recording.Length - 1] = _current;
-
-			_current = new RecordFormat(1, target.Rotation, target.MovingStateGet());
-		}
-		_current.time++;
+			recording[recording.Length - 1] = new RecordFormat(target.MovingStateGet(),target.Rotation,target.AngularVelocity,target.Position.X,target.Position.Y,target.LinearVelocity.X,target.LinearVelocity.Y);
 	}
 
 	public RecordFormat[] GetRecording(){
 		return recording;
 	}
 	public int Length(){
-		int recordedTicks = 0;
-		for (int i = 0; i < recording.Length; i++)
-			recordedTicks += recording[i].time;
-		return recordedTicks;
+		return recording.Length;
 	}
 }

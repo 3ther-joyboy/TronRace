@@ -57,9 +57,12 @@ public partial class gun_component : Area2D
 		}else{
 			currentBarrageRound = 0;
 		}
-		Node2D spawn = (Node2D)projectiles.Instantiate();
+		move_component spawn = (move_component)projectiles.Instantiate();
 		spawn.GlobalPosition = this.GlobalPosition;
 		spawn.GlobalRotation = this.GlobalRotation;
+		spawn.startingVelocity = spawn.startingVelocity.Rotated(this.GlobalRotation);
+
+		
 		GetTree().CurrentScene.AddChild(spawn);
 
 		if (_shootingSound.Length > 0) {

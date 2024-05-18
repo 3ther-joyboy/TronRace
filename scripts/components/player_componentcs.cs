@@ -59,4 +59,4 @@ public partial class player_componentcs : Node
 			_target2.Position = start.DirectionTo(current) * _maxDragLenght + offset + start;
 
 	}
-}
+} 
