@@ -16,7 +16,6 @@ public partial class server : Node
 
 	// client
 	private ENetMultiplayerPeer _peer;
-	private int _connection_id;
 
 	public override void _Ready()
 	{
@@ -82,7 +81,9 @@ public partial class server : Node
 
 	private void ConnectionSuccessful()
 	{
-		_connection_id = Multiplayer.GetUniqueId();
-		GD.Print("id: " + _connection_id);
+		RpcId(1, "printUserInfo", user_id, user_name);
 	}
+
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	extern private void printUserInfo(int id, string name);
 }
