@@ -69,8 +69,16 @@ public partial class server : Node
 
 	private void PlayerConnected(long id) { GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn"); }
 
-	private void PlayerDisconnected(long id) { GetTree().ChangeSceneToFile("res://scenes/connecting.tscn"); }
-	private void ConnectionFailed() { GD.Print("could not connect to the server"); }
+	private void PlayerDisconnected(long id)
+	{
+		GetTree().ChangeSceneToFile("res://scenes/connecting.tscn");
+		ConnectToServer();
+	}
+	private void ConnectionFailed()
+	{
+		GD.Print("could not connect to the server");
+		ConnectToServer();
+	}
 
 	private void ConnectionSuccessful()
 	{
