@@ -62,10 +62,6 @@ right={
 ]
 }
 
-[editor]
-
-movie_writer/movie_file="/home/ether/Downloads/why_nu_work.avi"
-
 [input]
 
 tap={
@@ -112,6 +108,7 @@ right={
 
 [physics]
 
+common/physics_ticks_per_second=100
 2d/default_gravity=0.0
 
 [rendering]
