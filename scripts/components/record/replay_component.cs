@@ -7,22 +7,23 @@ public partial class replay_component : Node
 
 	private move_component target;
 
-	public static RecordFormat[] recording = {};
+	public RecordFormat[] recording = {};
 	// true = record, false = playback
-	public static bool playBackMode = true;
+	public bool playBackMode = true;
 	private int _playBackTime = 0;
 
 	public override void _Ready() {
+		recording = new RecordFormat[]{};
+		playBackMode = true;
 		target = GetParent<move_component>();		
+
+		if (replay_handler.TryReplay())
+			PlayBack();			
 	}
 
-	public static void PlayBack() {
-		PlayBack(replay_handler.lastPlayedMap);
-	}
-
-	public static void PlayBack(String path) {
+	public void PlayBack() {
+		recording = replay_handler.GetReplay();
 		playBackMode = false;
-		recording = replay_handler.GetReplay(path);
 	}
 
 	public override void _PhysicsProcess(double delta) {

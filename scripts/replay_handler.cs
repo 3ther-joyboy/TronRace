@@ -13,6 +13,7 @@ public partial class replay_handler  : Node
 	private static String _filenameExtension = ".json";
 
 	public static String lastPlayedMap = "";
+	private static bool _replayRedy = false;
 
 
 	public override void _Ready(){
@@ -24,11 +25,21 @@ public partial class replay_handler  : Node
 		Play(lastPlayedMap);
 	}
 
+	public static bool TryReplay(){
+
+		if (_replayRedy) {
+			_replayRedy = false;
+			return true;
+		} else
+			return false;
+
+
+	}
 	public void Play(String name) {
 		try {
+			_replayRedy = true;
 			lastPlayedMap = name;
 			GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
-			replay_component.PlayBack("personal_bests/" + name);
 		}
 		catch {
 			GD.Print("Map replay does not exist");
@@ -36,30 +47,35 @@ public partial class replay_handler  : Node
 	}
 
 	public static RecordFormat[] GetReplay() {
-		return GetReplay(lastPlayedMap);
+		return GetReplay("personal_bests/" + lastPlayedMap);
 	}
-	public static RecordFormat[] GetReplay(String map_name) {
-		String replayJson = FileAccess.Open(_path + map_name + _filenameExtension, FileAccess.ModeFlags.Read).GetAsText();
+	public static RecordFormat[] GetReplay(String path) {
+		if (FileAccess.FileExists(_path + path + _filenameExtension)) {
+			String replayJson = FileAccess.Open(_path + path + _filenameExtension, FileAccess.ModeFlags.Read).GetAsText();
 
-		JsonNode jsonNodeReplay = JsonNode.Parse(replayJson)!;
-		// for some unknow reason i cant use length or any of these sorts of funcitons.... SO....
-		// or idk, i am too lazy to put it back
+			JsonNode jsonNodeReplay = JsonNode.Parse(replayJson)!;
+			// for some unknow reason i cant use length or any of these sorts of funcitons.... SO....
+			// or idk, i am too lazy to put it back
 
-		RecordFormat[] replay = {};
-		for (int i = 0; true; i++) {
-			try {
-				var test = jsonNodeReplay[i];
+			RecordFormat[] replay = {};
+			for (int i = 0; true; i++) {
+				try {
+					var test = jsonNodeReplay[i];
+				}
+				catch (Exception e) {
+					break;
+				}
+				Array.Resize(ref replay,i + 1);
+				replay[i] = new RecordFormat(jsonNodeReplay[i]);
 			}
-			catch (Exception e) {
-				break;
-			}
-			Array.Resize(ref replay,i + 1);
-			replay[i] = new RecordFormat(jsonNodeReplay[i]);
+			return replay;
+		} else {
+			GD.Print("Replay does not exist");
+			return new RecordFormat[]{};
 		}
-		return replay;
 	}
 	public static void AutoSave(RecordFormat[] replay) {
-		if (GetReplay().Length > replay.Length) {
+		if (GetReplay().Length > replay.Length || !FileAccess.FileExists(_path + "personal_bests/" + lastPlayedMap + ".json")) {
 			GD.Print("New PB!");
 			GD.Print("AutoSave");
 			SaveReplay(replay,"personal_bests/" + lastPlayedMap);

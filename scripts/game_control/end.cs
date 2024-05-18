@@ -60,20 +60,21 @@ public partial class end : Area2D
 				if (GetNode<flag_control>("../flag control").Complete()) Finish(player);
 				else GD.PrintRich("[pulse] nu - uh [/pulse]");
 			}
-			
+
 			else Finish(player);
 		}
 	}
 	private void Finish(Node player) {
 
-		if (player.HasNode("Replay") && replay_component.playBackMode) {
-			replay_handler.AutoSave(replay_component.recording);
+		if (player.HasNode("Replay")) {
 
 			int ticksPassed = player.GetNode<replay_component>("Replay").Length();
 			float tickPerSecond = (float)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second");
 			GD.Print("Finished in: " + (ticksPassed / tickPerSecond) + " S, (" + ticksPassed + " ticks, " + tickPerSecond + " T/S)" ); 
-
-			replay_handler.last_time = ticksPassed / tickPerSecond;
+			if (player.GetNode<replay_component>("Replay").playBackMode) {
+				replay_handler.AutoSave(player.GetNode<replay_component>("Replay").recording);
+				replay_handler.last_time = ticksPassed / tickPerSecond;
+			}
 		} else
 			GD.Print("Finished"); 
 	} 
