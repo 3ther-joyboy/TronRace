@@ -22,16 +22,22 @@ public partial class replay_component : Node
 	}
 
 	public void PlayBack() {
-		recording = replay_handler.GetReplay();
+		recording = replay_handler.bufferReplay;
 		playBackMode = false;
+		
+		if (target.HasNode("Player"))
+			target.GetNode("Player").SetScript("");
 	}
 
 	public override void _PhysicsProcess(double delta) {
 		if (playBackMode)
 			_Record();
 		else
-			if (recording.Length > _playBackTime)
+			if (recording.Length > _playBackTime + 1)
 				_Play();
+			else
+				GD.Print("idk");
+
 	}
 
 	private void _Play() {

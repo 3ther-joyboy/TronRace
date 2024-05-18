@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw00k74yu5oip"]
+
+[ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_04rob"]
+[ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="2_an0b0"]
+[ext_resource type="Script" path="res://scenes/ui/finish.cs" id="2_m2i3d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vs0gu"]
+font_size = 30
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3n1oj"]
+font = ExtResource("2_an0b0")
+font_size = 45
+
+[node name="Finish" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_04rob")
+script = ExtResource("2_m2i3d")
+
+[node name="FromPB" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.419
+anchor_right = 0.5
+anchor_bottom = 0.419
+offset_left = 50.0
+offset_right = 183.0
+offset_bottom = 36.0
+size_flags_horizontal = 4
+text = "+ 36.21 s"
+label_settings = SubResource("LabelSettings_vs0gu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.3
+offset_left = -171.5
+offset_right = 171.5
+offset_bottom = 93.0
+grow_horizontal = 2
+
+[node name="Time" type="Label" parent="Time"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "02 : 69 . 42"
+label_settings = SubResource("LabelSettings_3n1oj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -132.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Options" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Options"]
+layout_mode = 2
+alignment = 1
+
+[node name="Save" type="Button" parent="MarginContainer/HBoxContainer/Options/VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/Options/VBoxContainer"]
+layout_mode = 2
+text = "Watch
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Restart" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="Menu" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Menu
+"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Options/VBoxContainer/Save" to="." method="_Save"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Options/VBoxContainer/Play" to="." method="_PlayBuffer"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Restart" to="." method="_Restart"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Menu" to="." method="_Menu"]

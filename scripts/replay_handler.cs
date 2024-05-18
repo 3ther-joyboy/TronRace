@@ -15,6 +15,8 @@ public partial class replay_handler  : Node
 	public static String lastPlayedMap = "";
 	private static bool _replayRedy = false;
 
+	public static RecordFormat[] bufferReplay;
+
 
 	public override void _Ready(){
 		DirAccess.MakeDirAbsolute(_path);
@@ -35,10 +37,15 @@ public partial class replay_handler  : Node
 
 
 	}
+	public void PlayBuffer() {
+			_replayRedy = true;
+			GetTree().ChangeSceneToFile("res://scenes/maps/" + lastPlayedMap + ".tscn");
+	}
 	public void Play(String name) {
 		try {
 			_replayRedy = true;
 			lastPlayedMap = name;
+			bufferReplay = GetReplay();
 			GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
 		}
 		catch {
@@ -74,21 +81,21 @@ public partial class replay_handler  : Node
 			return new RecordFormat[]{};
 		}
 	}
-	public static void AutoSave(RecordFormat[] replay) {
-		if (GetReplay().Length > replay.Length || !FileAccess.FileExists(_path + "personal_bests/" + lastPlayedMap + ".json")) {
+	public static void AutoSave() {
+		if (GetReplay().Length > bufferReplay.Length || !FileAccess.FileExists(_path + "personal_bests/" + lastPlayedMap + ".json")) {
 			GD.Print("New PB!");
 			GD.Print("AutoSave");
-			SaveReplay(replay,"personal_bests/" + lastPlayedMap);
+			SaveReplay("personal_bests/" + lastPlayedMap);
 		}
 
 	}
-	public static void SaveReplay(RecordFormat[] replay) {
-		SaveReplay(replay, lastPlayedMap );
+	public static void SaveReplay() {
+		SaveReplay(lastPlayedMap);
 	}
-	public static void SaveReplay(RecordFormat[] replay, String path) {
+	public static void SaveReplay(String path) {
 		GD.Print("Saving Replay");
 		// :c its working, but the class is not "fency" (i had to remove arrays from "RecordFormat" that i used for "Vector2"s)
-		String jsonString = JsonSerializer.Serialize(replay);
+		String jsonString = JsonSerializer.Serialize(bufferReplay);
 
 		using var file = FileAccess.Open(_path + path + _filenameExtension, FileAccess.ModeFlags.Write);
 		file.StoreString(jsonString);

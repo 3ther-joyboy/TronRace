@@ -64,17 +64,25 @@ public partial class end : Area2D
 			else Finish(player);
 		}
 	}
-	private void Finish(Node player) {
+	private void Finish(Node2D player) {
 
 		if (player.HasNode("Replay")) {
+			if (player.HasNode("Player") && player.GetClass() == "move_component")
+					((move_component)player).MovingStateSet(true);
 
+				
 			int ticksPassed = player.GetNode<replay_component>("Replay").Length();
 			float tickPerSecond = (float)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second");
 			GD.Print("Finished in: " + (ticksPassed / tickPerSecond) + " S, (" + ticksPassed + " ticks, " + tickPerSecond + " T/S)" ); 
+
+
+
 			if (player.GetNode<replay_component>("Replay").playBackMode) {
-				replay_handler.AutoSave(player.GetNode<replay_component>("Replay").recording);
+				replay_handler.bufferReplay = player.GetNode<replay_component>("Replay").recording;
+
 				replay_handler.last_time = ticksPassed / tickPerSecond;
 			}
+			GetTree().ChangeSceneToFile("res://scenes/ui/finish.tscn");
 		} else
 			GD.Print("Finished"); 
 	} 
