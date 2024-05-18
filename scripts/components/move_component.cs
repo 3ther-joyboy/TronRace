@@ -9,10 +9,6 @@ public partial class move_component : RigidBody2D
 	[Export]
 	private bool movingState = false;
 	[Export]
-	private bool lockedToRotation = true;
-	[Export]
-	private Vector2 direction = Vector2.Up;
-	[Export]
 	private int acceleration = 10; 
 //	[Export(PropertyHint.Range, "0,1,or_greater")]
 //	private float friction = 0.05f;
@@ -50,17 +46,16 @@ public partial class move_component : RigidBody2D
 		_engineAudioNode.Stream = movingStartSoundEffect;
 		_engineAudioNode.Bus = "SFX";
 		// dont ask
-		this.ApplyCentralForce(lockedToRotation ? startingVelocity.Length() * Vector2.FromAngle(startingVelocity.Angle() + this.GlobalRotation) : startingVelocity);
+		this.ApplyCentralForce(startingVelocity);
 
 	}
 
 	public override void _PhysicsProcess(double delta){
 		CollisionDamage(delta);
-		if(!lockedToRotation)
-			direction = Vector2.FromAngle(this.GlobalRotation);
+
 		// accelereation
 		if (movingState)
-			ApplyCentralForce((float)delta * acceleration * direction);
+			ApplyCentralForce((float)delta * acceleration * Vector2.FromAngle(this.Rotation));
 		Audio();
 	}
 	private void Audio(){
@@ -120,11 +115,7 @@ public partial class move_component : RigidBody2D
 			this.GetNode("health").Call("TakeDamage",1);
 
 	}
-	public void DirectionSet(float angle) {direction = Vector2.FromAngle(angle);}
-	public Vector2 DirectionGet() {return direction;}
-	public void DirectionSet(Vector2 angle) {direction = angle;}
 	public void MovingStateSet(bool x) {movingState = x;}
 	public bool MovingStateGet() {return movingState;}
-	public bool GetRotationMode() {return lockedToRotation;}
 	public int GetAcceleration() {return acceleration;}
 }

@@ -6,17 +6,17 @@ using System.Text.Json.Nodes;
 public class RecordFormat
 {
 	public int time {get; set;}
-	public float dirX {get; set;}
-	public float dirY {get; set;}
+	public float rotation {get; set;}
+	public bool active {get; set;}
 
 	public RecordFormat(JsonNode replay) {
 		this.time = replay["time"].GetValue<int>(); 
-		this.dirX = replay["dirX"].GetValue<float>(); 
-		this.dirY = replay["dirY"].GetValue<float>(); 
+		this.rotation = replay["rotation"].GetValue<float>(); 
+		this.active = replay["active"].GetValue<bool>();
 	}
-	public RecordFormat(int time, Vector2 dir) {
+	public RecordFormat(int time, float rotation, bool active) {
 		this.time = time; 
-		this.dirX = dir.X;
-		this.dirY = dir.Y;
+		this.rotation = rotation;
+		this.active = active;
 	}
 }

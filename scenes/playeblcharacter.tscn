@@ -446,7 +446,6 @@ can_sleep = false
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_5ybk6")
-lockedToRotation = false
 acceleration = 1000
 movingStartSoundEffect = ExtResource("2_as8no")
 movingGoingSoundEffect = ExtResource("3_3lblp")
@@ -481,10 +480,6 @@ script = ExtResource("6_vxjcf")
 drawSircle = true
 
 [node name="health" parent="." instance=ExtResource("5_psujs")]
-hp = 1
-invincibilitySeconds = 0.0
-ragdollOnDeath = false
-ragdollSeconds = 3.0
 
 [node name="Replay" parent="." instance=ExtResource("9_65w53")]
 
