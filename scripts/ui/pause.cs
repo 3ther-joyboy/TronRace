@@ -49,4 +49,12 @@ public partial class pause : Control
 	private void SetVolumeMaster(float val) { SetVolume(val, "Master"); }
 	private void SetVolumeMusic(float val) { SetVolume(val, "Music"); }
 	private void SetVolumeSFX(float val) { SetVolume(val, "SFX"); }
+
+
+
+// lukaš test, smazat
+
+	private void PlayBackTest(){
+		GetTree().Root.GetNode<replay_handler>("ReplayHandler").Play();
+	}
 }
