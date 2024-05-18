@@ -9,23 +9,17 @@
 radius = 19.0
 
 [node name="bumper" type="RigidBody2D"]
-collision_layer = 0
-collision_mask = 3
-mass = 0.01
+collision_layer = 8
+collision_mask = 9
+mass = 0.3
 gravity_scale = 0.0
 can_sleep = false
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_spg1m")
-startingVelocity = Vector2(700, 0)
-additionalCollision = 1
-pushForce = 1000
+startingVelocity = Vector2(5000, 0)
 
 [node name="health" parent="." instance=ExtResource("2_01qej")]
-hp = 1
-invincibilitySeconds = 0.0
-ragdollOnDeath = false
-ragdollSeconds = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.57079
