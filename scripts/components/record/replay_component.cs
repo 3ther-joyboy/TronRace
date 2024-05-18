@@ -3,55 +3,74 @@ using System;
 
 public partial class replay_component : Node
 {
-	[Export]
-	private bool print = false;
-
 	private bool _mode = false;
 
 	private move_component target;
 	// true -> move.direction  false -> Rotation
 	private bool recordMode;
 
-	public RecordFormat[] recording = { new RecordFormat(0,Vector2.Zero)};
+	public RecordFormat[] recording = {};
+	// true = record, false = playback
+	public bool playBackMode = true;
+	private int _playBackTime = 0;
 
 	// variables
 	private Vector2 currentDir = Vector2.Zero;
-	private int timeOfDir = 1;
+	private int timeOfDir = 0;
 
 	public override void _Ready() {
 		target = GetParent<move_component>();		
 		recordMode = !target.GetRotationMode();
+
+		recording = GetNode<autoload>("/root/Autoload").GetReplay();
+		playBackMode = recording == null;
 	}
 
 	public override void _PhysicsProcess(double delta) {
-		_Record();
+		if (playBackMode)
+			_Record();
+		else
+			_Play();
 	}
 
 	private void _Play() {
-		GD.Print("Play");
+		if (recording.Length > _playBackTime) {
+			if (recording[_playBackTime].time <= 0) 
+				_playBackTime++;
+
+			Vector2 newDir = new Vector2(recording[_playBackTime].dirX,recording[_playBackTime].dirY);
+			recording[_playBackTime].time--;
+
+			if (newDir != GetRotation())
+				SetRotation(newDir);
+
+
+		}
 	}
 
 	private void _Record() {
 		if (currentDir != GetRotation() ) {
-			// GD.Print(currentDir + " || " + GetRotation() + " -> " + timeOfDir);
 			Array.Resize(ref recording,recording.Length + 1);
 			recording[recording.Length - 1] = new RecordFormat(timeOfDir,currentDir);
 
 			timeOfDir = 1;
 		} else
 			timeOfDir++;
-
 		currentDir = GetRotation();
+	}
+	private void SetRotation (Vector2 dir) {
+		GD.Print(dir + " for : " + recording[_playBackTime].time);
 
-		if (print){
-			String randomString = "";
-			for (int i = 0; i < recording.Length; i++)
-				randomString += recording[i].time + " " + recording[i].dir + ", ";
-			GD.Print(randomString + timeOfDir + " " + currentDir);
+		target.MovingStateSet(dir != Vector2.Zero);
+		if (dir != Vector2.Zero) {
+			target.AngularVelocity = 0f;
+			if (!recordMode)
+				target.DirectionSet(dir);
+			else
+				target.Rotation = dir.Angle();
 		}
 
 	}
-
 	private Vector2 GetRotation() {
 		if (target.MovingStateGet() )
 			if (recordMode)

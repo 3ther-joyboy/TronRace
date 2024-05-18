@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 public partial class autoload : Node
 {
@@ -8,29 +9,40 @@ public partial class autoload : Node
 	public static float last_time;
 
 	// lukasovo space
-	// private String path = "user://replay_test.json";
-	// public String replayJson = FileAccess.Open("user://replay_test.json", FileAccess.ModeFlags.Read).GetAsText();
+	private String path = "user://replay_test.json";
 
 	public override void _Ready(){
 
 	}
 
 	public RecordFormat[] GetReplay() {
+		String replayJson = FileAccess.Open(path, FileAccess.ModeFlags.Read).GetAsText();
 
-//		RecordFormat[] kys = JsonSerializer.Deserialize<RecordFormat[]>(replayJson);
-//		GD.Print(kys[0].time);
+		JsonNode jsonNodeReplay = JsonNode.Parse(replayJson)!;
+		// for some unknow reason i cant use length or any of these sorts of funcitons.... SO....
+		// or idk, i am too lazy to put it back
 
-		return null;
+		RecordFormat[] replay = {};
+		for (int i = 0; true; i++) {
+			try {
+				var test = jsonNodeReplay[i];
+			}
+			catch (Exception e) {
+				break;
+			}
+			Array.Resize(ref replay,i + 1);
+			replay[i] = new RecordFormat(jsonNodeReplay[i]);
+		}
+		return replay;
 	}
 	public void SaveReplay(RecordFormat[] replay) {
-//		GD.Print("Saving Replay");
-//
-//		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
-//		String objs = "";
-//		for (int i = 0; i < replay.Length; i++)
-//			objs += "{\"time\":" + replay[i].time + ", \"dir\": [" + replay[i].dir.X + "," + replay[i].dir.Y + "]},";
-//		file.StoreString("[" + objs + "]");
-//
-//		GD.Print("Replay Saved");
+		GD.Print("Saving Replay");
+		// :c its working, but the class is not "fency" (i had to remove arrays from "RecordFormat" that i used for "Vector2"s)
+		String jsonString = JsonSerializer.Serialize(replay);
+
+		using var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
+		file.StoreString(jsonString);
+
+		GD.Print("Replay Saved");
 	}
 }
