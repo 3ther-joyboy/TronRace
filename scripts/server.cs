@@ -63,14 +63,22 @@ public partial class server : Node
 			return;
 		}
 
-		_peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
+		_peer.Host.Compress(ENetConnection.CompressionMode.Zlib);
 		Multiplayer.MultiplayerPeer = _peer;
 	}
 
-	private void PlayerConnected(long id) { GD.Print("player connected: "); }
+	private void PlayerConnected(long id) { GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn"); }
 
-	private void PlayerDisconnected(long id) { GD.Print("player disconnected"); }
-	private void ConnectionFailed() { GD.Print("could not connect to the server"); }
+	private void PlayerDisconnected(long id)
+	{
+		GetTree().ChangeSceneToFile("res://scenes/connecting.tscn");
+		ConnectToServer();
+	}
+	private void ConnectionFailed()
+	{
+		GD.Print("could not connect to the server");
+		ConnectToServer();
+	}
 
 	private void ConnectionSuccessful()
 	{
