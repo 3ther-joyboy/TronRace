@@ -63,11 +63,11 @@ public partial class server : Node
 			return;
 		}
 
-		_peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
+		_peer.Host.Compress(ENetConnection.CompressionMode.Zlib);
 		Multiplayer.MultiplayerPeer = _peer;
 	}
 
-	private void PlayerConnected(long id) { GD.Print("player connected: "); }
+	private void PlayerConnected(long id) { GD.Print("player connected"); }
 
 	private void PlayerDisconnected(long id) { GD.Print("player disconnected"); }
 	private void ConnectionFailed() { GD.Print("could not connect to the server"); }
