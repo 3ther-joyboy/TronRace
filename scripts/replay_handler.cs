@@ -3,14 +3,14 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-public partial class replay_handler  : Node
+public partial class replay_handler : Node
 {
 	// frantovo space
 	public static float last_time;
 
 	// lukasovo space
 	public static String _path = "user://replays/";
-	private static String _filenameExtension = ".json";
+	public static String _filenameExtension = ".json";
 
 	public static String lastPlayedMap = "";
 	private static bool _replayRedy = false;

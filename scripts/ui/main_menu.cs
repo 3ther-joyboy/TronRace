@@ -7,6 +7,7 @@ public partial class main_menu : Control
 	private PanelContainer _official;
 	private PanelContainer _community;
 	private PanelContainer _settings;
+	private PanelContainer _replay;
 
 	public override void _Ready()
 	{
@@ -14,7 +15,30 @@ public partial class main_menu : Control
 		_official = GetNode<PanelContainer>("VBoxContainer/Official");
 		_community = GetNode<PanelContainer>("VBoxContainer/Community");
 		_settings = GetNode<PanelContainer>("VBoxContainer/Settings");
+		_replay = GetNode<PanelContainer>("VBoxContainer/Replas");
+
+		
+		var list = _replay.GetNode<ItemList>("VBoxContainer/ItemList");
+		list.Clear();
+		var texture = new PlaceholderTexture2D();
+		texture.Size = Vector2.Zero;
+
+		using var dir = DirAccess.Open(replay_handler._path + "personal_bests/");
+		String[] replays = dir.GetFiles();
+
+// get best times
+		for (int i = 0; i < replays.Length; i++)
+			list.AddItem("personal_bests/" + replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
+
+// others
+		dir.ChangeDir("..");
+		replays = dir.GetFiles();
+
+		for (int i = 0; i < replays.Length; i++)
+			list.AddItem(replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
 	}
+
+
 
 	private void ShowOfficial() { _menu.Hide(); _official.Show(); }
 	private void ShowCommunity() { _menu.Hide(); _community.Show(); }
@@ -25,7 +49,18 @@ public partial class main_menu : Control
 		if (@event is InputEventKey eventKey) {
 			if (eventKey.Keycode == (Key)4194338) // f7 tho idk how to acces Key. object
 				ShowEditor();
+			if (eventKey.Keycode == (Key)4194332) // f1
+				_ShowReplays();
 		}
+	}
+
+	private void _PlayReplay(int index) {
+		String what = _replay.GetNode<ItemList>("VBoxContainer/ItemList").GetItemText(index);
+		GetTree().Root.GetNode<replay_handler>("ReplayHandler").Play(what);
+	}
+	private void _ShowReplays(){
+		_menu.Hide();
+		_replay.Show();
 	}
 
 	private void ShowEditor()
@@ -63,6 +98,7 @@ public partial class main_menu : Control
 		_official.Hide();
 		_community.Hide();
 		_settings.Hide();
+		_replay.Hide();
 
 		_menu.Show();
 	}

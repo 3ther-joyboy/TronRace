@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://btaurnw0kga5f"]
+[gd_scene load_steps=7 format=3 uid="uid://btaurnw0kga5f"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.cs" id="1_dfcg4"]
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
@@ -9,6 +9,9 @@ events = [null]
 
 [sub_resource type="Shortcut" id="Shortcut_2sgje"]
 events = [null]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t41hv"]
+size = Vector2(0, 0)
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -83,6 +86,30 @@ text = "Settings
 [node name="ButtonQuit" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Replas" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Replas"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Replas/VBoxContainer"]
+layout_mode = 2
+text = "Replays"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/Replas/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+item_count = 1
+item_0/text = "asdfsadfaasdfasdfasdfsdf"
+item_0/icon = SubResource("PlaceholderTexture2D_t41hv")
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/Replas/VBoxContainer"]
+layout_mode = 2
+text = "Back"
 
 [node name="Official" type="PanelContainer" parent="VBoxContainer"]
 visible = false
@@ -180,6 +207,8 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonCommunity" to="." method="ShowCommunity"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSettings" to="." method="ShowSettings"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
+[connection signal="item_selected" from="VBoxContainer/Replas/VBoxContainer/ItemList" to="." method="_PlayReplay"]
+[connection signal="pressed" from="VBoxContainer/Replas/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/test_world" to="." method="SoloPlay" binds= [&"test_world"]]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/first_steps" to="." method="SoloPlay" binds= [&"first_steps"]]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/citty_edge" to="." method="SoloPlay" binds= [&"citty_edge"]]
