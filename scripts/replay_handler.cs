@@ -23,9 +23,6 @@ public partial class replay_handler  : Node
 		DirAccess.MakeDirAbsolute(_path + "personal_bests/");
 	}
 
-	public void Play() {
-		Play(lastPlayedMap);
-	}
 
 	public static bool TryReplay(){
 
@@ -38,18 +35,43 @@ public partial class replay_handler  : Node
 
 	}
 	public void PlayBuffer() {
-			_replayRedy = true;
-			GetTree().ChangeSceneToFile("res://scenes/maps/" + lastPlayedMap + ".tscn");
+		_replayRedy = true;
+		GetTree().ChangeSceneToFile("res://scenes/maps/" + lastPlayedMap + ".tscn");
+	}
+
+	public void Play() {
+		Play("personal_bests/" + lastPlayedMap);
 	}
 	public void Play(String name) {
-		try {
 			_replayRedy = true;
-			lastPlayedMap = name;
+			JsonNode rep = GetJson(name);
+			lastPlayedMap = (String)(rep["map"]);
 			bufferReplay = GetReplay();
-			GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
-		}
-		catch {
-			GD.Print("Map replay does not exist");
+
+			GD.Print();
+			GD.Print("User: \t\t" + (String)rep["user"]);
+			GD.Print("User ID: \t" + (int)rep["user_id"]);
+			GD.Print("Map: \t\t" + lastPlayedMap);
+			GD.Print();
+			GD.Print("Time: \t\t" + ((float)rep["ticks"] / (float)rep["tps"]));
+			GD.Print("Ticks: \t\t" + (int)rep["ticks"]);
+			GD.Print("TPS: \t\t" + (float)rep["tps"]);
+			GD.Print();
+			GD.Print("Date: \t\t" + rep["date"].ToString());
+			GD.Print();
+
+
+			GetTree().ChangeSceneToFile("res://scenes/maps/" + lastPlayedMap + ".tscn");
+	}
+
+	public static JsonNode GetJson(String path) {
+		if (FileAccess.FileExists(_path + path + _filenameExtension)) {
+			string replayJson = FileAccess.Open(_path + path + _filenameExtension, FileAccess.ModeFlags.Read).GetAsText();
+			JsonNode jsonNodeReplay = JsonNode.Parse(replayJson)!;
+			return jsonNodeReplay;
+		} else {
+			GD.Print("Replay does not exist");
+			return JsonNode.Parse("");
 		}
 	}
 
@@ -57,49 +79,42 @@ public partial class replay_handler  : Node
 		return GetReplay("personal_bests/" + lastPlayedMap);
 	}
 	public static RecordFormat[] GetReplay(String path) {
-		if (FileAccess.FileExists(_path + path + _filenameExtension)) {
-			String replayJson = FileAccess.Open(_path + path + _filenameExtension, FileAccess.ModeFlags.Read).GetAsText();
+		JsonNode jsonNodeReplay = GetJson(path);;
+		// for some unknow reason i cant use length or any of these sorts of funcitons.... SO....
+		// or idk, i am too lazy to put it back
 
-			JsonNode jsonNodeReplay = JsonNode.Parse(replayJson)!;
-			// for some unknow reason i cant use length or any of these sorts of funcitons.... SO....
-			// or idk, i am too lazy to put it back
-
-			RecordFormat[] replay = {};
-			for (int i = 0; true; i++) {
-				try {
-					var test = jsonNodeReplay[i];
-				}
-				catch (Exception e) {
-					break;
-				}
-				Array.Resize(ref replay,i + 1);
-				replay[i] = new RecordFormat(jsonNodeReplay[i]);
+		RecordFormat[] replay = {};
+		for (int i = 0; true; i++) {
+			try {
+				var test = jsonNodeReplay["replay"][i];
 			}
-			return replay;
-		} else {
-			GD.Print("Replay does not exist");
-			return new RecordFormat[]{};
+			catch (Exception e) {
+				break;
+			}
+			Array.Resize(ref replay,i + 1);
+			replay[i] = new RecordFormat(jsonNodeReplay["replay"][i]);
 		}
+		return replay;
 	}
-	public static void AutoSave() {
-		if (GetReplay().Length > bufferReplay.Length || !FileAccess.FileExists(_path + "personal_bests/" + lastPlayedMap + ".json")) {
-			GD.Print("New PB!");
-			GD.Print("AutoSave");
-			SaveReplay("personal_bests/" + lastPlayedMap);
-		}
+public static void AutoSave() {
+	if ((FileAccess.FileExists(_path + "personal_bests/" + lastPlayedMap + ".json") && GetReplay().Length > bufferReplay.Length) || !FileAccess.FileExists(_path + "personal_bests/" + lastPlayedMap + ".json")) {
+		GD.Print("New PB!");
+		GD.Print("AutoSave");
+		SaveReplay("personal_bests/" + lastPlayedMap);
+	}
 
-	}
-	public static void SaveReplay() {
-		SaveReplay(lastPlayedMap);
-	}
-	public static void SaveReplay(String path) {
-		GD.Print("Saving Replay");
-		// :c its working, but the class is not "fency" (i had to remove arrays from "RecordFormat" that i used for "Vector2"s)
-		String jsonString = JsonSerializer.Serialize(bufferReplay);
+}
+public static void SaveReplay() {
+	SaveReplay(lastPlayedMap);
+}
+public static void SaveReplay(String path) {
+	GD.Print("Saving Replay");
+	// :c its working, but the class is not "fency" (i had to remove arrays from "RecordFormat" that i used for "Vector2"s)
+	String jsonString = JsonSerializer.Serialize(new {replay = bufferReplay, user = server.user_name, user_id = server.user_id, map = lastPlayedMap, date = DateTime.UtcNow.ToString(), tps = (int)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second"), ticks = bufferReplay.Length});
 
-		using var file = FileAccess.Open(_path + path + _filenameExtension, FileAccess.ModeFlags.Write);
-		file.StoreString(jsonString);
+	using var file = FileAccess.Open(_path + path + _filenameExtension, FileAccess.ModeFlags.Write);
+	file.StoreString(jsonString);
 
-		GD.Print("Replay Saved");
-	}
+	GD.Print("Replay Saved");
+}
 }
