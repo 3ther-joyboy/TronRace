@@ -15,14 +15,13 @@ public partial class expolosition_component : CpuParticles2D
 		var aug = GetNode<AudioStreamPlayer2D>("Audio");
 		aug.Stream = _sound;
 		aug.Play();
-		GetNode<Timer>("Timer").WaitTime = this.Lifetime;
 		GetNode<Timer>("Timer").Start();
 	}
+	private void _Force(){
+		GetNode<Area2D>("PushFeald").QueueFree();
+	}
 	private void _TimePassed(){
-		if (_timePassed)
-			this.QueueFree();
-		else
-			_timePassed = true;
+		this.QueueFree();
 	}
 
 }

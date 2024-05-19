@@ -15,15 +15,20 @@ public partial class finish : Control
 		_input = GetNode<LineEdit>("MarginContainer/HBoxContainer/Options/VBoxContainer/Name");
 		_save = GetNode<Button>("MarginContainer/HBoxContainer/Options/VBoxContainer/Save");
 
-		int pb = replay_handler.GetReplay().Length ;	
+		int pb = 0;	
+		try {
+			pb = replay_handler.GetReplay().Length ;
+		}
+		catch {}
+
 		var PBlabel = GetNode<Label>("FromPB");
-		if (pb < _current.Length) {
+		if (pb < _current.Length && pb != 0) {
 			PBlabel.Text = "+";
 			PBlabel.LabelSettings.FontColor = new Color(1f,0f,0f);
-		} else if (pb > _current.Length) {
+		} else if (pb > _current.Length && pb != 0) {
 			PBlabel.Text = "-";
 			PBlabel.LabelSettings.FontColor = new Color(0f,0f,1f);
-		} else if (pb == _current.Length) { 
+		} else if (pb == _current.Length || pb == 0) { 
 			PBlabel.Text = "=";
 			PBlabel.LabelSettings.FontColor = new Color(.3f,.3f,.3f);
 		}

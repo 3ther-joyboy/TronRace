@@ -7,6 +7,7 @@ public partial class health_component : Node
 	[Export(PropertyHint.Range, "1,10,1,or_greater")]
 	// max health points, if reaches zero parrent will be killed >:D
 		private int hp { get; set; }= 1;
+		private bool _dead = false;
 	private int maxHealth;
 
 	//	[Export(PropertyHint.Range, "0,1,0.1,or_Greater")]
@@ -37,7 +38,7 @@ public partial class health_component : Node
 		if(!invincibilityState){
 			hp -= damage;
 			Invincibility(invincibilitySeconds);
-			if(hp<= 0) Die();
+			if(hp<= 0 && !_dead) Die();
 		}
 		if(GetParent().HasNode("visual"))GetParent().GetNode<Node2D>("visual").Call("Blink");
 	}
@@ -58,6 +59,7 @@ public partial class health_component : Node
 	// Dying
 	// only function that should be able to kill nodes [dont create other]
 	private void Die(){
+		_dead = true;
 		// spawns visual part of parrent node 
 		if(ragdollOnDeath){
 

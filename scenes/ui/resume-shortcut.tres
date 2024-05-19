@@ -1,0 +1,31 @@
+[gd_resource type="Shortcut" load_steps=7 format=3 uid="uid://cy0nx3u7p5pbm"]
+
+[sub_resource type="InputEventScreenTouch" id="InputEventScreenTouch_etpnn"]
+index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_npnt6"]
+device = -1
+keycode = 4194305
+physical_keycode = 4194305
+key_label = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_0lqyn"]
+device = -1
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_dk03j"]
+button_index = 6
+pressed = true
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_piav7"]
+button_index = 9
+pressed = true
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_qjcya"]
+button_index = 10
+pressed = true
+
+[resource]
+events = [SubResource("InputEventScreenTouch_etpnn"), SubResource("InputEventKey_npnt6"), SubResource("InputEventKey_0lqyn"), SubResource("InputEventJoypadButton_dk03j"), SubResource("InputEventJoypadButton_piav7"), SubResource("InputEventJoypadButton_qjcya")]
