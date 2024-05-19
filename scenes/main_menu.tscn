@@ -87,6 +87,10 @@ layout_mode = 2
 layout_mode = 2
 text = "test_world"
 
+[node name="first_steps" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
+layout_mode = 2
+text = "First Steps"
+
 [node name="ButtonBack" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
 layout_mode = 2
 text = "Back"
@@ -163,6 +167,7 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSettings" to="." method="ShowSettings"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/test_world" to="." method="SoloPlay" binds= [&"test_world"]]
+[connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/first_steps" to="." method="SoloPlay" binds= [&"first_steps"]]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Community/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Editor/VBoxContainer/ButtonBack" to="." method="Back"]

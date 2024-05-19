@@ -11,7 +11,6 @@ public partial class finish : Control
 	private Button _save;
 
 	public override void _Ready(){
-		replay_handler.AutoSave();
 
 		_input = GetNode<LineEdit>("MarginContainer/HBoxContainer/Options/VBoxContainer/Name");
 		_save = GetNode<Button>("MarginContainer/HBoxContainer/Options/VBoxContainer/Save");
@@ -21,18 +20,21 @@ public partial class finish : Control
 		if (pb < _current.Length) {
 			PBlabel.Text = "+";
 			PBlabel.LabelSettings.FontColor = new Color(1f,0f,0f);
-		} else if (pb == _current.Length) {
-			PBlabel.Text = "";
-			PBlabel.LabelSettings.FontColor = new Color(.3f,.3f,.3f);
-		} else { 
+		} else if (pb > _current.Length) {
 			PBlabel.Text = "-";
 			PBlabel.LabelSettings.FontColor = new Color(0f,0f,1f);
+		} else if (pb == _current.Length) { 
+			PBlabel.Text = "=";
+			PBlabel.LabelSettings.FontColor = new Color(.3f,.3f,.3f);
 		}
 
 		PBlabel.Text += " " + (Math.Abs((float)(_current.Length - pb)) / _tps) + " S";
 
 
 		GetNode<Label>("Time/Time").Text = Math.Floor(_current.Length / (_tps * 60)) + " : " + Math.Floor(_current.Length / _tps) + " . " + _current.Length % _tps ;
+
+		// auto save run last
+		replay_handler.AutoSave();
 	}
 	private void _NameInput(String name) {
 		bool now = false;
