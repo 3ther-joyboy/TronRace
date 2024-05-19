@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://cw00k74yu5oip"]
 
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_04rob"]
-[ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="2_an0b0"]
 [ext_resource type="Script" path="res://scenes/ui/finish.cs" id="2_m2i3d"]
+[ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="3_s3emn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vs0gu"]
 font_size = 30
 font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3n1oj"]
-font = ExtResource("2_an0b0")
+font = ExtResource("3_s3emn")
 font_size = 45
 
 [node name="Finish" type="Control"]

@@ -1,9 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://di1iawws2d8ni"]
 
 [ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_5ybk6"]
-[ext_resource type="AudioStream" uid="uid://budmgy8ghp1ja" path="res://assets/audio/start.mp3" id="2_as8no"]
+[ext_resource type="AudioStream" uid="uid://djwogwbhdu5t" path="res://assets/audio/player-engine-humming.mp3" id="2_xr3q1"]
 [ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="2_yrd2b"]
-[ext_resource type="AudioStream" uid="uid://cbclrvvpyur1b" path="res://assets/audio/end.mp3" id="3_3lblp"]
 [ext_resource type="Script" path="res://scripts/components/effects/particles.cs" id="4_5pevn"]
 [ext_resource type="AudioStream" uid="uid://ylff5hch60a4" path="res://assets/audio/Crash-glass.mp3" id="4_7j6vi"]
 [ext_resource type="Texture2D" uid="uid://c0vt7kctymrj8" path="res://assets/textures/ship.png" id="5_p3kdq"]
@@ -11,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/moving_camera.cs" id="6_vxjcf"]
 [ext_resource type="PackedScene" uid="uid://b1yybg8yw63h6" path="res://scenes/components/player.tscn" id="7_ss4xq"]
 [ext_resource type="PackedScene" uid="uid://1y6q3x2q6aaf" path="res://scenes/components/replay.tscn" id="9_65w53"]
+[ext_resource type="PackedScene" uid="uid://dskvsxql507ul" path="res://scenes/components/expolosition_component.tscn" id="11_1pnd1"]
 [ext_resource type="Script" path="res://scripts/lockRotation.cs" id="13_xlog3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fg1hb"]
@@ -27,8 +27,8 @@ contact_monitor = true
 script = ExtResource("1_5ybk6")
 acceleration = 1000
 collisionThreshold = 2000
-movingStartSoundEffect = ExtResource("2_as8no")
-movingGoingSoundEffect = ExtResource("3_3lblp")
+_loud_going = 1.3
+movingGoingSoundEffect = ExtResource("2_xr3q1")
 _crashSoundEffect = ExtResource("4_7j6vi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -36,13 +36,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fg1hb")
 
 [node name="visual" parent="." instance=ExtResource("2_yrd2b")]
-
-[node name="variable" type="Node2D" parent="visual"]
-
-[node name="Sprite2D" type="Sprite2D" parent="visual/variable"]
-rotation = -1.5708
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_p3kdq")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="visual"]
 z_index = -1
@@ -64,6 +57,26 @@ scale_amount_min = 0.0
 scale_amount_max = 5.0
 script = ExtResource("4_5pevn")
 
+[node name="tron line" type="CPUParticles2D" parent="visual"]
+z_index = -1
+position = Vector2(-24, 0)
+emitting = false
+amount = 100
+gravity = Vector2(0, 0)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.796078, 1, 1, 0.435294)
+script = ExtResource("4_5pevn")
+
+[node name="variable" type="Node2D" parent="visual"]
+
+[node name="Sprite2D" type="Sprite2D" parent="visual/variable"]
+rotation = -1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_p3kdq")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
 top_level = true
@@ -73,6 +86,7 @@ script = ExtResource("6_vxjcf")
 drawSircle = true
 
 [node name="health" parent="." instance=ExtResource("5_psujs")]
+onDeathSpawn = ExtResource("11_1pnd1")
 
 [node name="Replay" parent="." instance=ExtResource("9_65w53")]
 
