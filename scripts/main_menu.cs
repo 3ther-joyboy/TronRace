@@ -50,6 +50,9 @@ public partial class main_menu : Control
 	// tmp function for starting level
 	private void SoloPlay(string name)
 	{
+		replay_handler.lastPlayedMap = name;
+		//lukaš  ^^
+		//franta vv
 		GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
 	}
 

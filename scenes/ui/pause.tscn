@@ -97,6 +97,12 @@ layout_mode = 2
 icon = ExtResource("6_pti4l")
 expand_icon = true
 
+[node name="ButtonResume2" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+icon = ExtResource("6_pti4l")
+expand_icon = true
+
 [node name="Audio" type="PanelContainer" parent="Control/MenuMain/VBoxContainer"]
 layout_mode = 2
 
@@ -137,6 +143,7 @@ value = 1.0
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonRestart" to="Control" method="Restart"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume2" to="Control" method="PlayBackTest"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Master" to="Control" method="SetVolumeMaster"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Music" to="Control" method="SetVolumeMusic"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/SFX" to="Control" method="SetVolumeSFX"]

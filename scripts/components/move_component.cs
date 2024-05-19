@@ -26,10 +26,16 @@ public partial class move_component : RigidBody2D
 
 	[ExportCategory("Audio")]
 	private bool audioPlaing = false;
+	[Export(PropertyHint.Range, "0,1.3,or_greater")]
+	private float _loud_start = 1;
 	[Export(PropertyHint.File, "*.mp3,")]
 	private AudioStreamMP3 movingStartSoundEffect;
+	[Export(PropertyHint.Range, "0,1.3")]
+	private float _loud_going = 1;
 	[Export(PropertyHint.File, "*.mp3,")]
 	private AudioStreamMP3 movingGoingSoundEffect;
+	[Export(PropertyHint.Range, "0,1.3,or_greater")]
+	private float _loud_crash = 1;
 	[Export(PropertyHint.File, "*.mp3,")]
 	private AudioStreamMP3 _crashSoundEffect;
 
@@ -51,6 +57,7 @@ public partial class move_component : RigidBody2D
 	}
 
 	public override void _PhysicsProcess(double delta){
+		_crashAudioNode.VolumeDb = _loud_crash;
 		CollisionDamage(delta);
 
 		// accelereation
@@ -62,6 +69,7 @@ public partial class move_component : RigidBody2D
 		if(movingState){
 
 			if(!_engineAudioNode.Playing && audioPlaing){
+				_engineAudioNode.VolumeDb = _loud_going; 
 				_engineAudioNode.Stream = movingGoingSoundEffect;
 			}
 
@@ -74,6 +82,7 @@ public partial class move_component : RigidBody2D
 				_engineAudioNode.Stop();
 				audioPlaing = false;
 				_engineAudioNode.Stream = movingStartSoundEffect;
+				_engineAudioNode.VolumeDb = _loud_start; 
 			}
 		}
 	}
@@ -93,6 +102,7 @@ public partial class move_component : RigidBody2D
 					;break; 
 				default:;break;
 			}
+			CollisionDamage(1 / (double)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second"));
 		}
 	}
 	private void CollisionDamage(double delta){
