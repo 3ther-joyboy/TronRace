@@ -68,8 +68,7 @@ text = "Community"
 
 [node name="ButtonSettings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
-text = "Settings
-"
+text = "Settings"
 
 [node name="ButtonQuit" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
@@ -83,8 +82,6 @@ size_flags_vertical = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Official"]
 layout_mode = 2
 
-<<<<<<< HEAD
-=======
 [node name="test_world" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
 layout_mode = 2
 text = "test_world"
@@ -93,7 +90,6 @@ text = "test_world"
 layout_mode = 2
 text = "First Steps"
 
->>>>>>> f00539abfe10eac495d16bbcc6b048b2a00aea46
 [node name="ButtonBack" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
 layout_mode = 2
 text = "Back"
@@ -169,11 +165,8 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonCommunity" to="." method="ShowCommunity"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSettings" to="." method="ShowSettings"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
-<<<<<<< HEAD
-=======
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/test_world" to="." method="SoloPlay" binds= [&"test_world"]]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/first_steps" to="." method="SoloPlay" binds= [&"first_steps"]]
->>>>>>> f00539abfe10eac495d16bbcc6b048b2a00aea46
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Community/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Editor/VBoxContainer/ButtonBack" to="." method="Back"]
