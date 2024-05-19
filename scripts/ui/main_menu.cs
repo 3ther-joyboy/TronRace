@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Data;
 
 public partial class main_menu : Control
 {
@@ -16,7 +17,19 @@ public partial class main_menu : Control
 		_settings = GetNode<PanelContainer>("VBoxContainer/Settings");
 	}
 
-	private void ShowOfficial() { _menu.Hide(); _official.Show(); }
+	private void ShowOfficial()
+	{
+		_menu.Hide();
+		foreach (PackedScene map in server.maps)
+		{
+			Button button = new Button();
+			button.Text = map.ResourceName;
+			_official.AddChild(button);
+		}
+
+		_official.Show();
+	}
+
 	private void ShowCommunity() { _menu.Hide(); _community.Show(); }
 
 
