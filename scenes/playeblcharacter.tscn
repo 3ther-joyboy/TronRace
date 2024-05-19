@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/moving_camera.cs" id="6_vxjcf"]
 [ext_resource type="PackedScene" uid="uid://b1yybg8yw63h6" path="res://scenes/components/player.tscn" id="7_ss4xq"]
 [ext_resource type="PackedScene" uid="uid://1y6q3x2q6aaf" path="res://scenes/components/replay.tscn" id="9_65w53"]
-[ext_resource type="PackedScene" uid="uid://dskvsxql507ul" path="res://scenes/components/expolosition_component.tscn" id="11_1pnd1"]
+[ext_resource type="PackedScene" uid="uid://gljmesfcud2r" path="res://scenes/dead-player.tscn" id="10_jk2u0"]
 [ext_resource type="Script" path="res://scripts/lockRotation.cs" id="13_xlog3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fg1hb"]
@@ -24,6 +24,7 @@ gravity_scale = 0.0
 can_sleep = false
 max_contacts_reported = 5
 contact_monitor = true
+linear_damp = 0.1
 script = ExtResource("1_5ybk6")
 acceleration = 1000
 collisionThreshold = 2000
@@ -86,7 +87,7 @@ script = ExtResource("6_vxjcf")
 drawSircle = true
 
 [node name="health" parent="." instance=ExtResource("5_psujs")]
-onDeathSpawn = ExtResource("11_1pnd1")
+onDeathSpawn = ExtResource("10_jk2u0")
 
 [node name="Replay" parent="." instance=ExtResource("9_65w53")]
 

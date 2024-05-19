@@ -35,6 +35,7 @@ public partial class push_feald_component : Area2D
 			if (push[i].IsClass("RigidBody2D")) {
 				RigidBody2D obj = (RigidBody2D)push[i];
 				if (_sight) {
+					_ray.GlobalRotation = 0;
 					_ray.TargetPosition = obj.GlobalPosition - this.GlobalPosition;
 					if (_ray.GetCollider() == obj)
 						obj.ApplyCentralForce( _pushForce * _GetDirection( push[i] ) * (float)delta);

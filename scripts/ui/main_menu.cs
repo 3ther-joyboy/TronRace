@@ -38,6 +38,7 @@ public partial class main_menu : Control
 	private void SoloPlay(string name)
 	{
 		replay_handler.lastPlayedMap = name;
+		GetTree().Paused = true;
 		//lukaš  ^^
 		//franta vv
 		GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");

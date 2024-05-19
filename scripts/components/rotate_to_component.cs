@@ -34,9 +34,8 @@ public partial class rotate_to_component : Area2D
 				cast.TargetPosition = obj.GlobalPosition - cast.GlobalPosition;
 
 				var castedPlayer = cast.GetCollider();
-				if(castedPlayer != null && castedPlayer.IsClass("RigidBody2D") && ((RigidBody2D)castedPlayer).HasNode(name)){
-					player = (RigidBody2D)castedPlayer;
-					aimingPosition = player.GlobalPosition;
+				if((castedPlayer != null && castedPlayer.IsClass("RigidBody2D") && ((RigidBody2D)castedPlayer).HasNode(name)) || seeOverLand){
+					aimingPosition = obj.GlobalPosition;
 					break;
 				}
 			}

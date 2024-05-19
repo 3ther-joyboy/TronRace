@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dskvsxql507ul"]
+[gd_scene load_steps=5 format=3 uid="uid://dskvsxql507ul"]
 
 [ext_resource type="Script" path="res://scripts/components/expolosition_component.cs" id="1_g6kvv"]
 [ext_resource type="AudioStream" uid="uid://smgp2074chsf" path="res://assets/audio/explosion-129711.mp3" id="2_cdip4"]
+[ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="3_xobpx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdquo"]
+radius = 184.459
 
 [node name="Explosition" type="CPUParticles2D"]
 z_index = -1
@@ -28,6 +32,15 @@ _sound = ExtResource("2_cdip4")
 attenuation = 0.329877
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="PushFeald" parent="." instance=ExtResource("3_xobpx")]
+collision_layer = 8
+_pushForce = -1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushFeald"]
+shape = SubResource("CircleShape2D_kdquo")
 
 [connection signal="finished" from="Audio" to="." method="_TimePassed"]
-[connection signal="timeout" from="Timer" to="." method="_TimePassed"]
+[connection signal="timeout" from="Timer" to="." method="_Force"]

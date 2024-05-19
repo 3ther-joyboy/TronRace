@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://btaurnw0kga5f"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.cs" id="1_dfcg4"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.cs" id="1_dfcg4"]
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
 [ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="3_m4k14"]
 
@@ -91,6 +91,11 @@ text = "test_world"
 layout_mode = 2
 text = "First Steps"
 
+[node name="citty_edge" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
+layout_mode = 2
+text = "Citty Edge
+"
+
 [node name="ButtonBack" type="Button" parent="VBoxContainer/Official/VBoxContainer"]
 layout_mode = 2
 text = "Back"
@@ -168,6 +173,7 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/test_world" to="." method="SoloPlay" binds= [&"test_world"]]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/first_steps" to="." method="SoloPlay" binds= [&"first_steps"]]
+[connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/citty_edge" to="." method="SoloPlay" binds= [&"citty_edge"]]
 [connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Community/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Editor/VBoxContainer/ButtonBack" to="." method="Back"]
