@@ -68,7 +68,8 @@ text = "Community"
 
 [node name="ButtonSettings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
-text = "Settings"
+text = "Settings
+"
 
 [node name="ButtonQuit" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
