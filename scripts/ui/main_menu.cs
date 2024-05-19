@@ -17,25 +17,7 @@ public partial class main_menu : Control
 		_settings = GetNode<PanelContainer>("VBoxContainer/Settings");
 		_replay = GetNode<PanelContainer>("VBoxContainer/Replas");
 
-		
-		var list = _replay.GetNode<ItemList>("VBoxContainer/ItemList");
-		list.Clear();
-		var texture = new PlaceholderTexture2D();
-		texture.Size = Vector2.Zero;
 
-		using var dir = DirAccess.Open(replay_handler._path + "personal_bests/");
-		String[] replays = dir.GetFiles();
-
-// get best times
-		for (int i = 0; i < replays.Length; i++)
-			list.AddItem("personal_bests/" + replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
-
-// others
-		dir.ChangeDir("..");
-		replays = dir.GetFiles();
-
-		for (int i = 0; i < replays.Length; i++)
-			list.AddItem(replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
 	}
 
 
@@ -59,6 +41,26 @@ public partial class main_menu : Control
 		GetTree().Root.GetNode<replay_handler>("ReplayHandler").Play(what);
 	}
 	private void _ShowReplays(){
+// lukaš moment
+		var list = _replay.GetNode<ItemList>("VBoxContainer/ItemList");
+		list.Clear();
+		var texture = new PlaceholderTexture2D();
+		texture.Size = Vector2.Zero;
+
+		using var dir = DirAccess.Open(replay_handler._path + "personal_bests/");
+		String[] replays = dir.GetFiles();
+
+		// get best times
+		for (int i = 0; i < replays.Length; i++)
+			list.AddItem("personal_bests/" + replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
+
+		// others
+		dir.ChangeDir("..");
+		replays = dir.GetFiles();
+
+		for (int i = 0; i < replays.Length; i++)
+			list.AddItem(replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
+
 		_menu.Hide();
 		_replay.Show();
 	}
