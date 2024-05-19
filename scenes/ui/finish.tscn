@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw00k74yu5oip"]
+[gd_scene load_steps=14 format=3 uid="uid://cw00k74yu5oip"]
 
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_04rob"]
 [ext_resource type="Script" path="res://scenes/ui/finish.cs" id="2_m2i3d"]
@@ -11,6 +11,39 @@ font_color = Color(1, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_3n1oj"]
 font = ExtResource("3_s3emn")
 font_size = 45
+
+[sub_resource type="InputEventScreenTouch" id="InputEventScreenTouch_etpnn"]
+index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_npnt6"]
+device = -1
+keycode = 4194305
+physical_keycode = 4194305
+key_label = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_0lqyn"]
+device = -1
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_piav7"]
+button_index = 9
+pressed = true
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_qjcya"]
+button_index = 10
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_e348b"]
+events = [SubResource("InputEventScreenTouch_etpnn"), SubResource("InputEventKey_npnt6"), SubResource("InputEventKey_0lqyn"), SubResource("InputEventJoypadButton_piav7"), SubResource("InputEventJoypadButton_qjcya")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_1ya46"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_n4bqk"]
+events = [SubResource("InputEventJoypadButton_1ya46")]
 
 [node name="Finish" type="Control"]
 layout_mode = 3
@@ -108,11 +141,13 @@ alignment = 1
 [node name="Restart" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_e348b")
 text = "Restart"
 
 [node name="Menu" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_n4bqk")
 text = "Menu
 "
 

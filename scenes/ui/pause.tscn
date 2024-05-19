@@ -1,11 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://eqwcewka68ie"]
+[gd_scene load_steps=11 format=3 uid="uid://eqwcewka68ie"]
 
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_58atc"]
 [ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
+[ext_resource type="Shortcut" uid="uid://cy0nx3u7p5pbm" path="res://scenes/ui/resume-shortcut.tres" id="3_8h5fd"]
 [ext_resource type="Texture2D" uid="uid://sbcrysagigmm" path="res://assets/textures/ui/pause.png" id="3_82el2"]
 [ext_resource type="Texture2D" uid="uid://daig7rt2lhpn5" path="res://assets/textures/ui/restart.png" id="5_maats"]
 [ext_resource type="Texture2D" uid="uid://baj56ovdl2rkq" path="res://assets/textures/ui/home.png" id="5_v1wi6"]
 [ext_resource type="Texture2D" uid="uid://cst4oim7ec8nb" path="res://assets/textures/ui/resume.png" id="6_pti4l"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ik5il"]
+device = -1
+physical_keycode = 82
+unicode = 114
+
+[sub_resource type="InputEventScreenTouch" id="InputEventScreenTouch_5h4ls"]
+index = 2
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_h2f7x"]
+events = [SubResource("InputEventKey_ik5il"), SubResource("InputEventScreenTouch_5h4ls")]
 
 [node name="Pause" type="CanvasLayer"]
 
@@ -46,6 +59,7 @@ grow_horizontal = 0
 scale = Vector2(0.1, 0.1)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+shortcut = ExtResource("3_8h5fd")
 texture_normal = ExtResource("3_82el2")
 
 [node name="MenuMain" type="Control" parent="Control"]
@@ -88,12 +102,14 @@ expand_icon = true
 [node name="ButtonRestart" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+shortcut = SubResource("Shortcut_h2f7x")
 icon = ExtResource("5_maats")
 expand_icon = true
 
 [node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+shortcut = ExtResource("3_8h5fd")
 icon = ExtResource("6_pti4l")
 expand_icon = true
 

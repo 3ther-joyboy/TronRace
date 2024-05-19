@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://btaurnw0kga5f"]
+[gd_scene load_steps=6 format=3 uid="uid://btaurnw0kga5f"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.cs" id="1_dfcg4"]
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
 [ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="3_m4k14"]
+
+[sub_resource type="Shortcut" id="Shortcut_bmo1k"]
+events = [null]
+
+[sub_resource type="Shortcut" id="Shortcut_2sgje"]
+events = [null]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -60,6 +66,8 @@ layout_mode = 2
 
 [node name="ButtonOfficial" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_bmo1k")
+shortcut_feedback = false
 text = "Official"
 
 [node name="ButtonCommunity" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
@@ -68,6 +76,7 @@ text = "Community"
 
 [node name="ButtonSettings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_2sgje")
 text = "Settings
 "
 

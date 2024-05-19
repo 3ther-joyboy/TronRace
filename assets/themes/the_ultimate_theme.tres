@@ -18,7 +18,7 @@ corner_radius_top_left = 20
 corner_radius_bottom_right = 20
 corner_detail = 1
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgs2c"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5l5re"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrusn"]
 content_margin_left = 8.0
@@ -148,7 +148,7 @@ corner_detail = 1
 [resource]
 default_font = ExtResource("2_xi5it")
 Button/styles/disabled = SubResource("StyleBoxFlat_po8o7")
-Button/styles/focus = SubResource("StyleBoxEmpty_pgs2c")
+Button/styles/focus = SubResource("StyleBoxEmpty_5l5re")
 Button/styles/hover = SubResource("StyleBoxFlat_hrusn")
 Button/styles/normal = ExtResource("1_h7ih5")
 Button/styles/pressed = ExtResource("1_h7ih5")

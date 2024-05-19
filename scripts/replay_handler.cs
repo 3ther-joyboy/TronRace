@@ -88,9 +88,7 @@ public partial class replay_handler  : Node
 			try {
 				var test = jsonNodeReplay["replay"][i];
 			}
-			catch (Exception e) {
-				break;
-			}
+			catch {break;}
 			Array.Resize(ref replay,i + 1);
 			replay[i] = new RecordFormat(jsonNodeReplay["replay"][i]);
 		}
