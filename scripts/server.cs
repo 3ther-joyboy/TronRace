@@ -86,7 +86,6 @@ public partial class server : Node
 
 	private void ConnectionSuccessful()
 	{
-<<<<<<< HEAD
 		RpcId(1, "handleUserInfo", _peer.GetUniqueId(), user_id, user_name);
 	}
 
@@ -107,9 +106,4 @@ public partial class server : Node
 	// server rpc function declarations
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	extern private void handleUserInfo(int con_id, int id, string name);
-=======
-		_connection_id = Multiplayer.GetUniqueId();
-		GD.Print("id: " + _connection_id);
-	}
->>>>>>> f00539abfe10eac495d16bbcc6b048b2a00aea46
 }
