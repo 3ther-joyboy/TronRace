@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class server : Node
 {
@@ -13,12 +14,15 @@ public partial class server : Node
 	// public static string default_ip = "141.145.207.166";
 	public static string default_ip = "127.0.0.1";
 	public static int port = 25565;
+	public static List<PackedScene> maps;
 
 	// client
 	private ENetMultiplayerPeer _peer;
 
 	public override void _Ready()
 	{
+		maps = new List<PackedScene>();
+
 		LoadConfig();
 
 		Multiplayer.PeerConnected += PlayerConnected;
@@ -81,9 +85,24 @@ public partial class server : Node
 
 	private void ConnectionSuccessful()
 	{
-		RpcId(1, "printUserInfo", user_id, user_name);
+		RpcId(1, "handleUserInfo", _peer.GetUniqueId(), user_id, user_name);
 	}
 
+	// user rpc function definitions
+	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	private void handleOfficialMap(string map)
+	{
+		// strore map as temporal scene file
+		var file = FileAccess.Open("user://temp.tscn", FileAccess.ModeFlags.Write);
+		file.StoreString(map);
+		// make scene from temporal scene file
+		var scene = ResourceLoader.Load<PackedScene>("user://temp.tscn");
+
+		GetTree().ChangeSceneToPacked(scene);
+		// maps.Add(scene);
+	}
+
+	// server rpc function declarations
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	extern private void printUserInfo(int id, string name);
+	extern private void handleUserInfo(int con_id, int id, string name);
 }
