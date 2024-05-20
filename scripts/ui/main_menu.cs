@@ -20,12 +20,6 @@ public partial class main_menu : Control
 
 	}
 
-
-
-	private void ShowOfficial() { _menu.Hide(); _official.Show(); }
-	private void ShowCommunity() { _menu.Hide(); _community.Show(); }
-
-
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventKey eventKey) {
@@ -34,6 +28,38 @@ public partial class main_menu : Control
 			if (eventKey.Keycode == (Key)4194332) // f1
 				_ShowReplays();
 		}
+	}
+
+
+
+	private void ShowCommunity() { _menu.Hide(); _community.Show(); }
+
+
+	private void ShowOfficial() { 
+
+		var list = _official.GetNode<ItemList>("VBoxContainer/ItemList");
+		list.Clear();
+		var texture = new PlaceholderTexture2D();
+		texture.Size = Vector2.Zero;
+
+		using var dir = DirAccess.Open("res://scenes/maps/");
+		String[] replays = dir.GetFiles();
+		replays = dir.GetFiles();
+
+		for (int i = 0; i < replays.Length; i++)
+			list.AddItem(replays[i].Remove(replays[i].Length - ".tscn".Length), texture, true);
+
+		_menu.Hide(); _official.Show(); 
+	}
+
+	private void _PlayMap(int index) {
+
+		String name = _official.GetNode<ItemList>("VBoxContainer/ItemList").GetItemText(index);
+
+		GetTree().Paused = true;
+
+		replay_handler.lastPlayedMap = name;
+		GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
 	}
 
 	private void _PlayReplay(int index) {
@@ -69,16 +95,6 @@ public partial class main_menu : Control
 	{
 		_menu.Hide();
 		GetTree().ChangeSceneToFile("res://scenes/lvl_editor/lvl_editor.tscn");
-	}
-
-	// tmp function for starting level
-	private void SoloPlay(string name)
-	{
-		replay_handler.lastPlayedMap = name;
-		GetTree().Paused = true;
-		//lukaš  ^^
-		//franta vv
-		GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
 	}
 
 	private void ShowSettings()

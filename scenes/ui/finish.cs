@@ -28,15 +28,15 @@ public partial class finish : Control
 		} else if (pb > _current.Length && pb != 0) {
 			PBlabel.Text = "-";
 			PBlabel.LabelSettings.FontColor = new Color(0f,0f,1f);
-		} else if (pb == _current.Length || pb == 0) { 
-			PBlabel.Text = "=";
-			PBlabel.LabelSettings.FontColor = new Color(.3f,.3f,.3f);
 		}
-
 		PBlabel.Text += " " + (Math.Abs((float)(_current.Length - pb)) / _tps) + " S";
 
 
 		GetNode<Label>("Time/Time").Text = Math.Floor(_current.Length / (_tps * 60)) + " : " + Math.Floor(_current.Length / _tps) + " . " + _current.Length % _tps ;
+
+		if (pb == _current.Length || pb == 0) { 
+			PBlabel.Text = "";
+		}
 
 		// auto save run last
 		replay_handler.AutoSave();
