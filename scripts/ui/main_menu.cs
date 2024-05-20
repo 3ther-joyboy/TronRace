@@ -9,6 +9,16 @@ public partial class main_menu : Control
 	private PanelContainer _settings;
 	private PanelContainer _replay;
 
+
+	public static String[] dirs = {"Easy","Normal","Tron","Dev"};
+
+	public static String[,] maps = {
+		{"first_steps","citty_edge","town_square"},
+		{"kokot",null,null},
+		{"idk",null,null},
+		{"test_world",null,null}
+	};
+
 	public override void _Ready()
 	{
 		_menu = GetNode<PanelContainer>("VBoxContainer/Main");
@@ -46,24 +56,25 @@ public partial class main_menu : Control
 		var texture = new PlaceholderTexture2D();
 		texture.Size = Vector2.Zero;
 
-		using var dir = DirAccess.Open("res://scenes/maps/");
-		String[] dirs = dir.GetDirectories();
+		for (int i = 0; i < dirs.Length; i++){
+			ItemList list = new ItemList();
+			list.Name = dirs[i];
+			list.CustomMinimumSize = new Vector2(0,300);
 
+			for (int y = 0; y < maps.GetLength(1); y++) {
+				try { list.AddItem(maps[i, y], texture, true);}
+				catch {}
+			}
+
+			list.ItemSelected += (index) => _PlayMap((int)index ,list.Name);
+
+			lists.AddChild(list);
+		}
 		for (int i = 0; i < dirs.Length; i++)
-			if (dirs[i] != "Dev") {
-				dir.ChangeDir(dirs[i]);
-				String[] maps = dir.GetFiles();
-				ItemList list = new ItemList();
-				list.Name = dirs[i];
-				list.CustomMinimumSize = new Vector2(0,300);
-
-				for (int y = 0; y < maps.Length; y++)
-					list.AddItem(maps[y].Remove(maps[y].Length - ".tscn".Length), texture, true);
-
-				list.ItemSelected += (index) => _PlayMap((int)index ,list.Name);
-
-				lists.AddChild(list);
-				dir.ChangeDir("..");
+			if ((DirAccess.Open(replay_handler._path)).FileExists(dirs[i])) {
+				if (dirs[i] == "Dev") 
+					lists.SetTabHidden(i,true);
+				lists.SetTabDisabled(i,true);
 			}
 
 
@@ -91,19 +102,21 @@ public partial class main_menu : Control
 		var texture = new PlaceholderTexture2D();
 		texture.Size = Vector2.Zero;
 
-		using var dir = DirAccess.Open(replay_handler._path + "personal_bests/");
-		String[] replays = dir.GetFiles();
+		for (int file = 0; file < dirs.Length; file++) {
+			String[] jsonReplays = DirAccess.GetFilesAt(replay_handler._path + "personal_bests/" + dirs[file] + "/");
 
-		// get best times
-		for (int i = 0; i < replays.Length; i++)
-			list.AddItem("personal_bests/" + replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
+			// get best times
+			for (int i = 0; i < jsonReplays.Length; i++)
+				list.AddItem("personal_bests/" + dirs[file] + "/" + jsonReplays[i].Remove(jsonReplays[i].Length - replay_handler._filenameExtension.Length), texture, true);
+
+		}
 
 		// others
-		dir.ChangeDir("..");
-		replays = dir.GetFiles();
+		String[] replays = DirAccess.Open(replay_handler._path).GetFiles();
 
 		for (int i = 0; i < replays.Length; i++)
-			list.AddItem(replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
+			if(replays[i].EndsWith(replay_handler._filenameExtension))
+				list.AddItem(replays[i].Remove(replays[i].Length - replay_handler._filenameExtension.Length), texture, true);
 
 		_menu.Hide();
 		_replay.Show();
