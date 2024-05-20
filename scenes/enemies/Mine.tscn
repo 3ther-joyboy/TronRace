@@ -10,8 +10,8 @@ radius = 14.0
 height = 38.0
 
 [node name="Mine" type="RigidBody2D"]
-collision_layer = 9
-collision_mask = 27
+collision_layer = 8
+collision_mask = 25
 mass = 0.01
 gravity_scale = 0.0
 can_sleep = false
