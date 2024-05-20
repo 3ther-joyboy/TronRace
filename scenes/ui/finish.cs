@@ -43,9 +43,11 @@ public partial class finish : Control
 	}
 	private void _NameInput(String name) {
 		bool now = false;
+		String badCharacters = " \"\'\\./°#&@{}=|?:%*<>";
 		for (int i = 0; i < name.Length; i++)
-			if (name[i] == ' ')
-				now = true;
+			for (int y = 0; y < badCharacters.Length; y++)
+				if (name[i] == badCharacters[y])
+					now = true;
 		if (name == "")
 			now = true;
 		_save.Disabled = now;

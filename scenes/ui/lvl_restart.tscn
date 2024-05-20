@@ -26,3 +26,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "skill issue
 "
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_Restart"]
