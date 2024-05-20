@@ -117,10 +117,8 @@ icon = ExtResource("6_pti4l")
 expand_icon = true
 
 [node name="ButtonReplay" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-icon = ExtResource("6_pti4l")
-expand_icon = true
+text = "Best replay"
 
 [node name="Audio" type="PanelContainer" parent="Control/MenuMain/VBoxContainer"]
 layout_mode = 2

@@ -37,7 +37,7 @@ public partial class main_menu : Control
 
 	private void ShowOfficial() { 
 
-		var list = _official.GetNode<ItemList>("VBoxContainer/ItemList");
+		var list = GetNode<ItemList>("VBoxContainer/Official/VBoxContainer/ItemList");
 		list.Clear();
 		var texture = new PlaceholderTexture2D();
 		texture.Size = Vector2.Zero;

@@ -98,7 +98,7 @@ public partial class server : Node
 		patch_zip.StoreBuffer(patch_bytes);
 		patch_zip.Close();
 
-		ProjectSettings.LoadResourcePack("user://patch.zip");
+		// ProjectSettings.LoadResourcePack("user://patch.zip");
 		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
 		
 		// var file = FileAccess.Open("user://temp.tscn", FileAccess.ModeFlags.Write);
