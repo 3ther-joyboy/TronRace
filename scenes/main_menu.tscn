@@ -209,6 +209,7 @@ text = "Back"
 [connection signal="item_selected" from="VBoxContainer/Replas/VBoxContainer/ItemList" to="." method="_PlayReplay"]
 [connection signal="pressed" from="VBoxContainer/Replas/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="item_selected" from="VBoxContainer/Official/VBoxContainer/ItemList" to="." method="_PlayMap"]
+[connection signal="pressed" from="VBoxContainer/Official/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Community/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="pressed" from="VBoxContainer/Editor/VBoxContainer/ButtonBack" to="." method="Back"]
 [connection signal="item_selected" from="VBoxContainer/Settings/VBoxContainer/OptionButton" to="." method="ServerOptionSelected"]
