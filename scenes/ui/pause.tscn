@@ -88,32 +88,35 @@ grow_vertical = 2
 [node name="Navigation" type="PanelContainer" parent="Control/MenuMain/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MenuMain/VBoxContainer/Navigation"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MenuMain/VBoxContainer/Navigation"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ButtonHome" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+[node name="ButtonHome" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 icon = ExtResource("5_v1wi6")
 expand_icon = true
 
-[node name="ButtonRestart" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+[node name="ButtonRestart" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 shortcut = SubResource("Shortcut_h2f7x")
 icon = ExtResource("5_maats")
 expand_icon = true
 
-[node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+[node name="ButtonResume" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 shortcut = ExtResource("3_8h5fd")
 icon = ExtResource("6_pti4l")
 expand_icon = true
 
-[node name="ButtonResume2" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer"]
+[node name="ButtonReplay" type="Button" parent="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 icon = ExtResource("6_pti4l")
@@ -156,10 +159,10 @@ step = 0.01
 value = 1.0
 
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
-[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
-[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonRestart" to="Control" method="Restart"]
-[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
-[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/HBoxContainer/ButtonResume2" to="Control" method="PlayBackTest"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer/ButtonRestart" to="Control" method="Restart"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer/ButtonResume" to="Control" method="UnPause"]
+[connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/ButtonReplay" to="Control" method="PlayBackTest"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Master" to="Control" method="SetVolumeMaster"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/Music" to="Control" method="SetVolumeMusic"]
 [connection signal="value_changed" from="Control/MenuMain/VBoxContainer/Audio/VBoxContainer/SFX" to="Control" method="SetVolumeSFX"]
