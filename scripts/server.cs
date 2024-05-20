@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class server : Node
 {
@@ -13,6 +14,7 @@ public partial class server : Node
 	// public static string default_ip = "141.145.207.166";
 	public static string default_ip = "127.0.0.1";
 	public static int port = 25565;
+	public static List<PackedScene> maps;
 
 	// client
 	private ENetMultiplayerPeer _peer;
@@ -20,6 +22,8 @@ public partial class server : Node
 
 	public override void _Ready()
 	{
+		maps = new List<PackedScene>();
+
 		LoadConfig();
 
 		Multiplayer.PeerConnected += PlayerConnected;
@@ -63,11 +67,11 @@ public partial class server : Node
 			return;
 		}
 
-		_peer.Host.Compress(ENetConnection.CompressionMode.Zlib);
+		_peer.Host.Compress(ENetConnection.CompressionMode.None);
 		Multiplayer.MultiplayerPeer = _peer;
 	}
 
-	private void PlayerConnected(long id) { GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn"); }
+	private void PlayerConnected(long id) {}
 
 	private void PlayerDisconnected(long id)
 	{
@@ -82,7 +86,30 @@ public partial class server : Node
 
 	private void ConnectionSuccessful()
 	{
-		_connection_id = Multiplayer.GetUniqueId();
-		GD.Print("id: " + _connection_id);
+		RpcId(1, "handleUserInfo", _peer.GetUniqueId(), user_id, user_name);
 	}
+
+	// user rpc function definitions
+	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	private void loadPatch(string patch_base64)
+	{
+		byte[] patch_bytes = Convert.FromBase64String(patch_base64);
+		var patch_zip = FileAccess.Open("user://patch.zip", FileAccess.ModeFlags.Write);
+		patch_zip.StoreBuffer(patch_bytes);
+		patch_zip.Close();
+
+		ProjectSettings.LoadResourcePack("user://patch.zip");
+		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
+		
+		// var file = FileAccess.Open("user://temp.tscn", FileAccess.ModeFlags.Write);
+		// file.StoreString(map);
+		// var scene = ResourceLoader.Load<PackedScene>("user://temp.tscn");
+
+		// GetTree().ChangeSceneToPacked(scene);
+		// maps.Add(scene);
+	}
+
+	// server rpc function declarations
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	extern private void handleUserInfo(int con_id, int id, string name);
 }
