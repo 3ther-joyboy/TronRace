@@ -111,5 +111,5 @@ public partial class server : Node
 
 	// server rpc function declarations
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	extern private void handleUserInfo(int con_id, int id, string name);
+	private void handleUserInfo(int con_id, int id, string name) {}
 }
