@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://l1fhh13unexd"]
+
+[ext_resource type="Script" path="res://scripts/components/spawner_component.cs" id="1_hu421"]
+
+[node name="Marker2D" type="Marker2D"]
+script = ExtResource("1_hu421")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_Spawn"]
