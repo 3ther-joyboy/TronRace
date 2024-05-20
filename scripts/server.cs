@@ -93,20 +93,13 @@ public partial class server : Node
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	private void loadPatch(string patch_base64)
 	{
-		byte[] patch_bytes = Convert.FromBase64String(patch_base64);
-		var patch_zip = FileAccess.Open("user://patch.zip", FileAccess.ModeFlags.Write);
-		patch_zip.StoreBuffer(patch_bytes);
-		patch_zip.Close();
+		// byte[] patch_bytes = Convert.FromBase64String(patch_base64);
+		// var patch_zip = FileAccess.Open("user://patch.zip", FileAccess.ModeFlags.Write);
+		// patch_zip.StoreBuffer(patch_bytes);
+		// patch_zip.Close();
 
 		// ProjectSettings.LoadResourcePack("user://patch.zip");
 		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
-		
-		// var file = FileAccess.Open("user://temp.tscn", FileAccess.ModeFlags.Write);
-		// file.StoreString(map);
-		// var scene = ResourceLoader.Load<PackedScene>("user://temp.tscn");
-
-		// GetTree().ChangeSceneToPacked(scene);
-		// maps.Add(scene);
 	}
 
 	// server rpc function declarations
