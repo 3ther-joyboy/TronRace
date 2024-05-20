@@ -21,8 +21,9 @@ public partial class replay_handler : Node
 		DirAccess.MakeDirAbsolute(_path);
 		DirAccess.MakeDirAbsolute(_path + "personal_bests/");
 
-
 		String[] dirs = main_menu.dirs;
+		for (int i = 0; i < dirs.Length; i++)
+			DirAccess.MakeDirAbsolute(_path + "personal_bests/" + dirs[i] + "/");
 		for (int i = 1; i < dirs.Length; i++) {
 			using var file = FileAccess.Open(_path + dirs[i], FileAccess.ModeFlags.Write);
 			file.StoreString("uwu");
@@ -38,10 +39,12 @@ public partial class replay_handler : Node
 					if (main_menu.maps[files - 1,i] != null)
 						count++;
 
-
+				try {
 				String[] asdf = DirAccess.GetFilesAt(_path + "personal_bests/" + main_menu.dirs[files - 1] + "/");
 				if (asdf.Length >= main_menu.maps.GetLength(1))
 					DirAccess.RemoveAbsolute(_path + main_menu.dirs[files]);
+				}
+				catch{}
 			}
 		}
 	}
