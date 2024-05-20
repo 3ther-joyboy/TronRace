@@ -21,6 +21,7 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 [autoload]
 
+Config="*res://scripts/server.cs"
 ReplayHandler="*res://scripts/replay_handler.cs"
 server="*res://scripts/server.cs"
 
