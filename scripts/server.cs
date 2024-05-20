@@ -19,6 +19,7 @@ public partial class server : Node
 	// client
 	private ENetMultiplayerPeer _peer;
 	private int _connection_id;
+	private bool _connection_status;
 
 	public override void _Ready()
 	{
@@ -93,16 +94,24 @@ public partial class server : Node
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	private void loadPatch(string patch_base64)
 	{
-		// byte[] patch_bytes = Convert.FromBase64String(patch_base64);
-		// var patch_zip = FileAccess.Open("user://patch.zip", FileAccess.ModeFlags.Write);
-		// patch_zip.StoreBuffer(patch_bytes);
-		// patch_zip.Close();
+		byte[] patch_bytes = Convert.FromBase64String(patch_base64);
+		var patch_zip = FileAccess.Open("user://patch.zip", FileAccess.ModeFlags.Write);
+		patch_zip.StoreBuffer(patch_bytes);
+		patch_zip.Close();
 
-		// ProjectSettings.LoadResourcePack("user://patch.zip");
-		GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
+		ProjectSettings.LoadResourcePack("user://patch.zip");
+
+		switchtoOnline();
 	}
 
-	// server rpc function declarations
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+    private void switchtoOnline()
+    {
+        GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
+		GetNode<>
+    }
+
+    // server rpc function declarations
+    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	private void handleUserInfo(int con_id, int id, string name) {}
 }
