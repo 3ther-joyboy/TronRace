@@ -21,6 +21,11 @@ public partial class replay_handler : Node
 	public override void _Ready(){
 		DirAccess.MakeDirAbsolute(_path);
 		DirAccess.MakeDirAbsolute(_path + "personal_bests/");
+
+		using var dir = DirAccess.Open("res://scenes/maps/");
+		String[] dirs = dir.GetDirectories();
+		for (int i = 0; i < dirs.Length; i++)
+			DirAccess.MakeDirAbsolute(_path + "personal_bests/" + dirs[i] + "/");
 	}
 
 
@@ -40,6 +45,7 @@ public partial class replay_handler : Node
 	}
 
 	public void Play() {
+		GD.Print("personal_bests/" + lastPlayedMap);
 		Play("personal_bests/" + lastPlayedMap);
 	}
 	public void Play(String name) {

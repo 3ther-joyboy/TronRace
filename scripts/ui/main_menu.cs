@@ -36,30 +36,48 @@ public partial class main_menu : Control
 
 
 	private void ShowOfficial() { 
+		var lists = GetNode<TabContainer>("VBoxContainer/Official/VBoxContainer/TabContainer");
 
-		var list = GetNode<ItemList>("VBoxContainer/Official/VBoxContainer/ItemList");
-		list.Clear();
+		Godot.Collections.Array<Godot.Node> oldList = lists.GetChildren();
+
+		for (int y = 0; y < oldList.Count; y++)
+			lists.RemoveChild(oldList[y]);
+
 		var texture = new PlaceholderTexture2D();
 		texture.Size = Vector2.Zero;
 
 		using var dir = DirAccess.Open("res://scenes/maps/");
-		String[] replays = dir.GetFiles();
-		replays = dir.GetFiles();
+		String[] dirs = dir.GetDirectories();
 
-		for (int i = 0; i < replays.Length; i++)
-			list.AddItem(replays[i].Remove(replays[i].Length - ".tscn".Length), texture, true);
+		for (int i = 0; i < dirs.Length; i++)
+			if (dirs[i] != "Dev") {
+				dir.ChangeDir(dirs[i]);
+				String[] maps = dir.GetFiles();
+				ItemList list = new ItemList();
+				list.Name = dirs[i];
+				list.CustomMinimumSize = new Vector2(0,300);
+
+				for (int y = 0; y < maps.Length; y++)
+					list.AddItem(maps[y].Remove(maps[y].Length - ".tscn".Length), texture, true);
+
+				list.ItemSelected += (index) => _PlayMap((int)index ,list.Name);
+
+				lists.AddChild(list);
+				dir.ChangeDir("..");
+			}
+
 
 		_menu.Hide(); _official.Show(); 
 	}
 
-	private void _PlayMap(int index) {
+	private void _PlayMap(int index,String path) {
 
-		String name = _official.GetNode<ItemList>("VBoxContainer/ItemList").GetItemText(index);
+		String name = GetNode<ItemList>("VBoxContainer/Official/VBoxContainer/TabContainer/" + path).GetItemText(index);
 
 		GetTree().Paused = true;
 
-		replay_handler.lastPlayedMap = name;
-		GetTree().ChangeSceneToFile("res://scenes/maps/" + name + ".tscn");
+		replay_handler.lastPlayedMap = path + "/" + name;
+		GetTree().ChangeSceneToFile("res://scenes/maps/" + replay_handler.lastPlayedMap + ".tscn");
 	}
 
 	private void _PlayReplay(int index) {
@@ -67,7 +85,7 @@ public partial class main_menu : Control
 		GetTree().Root.GetNode<replay_handler>("ReplayHandler").Play(what);
 	}
 	private void _ShowReplays(){
-// lukaš moment
+		// lukaš moment
 		var list = _replay.GetNode<ItemList>("VBoxContainer/ItemList");
 		list.Clear();
 		var texture = new PlaceholderTexture2D();

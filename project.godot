@@ -19,6 +19,10 @@ boot_splash/show_image=false
 
 buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
+[autoload]
+
+ReplayHandler="*res://scripts/replay_handler.cs"
+
 [display]
 
 window/size/viewport_width=500

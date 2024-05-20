@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://mcohagi4iqke"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://mcohagi4iqke"]
 
 [ext_resource type="StyleBox" uid="uid://b55g02e4y8j8n" path="res://assets/themes/style_box_flat.tres" id="1_h7ih5"]
 [ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="2_xi5it"]
@@ -68,7 +68,7 @@ corner_radius_top_left = 12
 corner_radius_bottom_right = 12
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fo8n"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ob2k"]
 content_margin_left = 16.0
 content_margin_top = 16.0
 content_margin_right = 16.0
@@ -79,8 +79,8 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0.666667, 0.8, 1)
-corner_radius_top_left = 20
 corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtk46"]
@@ -115,14 +115,14 @@ corner_radius_top_left = 30
 corner_radius_bottom_right = 30
 corner_detail = 1
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3jyue"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7jwa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mem2s"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oisxo"]
-content_margin_left = 30.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ac8nu"]
+content_margin_left = 20.0
 content_margin_top = 8.0
-content_margin_right = 30.0
+content_margin_right = 10.0
 content_margin_bottom = 8.0
 bg_color = Color(0, 0.666667, 0.8, 0.12549)
 border_width_left = 2
@@ -132,10 +132,10 @@ border_color = Color(0, 0.666667, 0.8, 1)
 corner_radius_top_left = 20
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdqfb"]
-content_margin_left = 60.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ifb"]
+content_margin_left = 25.0
 content_margin_top = 8.0
-content_margin_right = 60.0
+content_margin_right = 15.0
 content_margin_bottom = 8.0
 bg_color = Color(0, 0.666667, 0.8, 0.376471)
 border_width_left = 2
@@ -145,8 +145,22 @@ border_color = Color(0, 0.666667, 0.8, 1)
 corner_radius_top_left = 20
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxall"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0.666667, 0.8, 0.12549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0, 0.666667, 0.8, 1)
+corner_radius_top_left = 20
+corner_detail = 1
+
 [resource]
 default_font = ExtResource("2_xi5it")
+default_font_size = 10
 Button/styles/disabled = SubResource("StyleBoxFlat_po8o7")
 Button/styles/focus = SubResource("StyleBoxEmpty_5l5re")
 Button/styles/hover = SubResource("StyleBoxFlat_hrusn")
@@ -163,16 +177,17 @@ HSlider/styles/slider = SubResource("StyleBoxFlat_bdqbs")
 ItemList/constants/h_separation = 12
 ItemList/constants/v_separation = 12
 ItemList/font_sizes/font_size = 11
-ItemList/styles/panel = SubResource("StyleBoxFlat_2fo8n")
+ItemList/styles/panel = SubResource("StyleBoxFlat_4ob2k")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_vtk46")
 LineEdit/styles/normal = ExtResource("1_h7ih5")
 OptionButton/constants/arrow_margin = 20
 OptionButton/styles/hover = SubResource("StyleBoxFlat_fs2gs")
 OptionButton/styles/normal = ExtResource("1_h7ih5")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_tuu00")
-TabContainer/styles/panel = SubResource("StyleBoxEmpty_3jyue")
+TabContainer/fonts/font = ExtResource("2_xi5it")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_w7jwa")
 TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_mem2s")
-TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_oisxo")
-TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_qdqfb")
-TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_oisxo")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_ac8nu")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_d2ifb")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_jxall")
 VBoxContainer/constants/separation = 16
