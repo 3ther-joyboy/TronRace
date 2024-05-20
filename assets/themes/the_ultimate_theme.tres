@@ -160,7 +160,6 @@ corner_detail = 1
 
 [resource]
 default_font = ExtResource("2_xi5it")
-default_font_size = 10
 Button/styles/disabled = SubResource("StyleBoxFlat_po8o7")
 Button/styles/focus = SubResource("StyleBoxEmpty_5l5re")
 Button/styles/hover = SubResource("StyleBoxFlat_hrusn")

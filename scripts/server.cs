@@ -19,7 +19,6 @@ public partial class server : Node
 	// client
 	private ENetMultiplayerPeer _peer;
 	private int _connection_id;
-	private bool _connection_status;
 
 	public override void _Ready()
 	{
@@ -101,14 +100,14 @@ public partial class server : Node
 
 		ProjectSettings.LoadResourcePack("user://patch.zip");
 
-		switchtoOnline();
+		switchToOnline();
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-    private void switchtoOnline()
+    private void switchToOnline()
     {
         GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
-		GetNode<>
+		GetNode<Label>("VBoxContainer/Main/VBoxContainer/Label").Hide();
     }
 
     // server rpc function declarations
