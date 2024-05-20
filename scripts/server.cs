@@ -81,6 +81,7 @@ public partial class server : Node
 	private void ConnectionFailed()
 	{
 		GD.Print("could not connect to the server");
+		loadResourcePack();
 		ConnectToServer();
 	}
 
@@ -91,23 +92,28 @@ public partial class server : Node
 
 	// user rpc function definitions
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	private void loadPatch(string patch_base64)
+	private void downloadPatch(string patch_base64)
 	{
 		byte[] patch_bytes = Convert.FromBase64String(patch_base64);
 		var patch_zip = FileAccess.Open("user://patch.zip", FileAccess.ModeFlags.Write);
 		patch_zip.StoreBuffer(patch_bytes);
 		patch_zip.Close();
 
-		ProjectSettings.LoadResourcePack("user://patch.zip");
-
+		loadResourcePack();
 		switchToOnline();
+	}
+
+	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	private void loadResourcePack()
+	{
+		if (DirAccess.DirExistsAbsolute("user://patch.zip")) ProjectSettings.LoadResourcePack("user://patch.zip");
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
     private void switchToOnline()
     {
-        GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
 		GetNode<Label>("VBoxContainer/Main/VBoxContainer/Label").Hide();
+		GetNode<Button>("VBoxContainer/Main/VBoxContainer/ButtonCommunity").Hide();
     }
 
     // server rpc function declarations
