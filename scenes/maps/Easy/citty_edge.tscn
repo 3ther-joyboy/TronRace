@@ -61,8 +61,8 @@ radial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 alpha_curve = SubResource("CurveTexture_ujxjj")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4wjmj"]
-radius = 883.861
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnjd6"]
+radius = 893.212
 
 [node name="CittyEdge" type="Node2D"]
 
@@ -283,74 +283,87 @@ texture = SubResource("NoiseTexture2D_75xul")
 
 [node name="visual" type="Node" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="visual"]
-position = Vector2(365.594, -2055.74)
-rotation = -1.48552
-texture = ExtResource("8_8icmp")
+[node name="gun" type="Node2D" parent="visual"]
+position = Vector2(60, -1932)
+rotation = 1.0472
 
-[node name="RotateTo" parent="visual/Sprite2D" instance=ExtResource("8_c0crn")]
+[node name="RotateTo" parent="visual/gun" instance=ExtResource("8_c0crn")]
 seeOverLand = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/Sprite2D/RotateTo"]
-shape = SubResource("CircleShape2D_4wjmj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/gun/RotateTo"]
+shape = SubResource("CircleShape2D_gnjd6")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Sprite2D2" type="Sprite2D" parent="visual"]
-position = Vector2(914.594, -2069.74)
-rotation = -2.02021
+[node name="Sprite2D" type="Sprite2D" parent="visual/gun"]
+position = Vector2(-56, 0)
+rotation = -4.71238
+scale = Vector2(0.662461, 0.662461)
 texture = ExtResource("8_8icmp")
 
-[node name="RotateTo" parent="visual/Sprite2D2" instance=ExtResource("8_c0crn")]
+[node name="gun2" type="Node2D" parent="visual"]
+position = Vector2(1175, -2467)
+rotation = 0.378757
+
+[node name="RotateTo" parent="visual/gun2" instance=ExtResource("8_c0crn")]
 seeOverLand = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/Sprite2D2/RotateTo"]
-shape = SubResource("CircleShape2D_4wjmj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/gun2/RotateTo"]
+shape = SubResource("CircleShape2D_gnjd6")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Sprite2D3" type="Sprite2D" parent="visual"]
-position = Vector2(1174.59, -2817.74)
-rotation = -2.63103
+[node name="Sprite2D" type="Sprite2D" parent="visual/gun2"]
+position = Vector2(-56, 0)
+rotation = -4.71238
+scale = Vector2(0.662461, 0.662461)
 texture = ExtResource("8_8icmp")
 
-[node name="RotateTo" parent="visual/Sprite2D3" instance=ExtResource("8_c0crn")]
+[node name="gun3" type="Node2D" parent="visual"]
+position = Vector2(783, -1942)
+rotation = 1.29218
+
+[node name="RotateTo" parent="visual/gun3" instance=ExtResource("8_c0crn")]
 seeOverLand = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/Sprite2D3/RotateTo"]
-shape = SubResource("CircleShape2D_4wjmj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/gun3/RotateTo"]
+shape = SubResource("CircleShape2D_gnjd6")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Sprite2D4" type="Sprite2D" parent="visual"]
-position = Vector2(1103.59, -4148.74)
-rotation = -2.47155
+[node name="Sprite2D" type="Sprite2D" parent="visual/gun3"]
+position = Vector2(-56, 0)
+rotation = -4.71238
+scale = Vector2(0.662461, 0.662461)
 texture = ExtResource("8_8icmp")
 
-[node name="RotateTo" parent="visual/Sprite2D4" instance=ExtResource("8_c0crn")]
+[node name="gun4" type="Node2D" parent="visual"]
+position = Vector2(1183, -3425)
+rotation = 0.446272
+
+[node name="RotateTo" parent="visual/gun4" instance=ExtResource("8_c0crn")]
 seeOverLand = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/Sprite2D4/RotateTo"]
-shape = SubResource("CircleShape2D_4wjmj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/gun4/RotateTo"]
+shape = SubResource("CircleShape2D_gnjd6")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Sprite2D5" type="Sprite2D" parent="visual"]
-position = Vector2(1029.59, -2471.74)
-rotation = 0.414774
+[node name="Sprite2D" type="Sprite2D" parent="visual/gun4"]
+position = Vector2(-56, 0)
+rotation = -4.71238
+scale = Vector2(0.662461, 0.662461)
 texture = ExtResource("8_8icmp")
 
-[node name="RotateTo" parent="visual/Sprite2D5" instance=ExtResource("8_c0crn")]
+[node name="gun5" type="Node2D" parent="visual"]
+position = Vector2(1134, -4951)
+rotation = -0.395678
+
+[node name="RotateTo" parent="visual/gun5" instance=ExtResource("8_c0crn")]
 seeOverLand = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/Sprite2D5/RotateTo"]
-shape = SubResource("CircleShape2D_4wjmj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/gun5/RotateTo"]
+shape = SubResource("CircleShape2D_gnjd6")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Sprite2D6" type="Sprite2D" parent="visual"]
-position = Vector2(1082.59, -5284.74)
-rotation = -2.78464
+[node name="Sprite2D" type="Sprite2D" parent="visual/gun5"]
+position = Vector2(-56, 0)
+rotation = -4.71238
+scale = Vector2(0.662461, 0.662461)
 texture = ExtResource("8_8icmp")
-
-[node name="RotateTo" parent="visual/Sprite2D6" instance=ExtResource("8_c0crn")]
-seeOverLand = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visual/Sprite2D6/RotateTo"]
-shape = SubResource("CircleShape2D_4wjmj")
-debug_color = Color(0, 0.6, 0.701961, 0)

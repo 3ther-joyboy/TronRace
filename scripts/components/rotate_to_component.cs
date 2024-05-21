@@ -13,9 +13,10 @@ public partial class rotate_to_component : Area2D
 	float velocityAim = 0;
 	[Export(PropertyHint.Range, "-45,45,5,or_greater,or_lesser")]
 	float aimOffSet = 0;
-
 	[Export]
 	Vector2 aimingPosition = Vector2.Right;
+
+	private float endRotation = 0;
 
 	[ExportCategory("Target")]
 	[Export]
@@ -60,6 +61,7 @@ public partial class rotate_to_component : Area2D
 	public override void _Ready(){
 		this.GetNode<CollisionShape2D>("CollisionShape2D").DebugColor = new Color(0.784f,0.416f,0.337f,0.15f);
 		aimingPosition += this.GlobalPosition;
+		endRotation = this.GlobalRotation;
 	}
 	public override void _PhysicsProcess(double delta){
 		RigidBody2D target = PlayerInSight(this.GetOverlappingBodies());
@@ -67,11 +69,10 @@ public partial class rotate_to_component : Area2D
 		if(target != null)
 			targetSpeed = target.LinearVelocity;
 		var parr = GetParent<Node2D>();
-		int direction = ShortestRotation(parr.GlobalRotation,this.GlobalPosition.AngleToPoint(aimingPosition + targetSpeed * velocityAim) + Godot.Mathf.DegToRad(aimOffSet), delta);
-		if(direction != 0){
-		parr.Rotation += (float)delta * Godot.Mathf.DegToRad(AimingSpeedDegS) * direction;
-		}else{
-			parr.LookAt(aimingPosition);
-		}
+		int direction = ShortestRotation(endRotation,this.GlobalPosition.AngleToPoint(aimingPosition + targetSpeed * velocityAim), delta);
+
+		endRotation += (float)delta * Godot.Mathf.DegToRad(AimingSpeedDegS) * direction;
+		parr.GlobalRotation = endRotation + Godot.Mathf.DegToRad(aimOffSet);
+		
 	}
 }
