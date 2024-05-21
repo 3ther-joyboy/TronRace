@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=22 format=3 uid="uid://mcohagi4iqke"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://mcohagi4iqke"]
 
 [ext_resource type="StyleBox" uid="uid://b55g02e4y8j8n" path="res://assets/themes/style_box_flat.tres" id="1_h7ih5"]
 [ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="2_xi5it"]
@@ -67,6 +67,8 @@ border_color = Color(0, 0.666667, 0.8, 1)
 corner_radius_top_left = 12
 corner_radius_bottom_right = 12
 corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmr1m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ob2k"]
 content_margin_left = 16.0
@@ -175,7 +177,8 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cmsji")
 HSlider/styles/slider = SubResource("StyleBoxFlat_bdqbs")
 ItemList/constants/h_separation = 12
 ItemList/constants/v_separation = 12
-ItemList/font_sizes/font_size = 11
+ItemList/font_sizes/font_size = 12
+ItemList/styles/focus = SubResource("StyleBoxEmpty_dmr1m")
 ItemList/styles/panel = SubResource("StyleBoxFlat_4ob2k")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_vtk46")
 LineEdit/styles/normal = ExtResource("1_h7ih5")
@@ -183,6 +186,7 @@ OptionButton/constants/arrow_margin = 20
 OptionButton/styles/hover = SubResource("StyleBoxFlat_fs2gs")
 OptionButton/styles/normal = ExtResource("1_h7ih5")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_tuu00")
+TabContainer/font_sizes/font_size = 12
 TabContainer/fonts/font = ExtResource("2_xi5it")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_w7jwa")
 TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_mem2s")

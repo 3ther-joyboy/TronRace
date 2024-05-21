@@ -88,6 +88,7 @@ public partial class server : Node
 	private void ConnectionSuccessful()
 	{
 		RpcId(1, "handleUserInfo", _peer.GetUniqueId(), user_id, user_name);
+		GetNode<Label>("../MainMenu/VBoxContainer/Label").Hide();
 	}
 
 	// user rpc function definitions
@@ -100,7 +101,6 @@ public partial class server : Node
 		patch_zip.Close();
 
 		loadResourcePack();
-		switchToOnline();
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
@@ -108,13 +108,6 @@ public partial class server : Node
 	{
 		if (DirAccess.DirExistsAbsolute("user://patch.zip")) ProjectSettings.LoadResourcePack("user://patch.zip");
 	}
-
-	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-    private void switchToOnline()
-    {
-		GetNode<Label>("VBoxContainer/Main/VBoxContainer/Label").Hide();
-		GetNode<Button>("VBoxContainer/Main/VBoxContainer/ButtonCommunity").Hide();
-    }
 
     // server rpc function declarations
     [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
