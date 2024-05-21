@@ -36,7 +36,7 @@ public partial class replay_component : Node
 			if (recording.Length > _playBackTime + 1)
 				_Play();
 			else
-				GD.Print("idk");
+				GD.Print("end of replay");
 
 	}
 
