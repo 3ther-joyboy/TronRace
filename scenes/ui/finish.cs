@@ -12,8 +12,8 @@ public partial class finish : Control
 
 	public override void _Ready(){
 
-		_input = GetNode<LineEdit>("MarginContainer/HBoxContainer/Options/VBoxContainer/Name");
-		_save = GetNode<Button>("MarginContainer/HBoxContainer/Options/VBoxContainer/Save");
+		_input = GetNode<LineEdit>("VBoxContainer/Options/VBoxContainer/Name");
+		_save = GetNode<Button>("VBoxContainer/Options/VBoxContainer/Save");
 
 		int pb = 0;	
 		try {
