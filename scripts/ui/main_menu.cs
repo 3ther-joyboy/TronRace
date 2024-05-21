@@ -13,7 +13,7 @@ public partial class main_menu : Control
 	public static String[] dirs = {"Easy","Normal","Tron","Dev"};
 
 	public static String[,] maps = {
-		{"enter_the_grid","first_steps","citty_edge"},
+		{"enter_the_grid","first_steps","city_edge"},
 		{"town_square",null,null},
 		{"eye_of_vortex",null,null},
 		{"test_world",null,null}
