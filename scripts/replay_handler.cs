@@ -32,18 +32,16 @@ public partial class replay_handler : Node
 	}
 
 	private static void mapUnlocak() {
-		for (int files = 1; files < main_menu.dirs.Length; files++) {
-			if ((DirAccess.Open(_path)).FileExists(main_menu.dirs[files])) {
-				int count = 0;
-				for (int i = 0; i < main_menu.maps.GetLength(1); i++)
-					if (main_menu.maps[files - 1,i] != null)
-						count++;
+		for (int dirsectories = 1; dirsectories < main_menu.dirs.Length; dirsectories++) {
+			String[] jsonReplays = DirAccess.GetFilesAt(_path + "personal_bests/" + main_menu.dirs[dirsectories - 1] + "/");
+			int count = 0;
+			for (int files = 0; files < main_menu.maps.GetLength(1); files++){
+				if (main_menu.maps[dirsectories,files] != null)
+					count++;
 
-				try {
-				String[] asdf = DirAccess.GetFilesAt(_path + "personal_bests/" + main_menu.dirs[files - 1] + "/");
-				if (asdf.Length >= main_menu.maps.GetLength(1))
-					DirAccess.RemoveAbsolute(_path + main_menu.dirs[files]);
-				}
+			}
+			if (jsonReplays.Length >= count) {
+				try {DirAccess.RemoveAbsolute(_path + main_menu.dirs[dirsectories]);}
 				catch{}
 			}
 		}

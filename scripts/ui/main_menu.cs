@@ -15,7 +15,7 @@ public partial class main_menu : Control
 	public static String[,] maps = {
 		{"enter_the_grid","first_steps","citty_edge"},
 		{"town_square",null,null},
-		{"idk",null,null},
+		{"eye_of_vortex",null,null},
 		{"test_world",null,null}
 	};
 
@@ -62,8 +62,10 @@ public partial class main_menu : Control
 			list.CustomMinimumSize = new Vector2(0,300);
 
 			for (int y = 0; y < maps.GetLength(1); y++) {
-				try { list.AddItem(maps[i, y], texture, true);}
-				catch {}
+				if(maps[i,y] != null) {
+					try { list.AddItem(maps[i, y], texture, true);}
+					catch {}
+				}
 			}
 
 			list.ItemSelected += (index) => _PlayMap((int)index ,list.Name);
