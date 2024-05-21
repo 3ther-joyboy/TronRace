@@ -134,7 +134,12 @@ public partial class main_menu : Control
 	{
 		_menu.Hide();
 		GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit").Text = server.user_name;
+		GetNode<OptionButton>("VBoxContainer/Settings/VBoxContainer/OptionButton").Selected = (int) server.conf.GetValue("Server", "mode");
 		GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Text = server.custom_ip;
+
+		if ((int) server.conf.GetValue("Server", "mode") == 1) GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Show();
+		else GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Hide();
+
 		_settings.Show();
 	}
 
@@ -157,11 +162,13 @@ public partial class main_menu : Control
 	private void BackSettings()
 	{
 		string input = GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit").Text;
+		int mode = GetNode<OptionButton>("VBoxContainer/Settings/VBoxContainer/OptionButton").Selected;
 
 		if (input != "")
 		{
 			server.user_name = input;
 			server.conf.SetValue("Player", "username", input);
+			server.conf.SetValue("Server", "mode", mode);
 			server.conf.SetValue("Server", "ip", GetNode<LineEdit>("VBoxContainer/Settings/VBoxContainer/LineEdit2").Text);
 			server.conf.Save("user://config.ini");
 			Back();
