@@ -27,7 +27,7 @@ public partial class main_menu : Control
 		_settings = GetNode<PanelContainer>("VBoxContainer/Settings");
 		_replay = GetNode<PanelContainer>("VBoxContainer/Replas");
 
-
+		if (server.status) { GetNode<Label>("VBoxContainer/Label").Hide(); }
 	}
 
 	public override void _Input(InputEvent @event)

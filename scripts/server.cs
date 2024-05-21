@@ -14,7 +14,7 @@ public partial class server : Node
 	// public static string default_ip = "141.145.207.166";
 	public static string default_ip = "127.0.0.1";
 	public static int port = 25565;
-	public static List<PackedScene> maps;
+	public static bool status = false;
 
 	// client
 	private ENetMultiplayerPeer _peer;
@@ -22,8 +22,6 @@ public partial class server : Node
 
 	public override void _Ready()
 	{
-		maps = new List<PackedScene>();
-
 		LoadConfig();
 
 		Multiplayer.PeerConnected += PlayerConnected;
@@ -71,16 +69,19 @@ public partial class server : Node
 		Multiplayer.MultiplayerPeer = _peer;
 	}
 
-	private void PlayerConnected(long id) {}
+	private void PlayerConnected(long id) { status = true; }
 
 	private void PlayerDisconnected(long id)
 	{
-		GetTree().ChangeSceneToFile("res://scenes/connecting.tscn");
+		status = false;
+		GetNode<Label>("../MainMenu/VBoxContainer/Label").Show();
 		ConnectToServer();
 	}
 	private void ConnectionFailed()
 	{
 		GD.Print("could not connect to the server");
+		status = false;
+		GetNode<Label>("../MainMenu/VBoxContainer/Label").Show();
 		loadResourcePack();
 		ConnectToServer();
 	}
@@ -88,6 +89,7 @@ public partial class server : Node
 	private void ConnectionSuccessful()
 	{
 		RpcId(1, "handleUserInfo", _peer.GetUniqueId(), user_id, user_name);
+		GetNode<Label>("../MainMenu/VBoxContainer/Label").Hide();
 	}
 
 	// user rpc function definitions
@@ -100,7 +102,6 @@ public partial class server : Node
 		patch_zip.Close();
 
 		loadResourcePack();
-		switchToOnline();
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
@@ -109,14 +110,22 @@ public partial class server : Node
 		if (DirAccess.DirExistsAbsolute("user://patch.zip")) ProjectSettings.LoadResourcePack("user://patch.zip");
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-    private void switchToOnline()
-    {
-		GetNode<Label>("VBoxContainer/Main/VBoxContainer/Label").Hide();
-		GetNode<Button>("VBoxContainer/Main/VBoxContainer/ButtonCommunity").Hide();
-    }
+	// server rpc function definitions
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	private void handleUserInfo(int con_id, int user_id, string user_name)
+	{
+		GD.Print("\tuser_id\t\t" + user_id);
+		GD.Print("\tuser_name\t" + user_name);
 
-    // server rpc function declarations
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	private void handleUserInfo(int con_id, int id, string name) {}
+		// users.Load("user://users.ini");
+		// users.SetValue(user_id.ToString(), "name", user_name);
+		// users.Save("user://users.ini");
+
+		byte[] patch_zip = FileAccess.GetFileAsBytes("user://patch.zip");
+		if (!patch_zip.IsEmpty())
+		{
+			string patch_base64 = Convert.ToBase64String(patch_zip);
+			RpcId(con_id, "downloadPatch", patch_base64);
+		}
+	}
 }
