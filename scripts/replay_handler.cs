@@ -36,7 +36,7 @@ public partial class replay_handler : Node
 			String[] jsonReplays = DirAccess.GetFilesAt(_path + "personal_bests/" + main_menu.dirs[dirsectories - 1] + "/");
 			int count = 0;
 			for (int files = 0; files < main_menu.maps.GetLength(1); files++){
-				if (main_menu.maps[dirsectories,files] != null)
+				if (main_menu.maps[dirsectories - 1,files] != null)
 					count++;
 
 			}
