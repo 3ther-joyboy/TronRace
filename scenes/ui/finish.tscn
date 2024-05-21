@@ -91,23 +91,6 @@ size_flags_vertical = 8
 text = "+ 36.21 s"
 label_settings = SubResource("LabelSettings_vs0gu")
 
-[node name="Directions" type="PanelContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Directions"]
-layout_mode = 2
-
-[node name="Menu" type="Button" parent="VBoxContainer/Directions/VBoxContainer"]
-layout_mode = 2
-shortcut = SubResource("Shortcut_n4bqk")
-text = "Menu
-"
-
-[node name="Restart" type="Button" parent="VBoxContainer/Directions/VBoxContainer"]
-layout_mode = 2
-shortcut = SubResource("Shortcut_e348b")
-text = "Restart"
-
 [node name="Options" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -136,8 +119,25 @@ layout_mode = 2
 text = "Watch
 "
 
-[connection signal="pressed" from="VBoxContainer/Directions/VBoxContainer/Menu" to="." method="_Menu"]
-[connection signal="pressed" from="VBoxContainer/Directions/VBoxContainer/Restart" to="." method="_Restart"]
+[node name="Directions" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Directions"]
+layout_mode = 2
+
+[node name="Menu" type="Button" parent="VBoxContainer/Directions/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_n4bqk")
+text = "Menu
+"
+
+[node name="Restart" type="Button" parent="VBoxContainer/Directions/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_e348b")
+text = "Restart"
+
 [connection signal="text_changed" from="VBoxContainer/Options/VBoxContainer/Name" to="." method="_NameInput"]
 [connection signal="pressed" from="VBoxContainer/Options/VBoxContainer/Save" to="." method="_Save"]
 [connection signal="pressed" from="VBoxContainer/Options/VBoxContainer/Play" to="." method="_PlayBuffer"]
+[connection signal="pressed" from="VBoxContainer/Directions/VBoxContainer/Menu" to="." method="_Menu"]
+[connection signal="pressed" from="VBoxContainer/Directions/VBoxContainer/Restart" to="." method="_Restart"]
