@@ -110,7 +110,22 @@ public partial class server : Node
 		if (DirAccess.DirExistsAbsolute("user://patch.zip")) ProjectSettings.LoadResourcePack("user://patch.zip");
 	}
 
-    // server rpc function declarations
-    [Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	private void handleUserInfo(int con_id, int id, string name) {}
+	// server rpc function definitions
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	private void handleUserInfo(int con_id, int user_id, string user_name)
+	{
+		GD.Print("\tuser_id\t\t" + user_id);
+		GD.Print("\tuser_name\t" + user_name);
+
+		// users.Load("user://users.ini");
+		// users.SetValue(user_id.ToString(), "name", user_name);
+		// users.Save("user://users.ini");
+
+		byte[] patch_zip = FileAccess.GetFileAsBytes("user://patch.zip");
+		if (!patch_zip.IsEmpty())
+		{
+			string patch_base64 = Convert.ToBase64String(patch_zip);
+			RpcId(con_id, "downloadPatch", patch_base64);
+		}
+	}
 }
