@@ -13,10 +13,10 @@ public partial class main_menu : Control
 	public static String[] dirs = {"Easy","Normal","Tron","Dev"};
 
 	public static String[,] maps = {
-		{"first_steps","citty_edge"},
-		{"town_square",null},
-		{"idk",null},
-		{"test_world",null}
+		{"enter_the_grid","first_steps","citty_edge"},
+		{"town_square",null,null},
+		{"idk",null,null},
+		{"test_world",null,null}
 	};
 
 	public override void _Ready()
@@ -85,7 +85,7 @@ public partial class main_menu : Control
 
 		String name = GetNode<ItemList>("VBoxContainer/Official/VBoxContainer/TabContainer/" + path).GetItemText(index);
 
-		GetTree().Paused = true;
+		GetTree().Paused = false;
 
 		replay_handler.lastPlayedMap = path + "/" + name;
 		GetTree().ChangeSceneToFile("res://scenes/maps/" + replay_handler.lastPlayedMap + ".tscn");
