@@ -33,8 +33,8 @@ public partial class pause : Control
 
 	private void Restart()
 	{
-		GetTree().ReloadCurrentScene();
 		GetTree().Paused = false;
+		GetTree().ReloadCurrentScene();
 	}
 
 	private void GoHome()
