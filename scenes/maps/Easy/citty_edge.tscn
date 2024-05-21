@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdbgg388psyp6"]
+[gd_scene load_steps=20 format=3 uid="uid://cdbgg388psyp6"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_wdq08"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_rsjkr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dyjxrrqavx2n4" path="res://scenes/enemies/Mine.tscn" id="5_nl0te"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="6_od335"]
 [ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="7_pivia"]
+[ext_resource type="Texture2D" uid="uid://krv36bmm5p4l" path="res://assets/textures/canon.png" id="8_8icmp"]
 [ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="8_c0crn"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bbphq"]
@@ -59,13 +60,6 @@ radial_velocity_min = 200.0
 radial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 alpha_curve = SubResource("CurveTexture_ujxjj")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_mc88s"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mjdxu"]
-width = 300
-height = 100
-noise = SubResource("FastNoiseLite_mc88s")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wjmj"]
 radius = 883.861
@@ -292,7 +286,7 @@ texture = SubResource("NoiseTexture2D_75xul")
 [node name="Sprite2D" type="Sprite2D" parent="visual"]
 position = Vector2(365.594, -2055.74)
 rotation = -1.48552
-texture = SubResource("NoiseTexture2D_mjdxu")
+texture = ExtResource("8_8icmp")
 
 [node name="RotateTo" parent="visual/Sprite2D" instance=ExtResource("8_c0crn")]
 seeOverLand = true
@@ -304,7 +298,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Sprite2D2" type="Sprite2D" parent="visual"]
 position = Vector2(914.594, -2069.74)
 rotation = -2.02021
-texture = SubResource("NoiseTexture2D_mjdxu")
+texture = ExtResource("8_8icmp")
 
 [node name="RotateTo" parent="visual/Sprite2D2" instance=ExtResource("8_c0crn")]
 seeOverLand = true
@@ -316,7 +310,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Sprite2D3" type="Sprite2D" parent="visual"]
 position = Vector2(1174.59, -2817.74)
 rotation = -2.63103
-texture = SubResource("NoiseTexture2D_mjdxu")
+texture = ExtResource("8_8icmp")
 
 [node name="RotateTo" parent="visual/Sprite2D3" instance=ExtResource("8_c0crn")]
 seeOverLand = true
@@ -328,7 +322,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Sprite2D4" type="Sprite2D" parent="visual"]
 position = Vector2(1103.59, -4148.74)
 rotation = -2.47155
-texture = SubResource("NoiseTexture2D_mjdxu")
+texture = ExtResource("8_8icmp")
 
 [node name="RotateTo" parent="visual/Sprite2D4" instance=ExtResource("8_c0crn")]
 seeOverLand = true
@@ -340,7 +334,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Sprite2D5" type="Sprite2D" parent="visual"]
 position = Vector2(1029.59, -2471.74)
 rotation = 0.414774
-texture = SubResource("NoiseTexture2D_mjdxu")
+texture = ExtResource("8_8icmp")
 
 [node name="RotateTo" parent="visual/Sprite2D5" instance=ExtResource("8_c0crn")]
 seeOverLand = true
@@ -352,7 +346,7 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 [node name="Sprite2D6" type="Sprite2D" parent="visual"]
 position = Vector2(1082.59, -5284.74)
 rotation = -2.78464
-texture = SubResource("NoiseTexture2D_mjdxu")
+texture = ExtResource("8_8icmp")
 
 [node name="RotateTo" parent="visual/Sprite2D6" instance=ExtResource("8_c0crn")]
 seeOverLand = true
