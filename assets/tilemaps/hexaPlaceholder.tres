@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=6 format=3 uid="uid://0y150v5r2b21"]
 
 [ext_resource type="Texture2D" uid="uid://lk65b6i5m2y" path="res://assets/textures/phlosioneer_hex_coastline.png" id="1_rknm2"]
-[ext_resource type="Texture2D" uid="uid://brku0limem4mq" path="res://assets/textures/tilemap-city.png" id="2_q43vv"]
+[ext_resource type="Texture2D" uid="uid://gfp65pawlm8k" path="res://assets/textures/tilemap-city.png" id="2_q43vv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kdgl0"]
 
