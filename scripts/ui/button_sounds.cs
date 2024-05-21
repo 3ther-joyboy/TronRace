@@ -27,7 +27,6 @@ public partial class button_sounds : Node
 
 	private void PlaySound()
 	{
-		audio_player.sounds.Stream = ResourceLoader.Load<AudioStream>("res://assets/audio/click.mp3");
 		audio_player.sounds.Play();
 	}
 }
