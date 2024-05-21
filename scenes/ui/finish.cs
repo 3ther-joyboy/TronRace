@@ -21,7 +21,7 @@ public partial class finish : Control
 		}
 		catch {}
 
-		var PBlabel = GetNode<Label>("FromPB");
+		var PBlabel = GetNode<Label>("VBoxContainer/Time/FromPB");
 		if (pb < _current.Length && pb != 0) {
 			PBlabel.Text = "+";
 			PBlabel.LabelSettings.FontColor = new Color(1f,0f,0f);
@@ -32,7 +32,7 @@ public partial class finish : Control
 		PBlabel.Text += " " + (Math.Abs((float)(_current.Length - pb)) / _tps) + " S";
 
 
-		GetNode<Label>("Time/Time").Text = Math.Floor(_current.Length / (_tps * 60)) + " : " + Math.Floor(_current.Length / _tps) + " . " + _current.Length % _tps ;
+		GetNode<Label>("VBoxContainer/Time/Time").Text = Math.Floor(_current.Length / (_tps * 60)) + " : " + Math.Floor(_current.Length / _tps) + " . " + _current.Length % _tps ;
 
 		if (pb == _current.Length || pb == 0) { 
 			PBlabel.Text = "";

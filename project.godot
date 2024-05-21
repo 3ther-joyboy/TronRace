@@ -25,6 +25,7 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 ReplayHandler="*res://scripts/replay_handler.cs"
 server="*res://scripts/server.cs"
+audio="*res://scripts/audio_player.cs"
 
 [display]
 

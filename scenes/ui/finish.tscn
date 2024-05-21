@@ -72,11 +72,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="Time2" type="PanelContainer" parent="VBoxContainer"]
+[node name="Time" type="PanelContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="Time" type="Label" parent="VBoxContainer/Time2"]
+[node name="Time" type="Label" parent="VBoxContainer/Time"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "02 : 69 . 42"
@@ -84,7 +84,7 @@ label_settings = SubResource("LabelSettings_3n1oj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FromPB" type="Label" parent="VBoxContainer/Time2"]
+[node name="FromPB" type="Label" parent="VBoxContainer/Time"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8

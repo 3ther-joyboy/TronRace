@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://btaurnw0kga5f"]
+[gd_scene load_steps=8 format=3 uid="uid://btaurnw0kga5f"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.cs" id="1_dfcg4"]
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_n0607"]
 [ext_resource type="FontFile" uid="uid://pmhqh7s8icpj" path="res://assets/fonts/perfect_dark.ttf" id="3_m4k14"]
+[ext_resource type="Script" path="res://scripts/ui/button_sounds.cs" id="4_d2pmd"]
 
 [sub_resource type="Shortcut" id="Shortcut_bmo1k"]
 events = [null]
@@ -198,6 +199,9 @@ virtual_keyboard_type = 2
 [node name="ButtonBack" type="Button" parent="VBoxContainer/Settings/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_d2pmd")
 
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonOfficial" to="." method="ShowOfficial"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonCommunity" to="." method="ShowCommunity"]
