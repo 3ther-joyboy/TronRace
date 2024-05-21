@@ -43,6 +43,7 @@ public partial class server : Node
 			int id = ran.Next(100000000, 999999999);
 			conf.SetValue("Player", "id", id);
 			conf.SetValue("Player", "username", id);
+			conf.SetValue("Server", "mode", 0);
 			conf.SetValue("Server", "ip", "127.0.0.1");
 
 			conf.Save("user://config.ini");
