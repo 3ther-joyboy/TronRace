@@ -14,7 +14,7 @@ public partial class server : Node
 	// public static string default_ip = "141.145.207.166";
 	public static string default_ip = "127.0.0.1";
 	public static int port = 25565;
-	public static List<PackedScene> maps;
+	public static bool status = false;
 
 	// client
 	private ENetMultiplayerPeer _peer;
@@ -22,8 +22,6 @@ public partial class server : Node
 
 	public override void _Ready()
 	{
-		maps = new List<PackedScene>();
-
 		LoadConfig();
 
 		Multiplayer.PeerConnected += PlayerConnected;
@@ -71,16 +69,19 @@ public partial class server : Node
 		Multiplayer.MultiplayerPeer = _peer;
 	}
 
-	private void PlayerConnected(long id) {}
+	private void PlayerConnected(long id) { status = true; }
 
 	private void PlayerDisconnected(long id)
 	{
-		GetTree().ChangeSceneToFile("res://scenes/connecting.tscn");
+		status = false;
+		GetNode<Label>("../MainMenu/VBoxContainer/Label").Show();
 		ConnectToServer();
 	}
 	private void ConnectionFailed()
 	{
 		GD.Print("could not connect to the server");
+		status = false;
+		GetNode<Label>("../MainMenu/VBoxContainer/Label").Show();
 		loadResourcePack();
 		ConnectToServer();
 	}
