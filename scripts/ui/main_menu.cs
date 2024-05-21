@@ -28,6 +28,8 @@ public partial class main_menu : Control
 		_replay = GetNode<PanelContainer>("VBoxContainer/Replas");
 
 		if (server.status) { GetNode<Label>("VBoxContainer/Label").Hide(); }
+
+		audio_player.SetMusic("res://assets/audio/music/menu.mp3");
 	}
 
 	public override void _Input(InputEvent @event)
@@ -90,6 +92,10 @@ public partial class main_menu : Control
 		GetTree().Paused = false;
 
 		replay_handler.lastPlayedMap = path + "/" + name;
+		
+		// change music
+		audio_player.GetRandomMusic();
+
 		GetTree().ChangeSceneToFile("res://scenes/maps/" + replay_handler.lastPlayedMap + ".tscn");
 	}
 
@@ -97,6 +103,7 @@ public partial class main_menu : Control
 		String what = _replay.GetNode<ItemList>("VBoxContainer/ItemList").GetItemText(index);
 		GetTree().Root.GetNode<replay_handler>("ReplayHandler").Play(what);
 	}
+
 	private void _ShowReplays(){
 		// lukaš moment
 		var list = _replay.GetNode<ItemList>("VBoxContainer/ItemList");

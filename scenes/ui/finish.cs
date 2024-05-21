@@ -24,10 +24,10 @@ public partial class finish : Control
 		var PBlabel = GetNode<Label>("VBoxContainer/Time/FromPB");
 		if (pb < _current.Length && pb != 0) {
 			PBlabel.Text = "+";
-			PBlabel.LabelSettings.FontColor = new Color(1f,0f,0f);
+			PBlabel.LabelSettings.FontColor = new Color(1f,0.5f,0.5f);
 		} else if (pb > _current.Length && pb != 0) {
 			PBlabel.Text = "-";
-			PBlabel.LabelSettings.FontColor = new Color(0f,0f,1f);
+			PBlabel.LabelSettings.FontColor = new Color(0.3f,0.5f,1f);
 		}
 		PBlabel.Text += " " + (Math.Abs((float)(_current.Length - pb)) / _tps) + " S";
 
