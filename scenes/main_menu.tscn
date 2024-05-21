@@ -96,6 +96,10 @@ text = "Official"
 layout_mode = 2
 text = "Community"
 
+[node name="ButtonReplays" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
+layout_mode = 2
+text = "Replays"
+
 [node name="ButtonSettings" type="Button" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_2sgje")
@@ -218,6 +222,7 @@ script = ExtResource("4_d2pmd")
 
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonOfficial" to="." method="ShowOfficial"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonCommunity" to="." method="ShowCommunity"]
+[connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonReplays" to="." method="_ShowReplays"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonSettings" to="." method="ShowSettings"]
 [connection signal="pressed" from="VBoxContainer/Main/VBoxContainer/ButtonQuit" to="." method="QuitGame"]
 [connection signal="item_selected" from="VBoxContainer/Replas/VBoxContainer/ItemList" to="." method="_PlayReplay"]
