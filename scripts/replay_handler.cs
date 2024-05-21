@@ -70,7 +70,7 @@ public partial class replay_handler : Node
 		_replayRedy = true;
 		JsonNode rep = GetJson(name);
 		lastPlayedMap = (String)(rep["map"]);
-		bufferReplay = GetReplay();
+		bufferReplay = GetReplay(name);
 
 		GD.Print();
 		GD.Print("User: \t\t" + (String)rep["user"]);
@@ -89,6 +89,7 @@ public partial class replay_handler : Node
 	}
 
 	public static JsonNode GetJson(String path) {
+		GD.Print(_path + path + _filenameExtension);
 		if (FileAccess.FileExists(_path + path + _filenameExtension)) {
 			string replayJson = FileAccess.Open(_path + path + _filenameExtension, FileAccess.ModeFlags.Read).GetAsText();
 			JsonNode jsonNodeReplay = JsonNode.Parse(replayJson)!;
