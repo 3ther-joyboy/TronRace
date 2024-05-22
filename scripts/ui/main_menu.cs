@@ -74,13 +74,13 @@ public partial class main_menu : Control
 
 			lists.AddChild(list);
 		}
-		for (int i = 0; i < dirs.Length; i++)
+		for (int i = 0; i < dirs.Length; i++) {
 			if ((DirAccess.Open(replay_handler._path)).FileExists(dirs[i])) {
 				if (dirs[i] == "Dev") 
 					lists.SetTabHidden(i,true);
 				lists.SetTabDisabled(i,true);
 			}
-
+		}
 
 		_menu.Hide(); _official.Show(); 
 	}

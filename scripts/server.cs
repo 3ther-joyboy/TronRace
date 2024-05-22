@@ -11,8 +11,7 @@ public partial class server : Node
 	public static string custom_ip;
 
 	// server data
-	// public static string default_ip = "141.145.207.166";
-	public static string default_ip = "127.0.0.1";
+	public static string default_ip = "141.145.207.166";
 	public static int port = 25565;
 	public static bool status = false;
 
@@ -58,9 +57,12 @@ public partial class server : Node
 	private void ConnectToServer()
 	{
 		_peer = new ENetMultiplayerPeer();
-		var status = _peer.CreateClient(default_ip, port);
+		
+		Error err;
+		if ((int) conf.GetValue("Server", "mode") == 0) err = _peer.CreateClient(default_ip, port);
+		else err = _peer.CreateClient(custom_ip, port);
 
-		if (status != Error.Ok)
+		if (err != Error.Ok)
 		{
 			GD.PrintErr("could not create client");
 			return;

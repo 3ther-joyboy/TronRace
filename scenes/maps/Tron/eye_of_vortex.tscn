@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://c03r2i7x2oakq"]
+[gd_scene load_steps=19 format=3 uid="uid://c03r2i7x2oakq"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_2ht6a"]
+[ext_resource type="Texture2D" uid="uid://daig7rt2lhpn5" path="res://assets/textures/ui/restart.png" id="1_n6rjt"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="2_w3q8b"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="3_l5dbt"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="4_ethmf"]
@@ -67,6 +68,11 @@ color = Color(0.617083, 0.760594, 1, 1)
 emission_curve = SubResource("CurveTexture_qe4xo")
 
 [node name="BlackHole" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.099986, 0.099986, 0.099986, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_n6rjt")
 
 [node name="tile map" type="TileMap" parent="."]
 tile_set = ExtResource("4_ethmf")
