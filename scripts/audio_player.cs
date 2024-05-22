@@ -30,6 +30,7 @@ public partial class audio_player : Node
 
 	public static void SetMusic(string path)
 	{
+		music.Stop();
 		music.Stream = ResourceLoader.Load<AudioStream>(path);
 		music.Play();
 	}
@@ -37,6 +38,7 @@ public partial class audio_player : Node
 	public static void GetRandomMusic()
 	{
 		Random rnd = new Random();
+		music.Stop();
 		music.Stream = ResourceLoader.Load<AudioStream>(_music_list[rnd.Next(0, _music_list.Length)]);
 		music.Play();
 	}

@@ -27,7 +27,7 @@ public partial class main_menu : Control
 		_settings = GetNode<PanelContainer>("VBoxContainer/Settings");
 		_replay = GetNode<PanelContainer>("VBoxContainer/Replas");
 
-		if (server.status) { GetNode<Label>("VBoxContainer/Label").Hide(); }
+		if (server.status) { GetNode<Label>("offline").Hide(); }
 
 		audio_player.SetMusic("res://assets/audio/music/menu.mp3");
 	}
