@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=19 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="11_7ulno"]
 [ext_resource type="PackedScene" uid="uid://dyjxrrqavx2n4" path="res://scenes/enemies/Mine.tscn" id="11_csnq1"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="12_8t0bo"]
+[ext_resource type="PackedScene" uid="uid://b2i56vglc5hgp" path="res://scenes/components/path_follower.tscn" id="12_gj3oe"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="15_q71l5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dof7s"]
@@ -37,6 +38,12 @@ scale_max = 0.3
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_2ixay"]
 a = Vector2(283, -2)
 b = Vector2(-138, 4)
+
+[sub_resource type="Curve2D" id="Curve2D_sjsv2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 100, 1522, 250, 0, 0, 0, 0, 1380, 247, 0, 0, 0, 0, 1417, 180, 0, 0, 0, 0, 1477, 186)
+}
+point_count = 4
 
 [node name="TestWorld" type="Node2D"]
 
@@ -117,3 +124,17 @@ shape = SubResource("SegmentShape2D_2ixay")
 
 [node name="Mine" parent="." instance=ExtResource("11_csnq1")]
 position = Vector2(1251, 269)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-706, 76)
+curve = SubResource("Curve2D_sjsv2")
+
+[node name="PathFollow2D" parent="Path2D" instance=ExtResource("12_gj3oe")]
+position = Vector2(1522, 250)
+rotation = 1.5708
+loop = false
+_time = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(0.268327, 0.288013)
+texture = ExtResource("12_8t0bo")
