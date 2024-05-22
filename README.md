@@ -67,7 +67,7 @@ konečný [Json objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text
 {
     "replay":   [{},{},{},{},{},{},{},{},{}], // byly by formatovane RecordFormat objekty
     "user":     "Godot",
-    "user_id":  000000001,
+    "user_id":  00000001,
     "map":      "Easy/enter_the_grid", //(map path)
     "date":     "5/21/2024 10:57:42AM", //(datum UTC)
     "tps":      100, //(tick per second)
