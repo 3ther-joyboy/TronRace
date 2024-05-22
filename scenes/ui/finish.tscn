@@ -108,6 +108,7 @@ horizontal_alignment = 1
 layout_mode = 2
 placeholder_text = "Name"
 alignment = 1
+max_length = 20
 
 [node name="Save" type="Button" parent="VBoxContainer/Options/VBoxContainer"]
 layout_mode = 2
