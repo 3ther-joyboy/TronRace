@@ -65,13 +65,13 @@ jestli ovšem soubor neekzistuje returne prázdný [Json objekt](https://learn.m
 konečný [Json objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) má 
 ```json
 {
-    replay: [ {RecordFormat},{RecordFormat}... . ...{RecordFormat},{RecordFormat}],
-    user:,
-    user_id:,
-    map:, (map path)
-    date:, (datum UTC)
-    tps:, (tick per second)
-    ticks:, (celková délka replaye)
+    "replay":   [{},{},{},{},{},{},{},{},{}], // byly by formatovane RecordFormat objekty
+    "user":     "Godot",
+    "user_id":  000000001,
+    "map":      "Easy/enter_the_grid", //(map path)
+    "date":     "5/21/2024 10:57:42AM", //(datum UTC)
+    "tps":      100, //(tick per second)
+    "ticks":    512, //(celková délka replaye)
 }
 ```
 #### public static [RecordFormat](####RecordFormat)[] GetReplay([String](https://docs.godotengine.org/en/stable/classes/class_string.html))
