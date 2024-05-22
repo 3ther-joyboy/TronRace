@@ -39,7 +39,8 @@ public partial class finish : Control
 		}
 
 		// auto save run last
-		replay_handler.AutoSave();
+		if (replay_component.playBackMode)
+			replay_handler.AutoSave();
 	}
 	private void _NameInput(String name) {
 		bool now = false;

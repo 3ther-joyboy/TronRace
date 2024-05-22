@@ -3,13 +3,12 @@ using System;
 
 public partial class replay_component : Node
 {
-	private bool _mode = false;
 
 	private move_component target;
 
 	public RecordFormat[] recording = {};
 	// true = record, false = playback
-	public bool playBackMode = true;
+	public static bool playBackMode = true;
 	private int _playBackTime = 0;
 
 	public override void _Ready() {
