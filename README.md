@@ -2,7 +2,7 @@
 ## komponenty
 ### Hierarchie
 Godot je postaven na pomocí [inheretence ](https://docs.godotengine.org/en/latest/contributing/development/core_and_modules/inheritance_class_tree.html) a na uzpůsoben na [kompozici](https://docs.godotengine.org/en/latest/getting_started/introduction/godot_design_philosophy.html), proto jsme vytvořili zpousta komponentů díky kterým můžeme rychle přidávat nové věci do hry.
-Příklad  *louncher ship*, která je vytvořená z health_component, move_component, *missale_louncher* -> který je zložený z rotate_component, gun_component (který mohl kdyby byl vytvořený pozděj ještě být vytvořen ze spawn_componentu.
+Příklad  *louncher ship*, která je vytvořená z [health_component](###health_component), [move_component](###move_component), *missale_louncher* -> který je zložený z rotate_component, gun_component (který mohl kdyby byl vytvořený pozděj ještě být vytvořen ze spawn_componentu.
 Tento způsob strunktruy (kompozice) nám umožnuje rychle vytvářet, nebo editovat velké množství jiných komponentů které pak tvoří scény nebo jiné objekty.
 Když teda změníme v *missale_louncher* parametr že nevidí přez zdi tak všechny momenty kdy byl *missale_louncher* použit tak nebude vidět přez stěny.
 ### zacházení s komponenty
@@ -38,7 +38,7 @@ je dodatečné nastavení k toumu aby target byl zaregistrován i přez stěny
 ### spawner_component
 spawnuje v uvedeném intervalu konzistentně objekty
 ### replay_component
-ma zaůkol přehrávání i nahrávání replayů ty nahrává do formátu classy RecordFormat
+ma zaůkol přehrávání i nahrávání replayů ty nahrává do formátu classy [RecordFormat](####RecordFormat)
 ## privky mapy
 ### [tile map](https://docs.godotengine.org/en/3.5/tutorials/2d/using_tilemaps.html)
 v projektu máme jen jeden druch tile mapy (hexagony) 
@@ -52,3 +52,46 @@ zkládá se ze 2 noudů, flag a flag_control
 flag_control by měl být ve scéně parentem **flag**ům, v **flag_control**u se nastavuje počet kola
 kdyždý flag potřebuje svůj vlastní [collision_shape](https://docs.godotengine.org/en/4.0/tutorials/physics/collision_shapes_2d.html)
 ## Replays
+Celí replay systém stojí na jedné (pověčinou statické) classe replay_handler, která zajištujě serializace, de-serializaci (.Net knihovna) .json s replayem, jejich ukládání, ukládání nejlepších skére i přípravu pro následné přehrávání jakýkoliv uloženého replaye
+### Popsání duležitých funkcí a struktury
+#### public static void SaveReplay([String](https://docs.godotengine.org/en/stable/classes/class_string.html))
+jako paramet bere jméno (cestu + jméno) ukládaného replaye, všechny ovšem začínají na "user://replays/" a funkce automaticky přidá koncovku ".json" -> ``SaveReplay("Test")`` vytvoří se replay user://replays/Test.json
+je to jediná funkce na ukládání replayů, ukládá replay který je aktuálně načtený v buffru (``RecordFormat[] replay_handler.bufferReplay``), tudíš kdykoliv potřebujete vytvořit novu funkci na ukládání napřed načtěne replay do buffru a pak zpuště tuto funkci
+všechny funkce které mají za úkol ukládat (``AutoSave()``, ``SaveReplay()``) jdou též přez tuto funci
+tato funkce využívá .Net knihovny [JsonClass](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0)
+#### public static JsonNode GetJson([String](https://docs.godotengine.org/en/stable/classes/class_string.html))
+funkce bere jako argument jméno (nebo cestu + jméno, stejně jako funkce [SaveReplay](####SaveReplay) začíná v "user://replays/" a  automaticky přidává příponu) uloženého replaye a z plain textu ho předělá do .Net [Json objektu](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) který poté returne
+jestli ovšem soubor neekzistuje returne prázdný [Json objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) ``return JsonNode.Parse("");`` 
+konečný [Json objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) má 
+```json
+{
+    replay: [ {RecordFormat},{RecordFormat}... . ...{RecordFormat},{RecordFormat}],
+    user:,
+    user_id:,
+    map:, (map path)
+    date:, (datum UTC)
+    tps:, (tick per second)
+    ticks:, (celková délka replaye)
+}
+```
+#### public static [RecordFormat](####RecordFormat)[] GetReplay([String](https://docs.godotengine.org/en/stable/classes/class_string.html))
+funkce bere jako argument jméno (nebo cestu + jméno, stejně jako funkce [SaveReplay](####SaveReplay) začíná v "user://replays/" a  automaticky přidává příponu)
+využívá funkce [GetJson](####test) který potom oddělá nepotřebné informace jako je mapa, id uživatele, jméno uživatele, datum, čas, tick speed a pomocí konstruktoru [RecordFormat](####RecordFormat)u na [Json objekty](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) vytvořý replay který returne
+#### RecordFormat
+Je jednoducá classa do která drží informace hráče v jednotlivích framech
+```cs
+	public bool active {get; set;}
+
+	public float rotation {get; set;}
+	public float rotationVel {get; set;}
+
+	public float positionX {get; set;}
+	public float positionY {get; set;}
+
+	public float velocityX {get; set;}
+	public float velocityY {get; set;}
+```
+má 2 construktory jeden "normální" (bool, 6x float) a jeden využívajcí .Net knihovet který bere jako parametr speciálně konstruktovaný [Json Objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0)
+pozice ani rychlost nejsou uloženy v [Vector2](https://docs.godotengine.org/en/3.1/classes/class_vector2.html) protože .Net nemá v základu Godot classy a i kdyby byly použité oficiální funkce godotu tak [Vecotr2 nemají podporovaný převod do jsnu](https://docs.godotengine.org/en/latest/tutorials/io/saving_games.html#serializing)
+tento formát byl určet i k využití na multiplayer servrech neboť je to classa která bude zdílena stejně mezi serverem a klientem a obsahuje všechni informace které by byly potřeba při ktátkých výstřelů pingu
+
