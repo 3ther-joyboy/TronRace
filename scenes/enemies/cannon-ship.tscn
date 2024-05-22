@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyk4vnd0238iw"]
+
+[ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_mh1dl"]
+[ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="2_vht1y"]
+[ext_resource type="PackedScene" uid="uid://dskvsxql507ul" path="res://scenes/components/expolosition_component.tscn" id="3_wa0y4"]
+[ext_resource type="Texture2D" uid="uid://bin6u45ldf0oi" path="res://assets/textures/ship-enemy.png" id="4_jnbcb"]
+[ext_resource type="PackedScene" uid="uid://dvkcobhhogat1" path="res://scenes/enemies/missile_louncher.tscn" id="5_w1l3k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwgxl"]
+radius = 38.0
+height = 184.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rtja"]
+size = Vector2(75, 96)
+
+[node name="louncher-ship" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 25
+mass = 0.01
+gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_mh1dl")
+additionalCollision = 1
+pushForce = 2000
+
+[node name="health" parent="." instance=ExtResource("2_vht1y")]
+onDeathSpawn = ExtResource("3_wa0y4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_jwgxl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-51.5, 0)
+shape = SubResource("RectangleShape2D_5rtja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.375309, 0.375309)
+texture = ExtResource("4_jnbcb")
+
+[node name="missile-louncher" parent="." instance=ExtResource("5_w1l3k")]
+position = Vector2(-30, 1)
+
+[connection signal="body_entered" from="." to="." method="Collision"]

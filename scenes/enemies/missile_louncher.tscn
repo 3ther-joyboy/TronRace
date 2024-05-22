@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvkcobhhogat1"]
+
+[ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="1_i3yum"]
+[ext_resource type="PackedScene" uid="uid://b4mlx2rrin7j4" path="res://scenes/components/gun.tscn" id="2_vxb3x"]
+[ext_resource type="Texture2D" uid="uid://krv36bmm5p4l" path="res://assets/textures/canon.png" id="3_n0qfv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hc23m"]
+radius = 580.259
+
+[node name="missile-louncher" type="Node2D"]
+
+[node name="RotateTo" parent="." instance=ExtResource("1_i3yum")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotateTo"]
+shape = SubResource("CircleShape2D_hc23m")
+debug_color = Color(0, 0.521569, 0.611765, 0)
+
+[node name="Gun" parent="." instance=ExtResource("2_vxb3x")]
+position = Vector2(46, 0)
+shootInterval = 1.0
+seeOverLand = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Gun"]
+position = Vector2(-46, 0)
+shape = SubResource("CircleShape2D_hc23m")
+debug_color = Color(0.831373, 0.392157, 0.0823529, 0.160784)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.227129, 0.227129)
+texture = ExtResource("3_n0qfv")

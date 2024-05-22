@@ -34,7 +34,7 @@ public partial class rotate_to_component : Area2D
 				if((castedPlayer != null && castedPlayer.IsClass("RigidBody2D") && ((RigidBody2D)castedPlayer).HasNode(name)) || seeOverLand){
 					var par = GetParent<Node2D>();
 					par.LookAt(obj.GlobalPosition);
-					par.GlobalRotation += this.GlobalPosition.AngleToPoint(this.GlobalPosition + (((move_component)obj).LinearVelocity * velocityAim) / (int)ProjectSettings.GetSetting("physics/common/physics_ticks_per_second"));
+					par.GlobalRotation += this.GlobalPosition.AngleToPoint(this.GlobalPosition + ((move_component)obj).LinearVelocity * velocityAim);
 					par.GlobalRotation += Godot.Mathf.DegToRad(aimOffSet);
 					
 					break;
