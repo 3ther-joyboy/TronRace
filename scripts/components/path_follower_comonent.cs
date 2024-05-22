@@ -14,6 +14,9 @@ public partial class path_follower_comonent : PathFollow2D
 		_timer.Start();
 	}
 	public override void _PhysicsProcess(double delta){
+		if (_timer.TimeLeft > 0)
 		this.ProgressRatio = 1-((float)(_timer.TimeLeft / _timer.WaitTime));
+		else 
+		this.ProgressRatio = 1;
 	}
 }
