@@ -1,9 +1,18 @@
 # Tron Race
+## mapy
+mapy jsou řazeny do 3 obtížnostních úrvní, obtížnost se určuje podle obtížnosti dokončit mapu poprvé tudíš některé mechanicky komplexnější mapy mohou být pod těšíma mapama v pořadí
+elementy map jsou předstvované postupně, a jejich využití pak také. Příklad s push_feald a takzvaným [gravitační manévrem](https://en.wikipedia.org/wiki/Gravity_assist). Tudíš by se hráč nikdy neměl dostat do momentu kdy vidí věc poprvé a musí s ní interagovat
+### Easy
+Mapy v této kategorii se zkládají věčinou jen z tile mapy. Cílem této sekce je seznámit hráče s ovládáním lodi, i když tyhle mapy nemají v sobě žádné nebezpečí, nemusí být jednoduché z pohledu ježdění na čas 
+### Meduim
+Tyhle mapy jsou stále "jednoduché" ale už se v ních dá i umřít (dalo se i v mapách v Easy jen to nebylo tak jednoduché), poprvé se tu objevoujou nějýcí "nepřátelé" a už se začínají využívat [push fealds](#push_feald) na denním pořádku
+### Tron
+tyhle mapy už jsou "těžké" nejdou zajet pomalu něboť v každé nakonci musíte překonat takzvaný "speed check" kde musíte mít určitou rychlosst na překonání úseku jinak se vám nepodaří, nebo stanovený časoví limit do kterého se musíte dostat do cíle (nebo jiné časti mapy která se pak uzamkne)
 ## komponenty
 ### Hierarchie
-Godot je postaven na pomocí [inheretence ](https://docs.godotengine.org/en/latest/contributing/development/core_and_modules/inheritance_class_tree.html) a na uzpůsoben na [kompozici](https://docs.godotengine.org/en/latest/getting_started/introduction/godot_design_philosophy.html), proto jsme vytvořili zpousta komponentů díky kterým můžeme rychle přidávat nové věci do hry.
-Příklad  *louncher ship*, která je vytvořená z [health_component](#health_component), [move_component](###move_component), *missale_louncher* -> který je zložený z rotate_component, gun_component (který mohl kdyby byl vytvořený pozděj ještě být vytvořen ze spawn_componentu.
-Tento způsob strunktruy (kompozice) nám umožnuje rychle vytvářet, nebo editovat velké množství jiných komponentů které pak tvoří scény nebo jiné objekty.
+Godot je postaven na pomocí [inheretence ](https://docs.godotengine.org/en/latest/contributing/development/core_and_modules/inheritance_class_tree.html) (postupné dědění noudů) a na uzpůsoben na [kompozici](https://docs.godotengine.org/en/latest/getting_started/introduction/godot_design_philosophy.html), proto jsme vytvořili zpousta komponentů díky kterým můžeme rychle přidávat nové věci do hry.
+Tento způsob strunktruy (kompozice) nám umožnuje jednoduše vytvářet, nebo editovat velké množství jiných komponentů které pak tvoří scény nebo jiné objekty.
+Příklad této jednoduchosti je mapa Dev/kenka kterou vytvořil můj táta (Petr Valla) bez jakékoliv pomoci
 Když teda změníme v *missale_louncher* parametr že nevidí přez zdi tak všechny momenty kdy byl *missale_louncher* použit tak nebude vidět přez stěny.
 ### zacházení s komponenty
 komopnenty by by neměli být přímíma childama hostatních komponentů, jediná výmky je u move_componentu
@@ -35,14 +44,16 @@ podobá se rotatte_to_component, ale má být dán poze na hřáče, tenhle komp
 konsistěntě odtlačuje všechny move_component směrem k [marker_2d](https://docs.godotengine.org/en/stable/classes/class_marker2d.html) jestli neekzistuje tak ke středu
 jestli nastaveno nebude push_feald vtahovat ale tlačit všechny move_component od středu k [Markru_2D](https://docs.godotengine.org/en/stable/classes/class_marker2d.html) kterým je vyhrazeno pole účinění
 je dodatečné nastavení k toumu aby target byl zaregistrován i přez stěny
+
 ### spawner_component
 spawnuje v uvedeném intervalu konzistentně objekty
 ### replay_component
 ma zaůkol přehrávání i nahrávání replayů ty nahrává do formátu classy [RecordFormat](####RecordFormat)
-## privky mapy
+## privky map
 ### [tile map](https://docs.godotengine.org/en/3.5/tutorials/2d/using_tilemaps.html)
-v projektu máme jen jeden druch tile mapy (hexagony) 
-
+v projektu máme jen jeden druch tile mapy (hexagony) s jedním terénem který nám zajištuje automatické propojování políček s korespondečním stillem (leví roh - prostředek - praví roh)
+máme dva typy políček "městské" -> čisté hexagony a "venkovní" -> nepravidelné 
+ve filmu je město velice uspořádané a podle řádu (vytvořeno robotem) a vnějšek světa je nepravidelná krajna
 ### end (finish, end goal)
 je konec mapy který zajištuě zplnění kondicí, pripravuje a náhle i  zpouští funkce pro ukládání replaye (``replay_handler.AutoSave()``) jestli to ovšem nebyl přehráný replay (můžete přehrát i replay co není váš)
 #### flags
@@ -68,9 +79,9 @@ konečný [Json objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text
     "replay":   [{},{},{},{},{},{},{},{},{}], // byly by formatovane RecordFormat objekty
     "user":     "Godot",
     "user_id":  111111111,
-    "map":      "Easy/enter_the_grid", //(map path)
+    "map":      "Easy/enter_the_grid", //(cesta k mapě)
     "date":     "5/21/2024 10:57:42AM", //(datum UTC)
-    "tps":      100, //(tick per second)
+    "tps":      100, //(ticks per second)
     "ticks":    512, //(celková délka replaye)
 }
 ```
