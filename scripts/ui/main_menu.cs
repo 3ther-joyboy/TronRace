@@ -16,7 +16,7 @@ public partial class main_menu : Control
 		{"enter_the_grid","first_steps","city_edge"},
 		{"town_square",null,null},
 		{"eye_of_vortex","rail_gun",null},
-		{"test_world",null,null}
+		{"test_world","kenka",null}
 	};
 
 	public override void _Ready()
