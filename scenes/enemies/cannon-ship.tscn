@@ -16,14 +16,14 @@ size = Vector2(75, 96)
 [node name="louncher-ship" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 25
-mass = 0.01
+mass = 100.0
 gravity_scale = 0.0
 can_sleep = false
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_mh1dl")
-additionalCollision = 1
-pushForce = 2000
+acceleration = 0
+collisionThreshold = 2000
 
 [node name="health" parent="." instance=ExtResource("2_vht1y")]
 onDeathSpawn = ExtResource("3_wa0y4")
