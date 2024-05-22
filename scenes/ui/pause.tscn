@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://eqwcewka68ie"]
+[gd_scene load_steps=12 format=3 uid="uid://eqwcewka68ie"]
 
 [ext_resource type="Theme" uid="uid://mcohagi4iqke" path="res://assets/themes/the_ultimate_theme.tres" id="1_58atc"]
 [ext_resource type="Script" path="res://scripts/ui/pause.cs" id="1_n8xp6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://daig7rt2lhpn5" path="res://assets/textures/ui/restart.png" id="5_maats"]
 [ext_resource type="Texture2D" uid="uid://baj56ovdl2rkq" path="res://assets/textures/ui/home.png" id="5_v1wi6"]
 [ext_resource type="Texture2D" uid="uid://cst4oim7ec8nb" path="res://assets/textures/ui/resume.png" id="6_pti4l"]
+[ext_resource type="Script" path="res://scripts/ui/button_sounds.cs" id="8_tgm42"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ik5il"]
 device = -1
@@ -35,7 +36,8 @@ size_flags_vertical = 0
 theme = ExtResource("1_58atc")
 script = ExtResource("1_n8xp6")
 
-[node name="Timer" type="Label" parent="Control"]
+[node name="Replay" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -45,6 +47,9 @@ offset_top = 50.0
 offset_right = 0.5
 offset_bottom = 73.0
 grow_horizontal = 2
+text = "Replay"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonPause" type="TextureButton" parent="Control"]
 layout_mode = 1
@@ -155,6 +160,9 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("8_tgm42")
 
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
