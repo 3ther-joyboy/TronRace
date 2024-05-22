@@ -12,6 +12,8 @@ public partial class pause : Control
 		_timer = GetNode<Label>("Timer");
         _menu = GetNode<Control>("MenuMain");
 		_button = GetNode<TextureButton>("ButtonPause");
+		if (!replay_component.playBackMode)
+			GetNode<Label>("Replay").Show();
     }
 
     private void Pause()

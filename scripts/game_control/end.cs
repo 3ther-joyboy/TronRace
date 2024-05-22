@@ -77,7 +77,7 @@ public partial class end : Area2D
 
 
 
-			if (player.GetNode<replay_component>("Replay").playBackMode) {
+			if (replay_component.playBackMode) {
 				replay_handler.bufferReplay = player.GetNode<replay_component>("Replay").recording;
 
 				replay_handler.last_time = ticksPassed / tickPerSecond;
