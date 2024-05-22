@@ -36,6 +36,9 @@ size_flags_vertical = 0
 theme = ExtResource("1_58atc")
 script = ExtResource("1_n8xp6")
 
+[node name="Node" type="Node" parent="Control"]
+script = ExtResource("8_tgm42")
+
 [node name="Replay" type="Label" parent="Control"]
 visible = false
 layout_mode = 1
@@ -160,9 +163,6 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("8_tgm42")
 
 [connection signal="pressed" from="Control/ButtonPause" to="Control" method="Pause"]
 [connection signal="pressed" from="Control/MenuMain/VBoxContainer/Navigation/VBoxContainer/HBoxContainer/ButtonHome" to="Control" method="GoHome"]
