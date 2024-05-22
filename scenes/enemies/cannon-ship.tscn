@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyk4vnd0238iw"]
+[gd_scene load_steps=10 format=3 uid="uid://cyk4vnd0238iw"]
 
 [ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_mh1dl"]
 [ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="2_vht1y"]
 [ext_resource type="PackedScene" uid="uid://dskvsxql507ul" path="res://scenes/components/expolosition_component.tscn" id="3_wa0y4"]
 [ext_resource type="Texture2D" uid="uid://bin6u45ldf0oi" path="res://assets/textures/ship-enemy.png" id="4_jnbcb"]
+[ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="4_tjt48"]
 [ext_resource type="PackedScene" uid="uid://dvkcobhhogat1" path="res://scenes/enemies/missile_louncher.tscn" id="5_w1l3k"]
+[ext_resource type="Script" path="res://scripts/components/effects/particles.cs" id="6_45sb1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwgxl"]
 radius = 38.0
@@ -15,15 +17,16 @@ size = Vector2(75, 96)
 
 [node name="louncher-ship" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 25
-mass = 0.01
+collision_mask = 8
+mass = 100.0
 gravity_scale = 0.0
 can_sleep = false
 max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_mh1dl")
-additionalCollision = 1
-pushForce = 2000
+movingState = true
+acceleration = 0
+collisionThreshold = 2000
 
 [node name="health" parent="." instance=ExtResource("2_vht1y")]
 onDeathSpawn = ExtResource("3_wa0y4")
@@ -37,10 +40,46 @@ shape = SubResource("CapsuleShape2D_jwgxl")
 position = Vector2(-51.5, 0)
 shape = SubResource("RectangleShape2D_5rtja")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="visual" parent="." instance=ExtResource("4_tjt48")]
+
+[node name="Sprite2D" type="Sprite2D" parent="visual"]
 rotation = -1.5708
 scale = Vector2(0.375309, 0.375309)
 texture = ExtResource("4_jnbcb")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="visual"]
+z_index = -1
+position = Vector2(-86, 0)
+emitting = false
+amount = 50
+lifetime = 2.0
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 5.7
+direction = Vector2(-1, 0)
+spread = 24.43
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 5.0
+color = Color(0.976471, 0.690196, 0.556863, 1)
+script = ExtResource("6_45sb1")
+
+[node name="tron line" type="CPUParticles2D" parent="visual"]
+z_index = -1
+position = Vector2(-86, 0)
+emitting = false
+amount = 100
+gravity = Vector2(0, 0)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(1, 0.431373, 0.129412, 0.435294)
+script = ExtResource("6_45sb1")
 
 [node name="missile-louncher" parent="." instance=ExtResource("5_w1l3k")]
 position = Vector2(-30, 1)

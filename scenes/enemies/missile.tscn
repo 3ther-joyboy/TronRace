@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://nix2jykkdo02"]
+
+[ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_yrgx2"]
+[ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="2_3s4ey"]
+[ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="3_87qbp"]
+[ext_resource type="Texture2D" uid="uid://bin6u45ldf0oi" path="res://assets/textures/ship-enemy.png" id="4_hk7d0"]
+[ext_resource type="Texture2D" uid="uid://bq0yue5jih4th" path="res://assets/textures/bomb.png" id="5_gde3j"]
+[ext_resource type="Script" path="res://scripts/components/effects/particles.cs" id="6_4tpv1"]
+[ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="7_ogms4"]
+[ext_resource type="PackedScene" uid="uid://dskvsxql507ul" path="res://scenes/components/expolosition_component.tscn" id="8_konk8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fad3"]
+radius = 1018.77
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eydd5"]
+radius = 12.0
+height = 58.0
+
+[node name="missile" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 131
+mass = 0.01
+gravity_scale = 0.0
+can_sleep = false
+max_contacts_reported = 5
+contact_monitor = true
+script = ExtResource("1_yrgx2")
+startingVelocity = Vector2(-10, 0)
+movingState = true
+acceleration = 5000
+additionalCollision = 1
+pushForce = 1000
+
+[node name="RotateTo" parent="." instance=ExtResource("2_3s4ey")]
+seeOverLand = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotateTo"]
+shape = SubResource("CircleShape2D_4fad3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eydd5")
+
+[node name="visual" parent="." instance=ExtResource("3_87qbp")]
+scale = Vector2(0.333943, 0.333943)
+
+[node name="Sprite2D2" type="Sprite2D" parent="visual"]
+position = Vector2(0.170128, 0)
+rotation = -1.5708
+scale = Vector2(0.319282, 0.319282)
+texture = ExtResource("4_hk7d0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="visual"]
+position = Vector2(54, 1.60933e-06)
+rotation = -0.795537
+scale = Vector2(0.319282, 0.319282)
+texture = ExtResource("5_gde3j")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="visual"]
+z_index = -1
+position = Vector2(-107, 0)
+emitting = false
+amount = 50
+lifetime = 2.0
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 5.7
+direction = Vector2(-1, 0)
+spread = 24.43
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 5.0
+color = Color(0.976471, 0.690196, 0.556863, 1)
+script = ExtResource("6_4tpv1")
+
+[node name="tron line" type="CPUParticles2D" parent="visual"]
+z_index = -1
+position = Vector2(-107, 0)
+emitting = false
+amount = 100
+gravity = Vector2(0, 0)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(1, 0.431373, 0.129412, 0.435294)
+script = ExtResource("6_4tpv1")
+
+[node name="health" parent="." instance=ExtResource("7_ogms4")]
+onDeathSpawn = ExtResource("8_konk8")
+
+[connection signal="body_entered" from="." to="." method="Collision"]

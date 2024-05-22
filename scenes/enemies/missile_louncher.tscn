@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvkcobhhogat1"]
+[gd_scene load_steps=6 format=3 uid="uid://dvkcobhhogat1"]
 
 [ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="1_i3yum"]
 [ext_resource type="PackedScene" uid="uid://b4mlx2rrin7j4" path="res://scenes/components/gun.tscn" id="2_vxb3x"]
+[ext_resource type="PackedScene" uid="uid://nix2jykkdo02" path="res://scenes/enemies/missile.tscn" id="3_hwj0i"]
 [ext_resource type="Texture2D" uid="uid://krv36bmm5p4l" path="res://assets/textures/canon.png" id="3_n0qfv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hc23m"]
-radius = 580.259
+radius = 777.808
 
 [node name="missile-louncher" type="Node2D"]
 
@@ -17,7 +18,8 @@ debug_color = Color(0, 0.521569, 0.611765, 0)
 
 [node name="Gun" parent="." instance=ExtResource("2_vxb3x")]
 position = Vector2(46, 0)
-shootInterval = 1.0
+projectiles = ExtResource("3_hwj0i")
+shootInterval = 0.8
 seeOverLand = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Gun"]

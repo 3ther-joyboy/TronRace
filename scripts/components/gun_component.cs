@@ -28,7 +28,6 @@ public partial class gun_component : Area2D
 	public override void _Ready(){
 
 
-		this.GetNode<CollisionShape2D>("CollisionShape2D").DebugColor = new Color(0.8f,0f,0.9f,0.15f);
 		//	GetNode<RayCast2D>("Cast").
 		GetNode<Timer>("Shoot").WaitTime = shootInterval;
 		GetNode<Timer>("Barrage").WaitTime = barrageInterval;

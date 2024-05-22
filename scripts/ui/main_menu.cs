@@ -15,7 +15,7 @@ public partial class main_menu : Control
 	public static String[,] maps = {
 		{"enter_the_grid","first_steps",null},
 		{"city_edge","town_square",null},
-		{"eye_of_vortex","rail_gun",null},
+		{"eye_of_vortex","rail_gun","race"},
 		{"test_world","kenka",null}
 	};
 
