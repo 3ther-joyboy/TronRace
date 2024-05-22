@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://assets/textures/logo.png"
 boot_splash/fullsize=false
-config/icon="res://assets/textures/ship.png"
+config/icon="res://assets/textures/logo.png"
 
 [audio]
 
