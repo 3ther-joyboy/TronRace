@@ -7,7 +7,7 @@ public partial class audio_player : Node
 	public static AudioStreamPlayer sounds;
 	private static string[] _music_list = {
 		"res://assets/audio/music/game-calm.mp3",
-		"res://assets/audio/music/game-intensive.mp3",
+		"res://assets/audio/music/game-medium.mp3",
 		"res://assets/audio/music/game-intensive.mp3"
 	};
 
@@ -17,11 +17,13 @@ public partial class audio_player : Node
 
 		music = new AudioStreamPlayer();
 		music.ProcessMode = ProcessModeEnum.Always;
+		music.Bus = "Music";
 		AddChild(music);
 		music.Play();
 
 		sounds = new AudioStreamPlayer();
 		sounds.ProcessMode = ProcessModeEnum.Always;
+		sounds.Bus = "SFX";
 		audio_player.sounds.Stream = ResourceLoader.Load<AudioStream>("res://assets/audio/click.mp3");
 		AddChild(sounds);
 	}
