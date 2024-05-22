@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2i56vglc5hgp"]
+
+[ext_resource type="Script" path="res://scripts/components/path_follower_comonent.cs" id="1_ap1wx"]
+
+[node name="PathFollow2D" type="PathFollow2D"]
+script = ExtResource("1_ap1wx")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

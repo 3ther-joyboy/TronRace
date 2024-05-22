@@ -15,13 +15,17 @@ Tento způsob strunktruy (kompozice) nám umožnuje jednoduše vytvářet, nebo 
 Příklad této jednoduchosti je mapa Dev/kenka kterou vytvořil můj táta (Petr Valla) bez jakékoliv pomoci
 Když teda změníme v *missale_louncher* parametr že nevidí přez zdi tak všechny momenty kdy byl *missale_louncher* použit tak nebude vidět přez stěny.
 ### zacházení s komponenty
-komopnenty by by neměli být přímíma childama hostatních komponentů, jediná výmky je u move_componentu
+komopnenty by by neměli být přímíma childama hostatních komponentů, jediná výmky je u move_componentu a path_followeru
 jestli chcete vytvořit kanón (který nemá kolize) bude vycházet s [Node2D](https://docs.godotengine.org/en/4.1/classes/class_node2d.html) ve které by se poté nacházel [sprite2D]() ,gun_component a rotate_to_component.
 S tímhlě celím útvarem poté můžete pracovat jako s novím komponentem a několikrát ho dát do další [Node2D](https://docs.godotengine.org/en/4.1/classes/class_node2d.html) ke které předáte další rotate_to_component a vznikne vám kulometná věž s autonomníma dělama (pamatujte že [collision_shape](https://docs.godotengine.org/en/4.0/tutorials/physics/collision_shapes_2d.html) nemusí být vždycky kruh, a že se také rotuje podle parenta což může zajímavé řetězcovité effekty)
 ### move_component
 Tohle teoreticky není komopnenent ale Root Noda, prosím nepřidávejte ji jako child nody k ostatním, věcem co mají funkce, mohlo by to ovlivnit funkčnost celého útvaru
 Je komponent který je rootem každé objektu se kterým by mělo jít interagovat (pohybem atd.),komponent je viděděný z [RigidBody2D](https://docs.godotengine.org/en/4.0/classes/class_rigidbody2d.html) a řeší kolize, zrichlování a zvuky okolo pohybu
 Aby tento kompont fungoval musíte přidat [collision_shape](https://docs.godotengine.org/en/4.0/tutorials/physics/collision_shapes_2d.html) který budou kolize objktu
+### path_follower
+stejně jak move_component je použitý jako "root" node, tychle 2 nody by se dohromadne meměli používat neboď není uspůsobená na "nahodilí" pohyb
+je vyděděný [PathFollow2D](https://docs.godotengine.org/en/stable/classes/class_pathfollow2d.html) který na sobě má přidělaný [timer](https://docs.godotengine.org/en/stable/classes/class_timer.html) který na konci (jestli je zaškrknutý loop) přehnodí na začátek a přehráá se od zvnova
+pro jeho funkčnost pořebuje bít childem [Path2D](https://docs.godotengine.org/en/stable/classes/class_path2d.html)
 ### health_component
 Využití tohohle komponentu nebylo na max, neboť životy (víc jak 1 život) jsme vyškrtly z plánu neboť neseděli do principu naší hry (jeď a nezastavuj)
 Tenhle komponent by jinak má za úkol mazání not ze scény, ubírání životu, řešení nesmrtelnosti.
