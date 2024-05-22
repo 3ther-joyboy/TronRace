@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyjxrrqavx2n4"]
 
 [ext_resource type="Script" path="res://scripts/components/move_component.cs" id="1_6i5ho"]
-[ext_resource type="Texture2D" uid="uid://du6g8cr657uhm" path="res://assets/textures/mine.png" id="2_pntqn"]
+[ext_resource type="Texture2D" uid="uid://bq0yue5jih4th" path="res://assets/textures/bomb.png" id="2_w7c2g"]
 [ext_resource type="PackedScene" uid="uid://gitc6e0qxk5q" path="res://scenes/components/health.tscn" id="3_npu0f"]
 [ext_resource type="PackedScene" uid="uid://dskvsxql507ul" path="res://scenes/components/expolosition_component.tscn" id="4_dkkkl"]
 
@@ -22,9 +22,10 @@ additionalCollision = 1
 pushForce = 2000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 3)
+position = Vector2(1, 0)
+rotation = 0.771427
 scale = Vector2(0.10818, 0.10818)
-texture = ExtResource("2_pntqn")
+texture = ExtResource("2_w7c2g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

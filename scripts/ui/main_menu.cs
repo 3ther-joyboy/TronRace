@@ -13,10 +13,10 @@ public partial class main_menu : Control
 	public static String[] dirs = {"Easy","Normal","Tron","Dev"};
 
 	public static String[,] maps = {
-		{"enter_the_grid","first_steps","city_edge"},
-		{"town_square",null,null},
+		{"enter_the_grid","first_steps",null},
+		{"city_edge","town_square",null},
 		{"eye_of_vortex","rail_gun",null},
-		{"test_world",null,null}
+		{"test_world","kenka",null}
 	};
 
 	public override void _Ready()
