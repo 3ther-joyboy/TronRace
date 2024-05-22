@@ -68,6 +68,7 @@ public partial class server : Node
 
 		_peer.Host.Compress(ENetConnection.CompressionMode.None);
 		Multiplayer.MultiplayerPeer = _peer;
+
 	}
 
 	private void PlayerConnected(long id) { status = true; }
@@ -75,14 +76,14 @@ public partial class server : Node
 	private void PlayerDisconnected(long id)
 	{
 		status = false;
-		GetNode<Label>("../MainMenu/VBoxContainer/Label").Show();
+		GetNode<Label>("../MainMenu/offline").Show();
 		ConnectToServer();
 	}
 	private void ConnectionFailed()
 	{
 		GD.Print("could not connect to the server");
 		status = false;
-		GetNode<Label>("../MainMenu/VBoxContainer/Label").Show();
+		GetNode<Label>("../MainMenu/offline").Show();
 		loadResourcePack();
 		ConnectToServer();
 	}
@@ -90,7 +91,7 @@ public partial class server : Node
 	private void ConnectionSuccessful()
 	{
 		RpcId(1, "handleUserInfo", _peer.GetUniqueId(), user_id, user_name);
-		GetNode<Label>("../MainMenu/VBoxContainer/Label").Hide();
+		GetNode<Label>("../MainMenu/offline").Hide();
 	}
 
 	// user rpc function definitions

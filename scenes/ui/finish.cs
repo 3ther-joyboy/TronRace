@@ -12,8 +12,8 @@ public partial class finish : Control
 
 	public override void _Ready(){
 
-		_input = GetNode<LineEdit>("MarginContainer/HBoxContainer/Options/VBoxContainer/Name");
-		_save = GetNode<Button>("MarginContainer/HBoxContainer/Options/VBoxContainer/Save");
+		_input = GetNode<LineEdit>("VBoxContainer/Options/VBoxContainer/Name");
+		_save = GetNode<Button>("VBoxContainer/Options/VBoxContainer/Save");
 
 		int pb = 0;	
 		try {
@@ -21,18 +21,18 @@ public partial class finish : Control
 		}
 		catch {}
 
-		var PBlabel = GetNode<Label>("FromPB");
+		var PBlabel = GetNode<Label>("VBoxContainer/Time/FromPB");
 		if (pb < _current.Length && pb != 0) {
 			PBlabel.Text = "+";
-			PBlabel.LabelSettings.FontColor = new Color(1f,0f,0f);
+			PBlabel.LabelSettings.FontColor = new Color(1f,0.5f,0.5f);
 		} else if (pb > _current.Length && pb != 0) {
 			PBlabel.Text = "-";
-			PBlabel.LabelSettings.FontColor = new Color(0f,0f,1f);
+			PBlabel.LabelSettings.FontColor = new Color(0.3f,0.5f,1f);
 		}
 		PBlabel.Text += " " + (Math.Abs((float)(_current.Length - pb)) / _tps) + " S";
 
 
-		GetNode<Label>("Time/Time").Text = Math.Floor(_current.Length / (_tps * 60)) + " : " + Math.Floor(_current.Length / _tps) + " . " + _current.Length % _tps ;
+		GetNode<Label>("VBoxContainer/Time/Time").Text = Math.Floor(_current.Length / (_tps * 60)) + " : " + Math.Floor(_current.Length / _tps) + " . " + _current.Length % _tps ;
 
 		if (pb == _current.Length || pb == 0) { 
 			PBlabel.Text = "";

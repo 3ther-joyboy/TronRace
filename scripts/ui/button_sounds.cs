@@ -27,9 +27,6 @@ public partial class button_sounds : Node
 
 	private void PlaySound()
 	{
-		AudioStreamPlayer player = new AudioStreamPlayer();
-		player.Stream = ResourceLoader.Load<AudioStream>("res://assets/audio/gun-placeholder.mp3");
-		GetParent().AddChild(player);
-		player.Play();
+		audio_player.sounds.Play();
 	}
 }
