@@ -1,10 +1,11 @@
 # Tron Race
 ## mapy
-mapy jsou řazeny do 3 obtížnostních úrvní, obtížnost se určuje podle obtížnosti dokončit mapu poprvé tudíš některé mechanicky komplexnější mapy mohou být pod těšíma mapama v pořadí
-elementy map jsou předstvované postupně, a jejich využití pak také. Příklad s push_feald a takzvaným [gravitační manévrem](https://en.wikipedia.org/wiki/Gravity_assist). Tudíš by se hráč nikdy neměl dostat do momentu kdy vidí věc poprvé a musí s ní interagovat
+mapy jsou řazeny do 3 obtížnostních úrovní, obtížnost se určuje podle obtížnosti dokončit mapu poprvé, tudíž některé mechanicky komplexnější mapy mohou být pod obtížnějšími mapami v pořadí.
+Elementy map a jejich využití jsou představované postupně. Příklad s [push_feald](#push_feald) a takzvaným [gravitačním manévrem](https://en.wikipedia.org/wiki/Gravity_assist). Takže se hráč nikdy nedostane do momentu, kdy musí využít věc, se kterou se předtím nikdy nesetkal.
 ### Easy
-Mapy v této kategorii se zkládají věčinou jen z tile mapy. Cílem této sekce je seznámit hráče s ovládáním lodi, i když tyhle mapy nemají v sobě žádné nebezpečí, nemusí být jednoduché z pohledu ježdění na čas 
-### Meduim
+Mapy v této kategorii se skládají většinou jen z [tile mapy](https://docs.godotengine.org/en/3.5/tutorials/2d/using_tilemaps.html). Cílem této sekce je seznámit hráče s ovládáním lodi.
+Přestože tyto mapy nemají v sobě žádné nebezpečí, nemusí být jednoduché je zajet za krátký čas.
+### Medim
 Tyhle mapy jsou stále "jednoduché" ale už se v ních dá i umřít (dalo se i v mapách v Easy jen to nebylo tak jednoduché), poprvé se tu objevoujou nějýcí "nepřátelé" a už se začínají využívat [push fealds](#push_feald) na denním pořádku
 ### Tron
 tyhle mapy už jsou "těžké" nejdou zajet pomalu něboť v každé nakonci musíte překonat takzvaný "speed check" kde musíte mít určitou rychlosst na překonání úseku jinak se vám nepodaří, nebo stanovený časoví limit do kterého se musíte dostat do cíle (nebo jiné časti mapy která se pak uzamkne)
@@ -91,7 +92,7 @@ konečný [Json objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text
 ```
 #### public static [RecordFormat](#RecordFormat)[] GetReplay([String](https://docs.godotengine.org/en/stable/classes/class_string.html))
 funkce bere jako argument jméno (nebo cestu + jméno, stejně jako funkce [SaveReplay](#public-static-void-SaveReplay(String)) začíná v "user://replays/" a  automaticky přidává příponu)
-využívá funkce [GetJson](#public-static-JsonNode-GetJson(String)) který potom oddělá nepotřebné informace jako je mapa, id uživatele, jméno uživatele, datum, čas, tick speed a pomocí konstruktoru [RecordFormat](####RecordFormat)u na [Json objekty](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) vytvořý replay který returne
+využívá funkce [GetJson](#public-static-JsonNode-GetJson(String)) který potom oddělá nepotřebné informace jako je mapa, id uživatele, jméno uživatele, datum, čas, tick speed a pomocí konstruktoru [RecordFormat](##RecordFormat)u na [Json objekty](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) vytvořý replay který returne
 #### RecordFormat
 Je jednoducá classa do která drží informace hráče v jednotlivích framech
 ```cs

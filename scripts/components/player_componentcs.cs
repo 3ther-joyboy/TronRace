@@ -36,7 +36,7 @@ public partial class player_componentcs : Node
 			dir = other;
 
 		GetParent().Call("MovingStateSet",Input.IsActionPressed("tap") || dir != Vector2.Zero);
-		if (Input.IsActionPressed("tap") || other != Vector2.Zero) {
+		if ((Input.IsActionPressed("tap") && (start - current).Length() > 10) || other != Vector2.Zero) {
 
 			GetParent<Node2D>().Rotation = dir.Angle();    
 			GetParent<RigidBody2D>().AngularVelocity = 0f;
