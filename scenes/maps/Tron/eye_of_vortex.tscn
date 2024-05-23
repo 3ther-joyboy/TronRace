@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c03r2i7x2oakq"]
+[gd_scene load_steps=21 format=3 uid="uid://c03r2i7x2oakq"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_2ht6a"]
 [ext_resource type="Texture2D" uid="uid://daig7rt2lhpn5" path="res://assets/textures/ui/restart.png" id="1_n6rjt"]
+[ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="1_o3857"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="2_w3q8b"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="3_l5dbt"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="4_ethmf"]
@@ -9,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://deakoc8o7vxf8" path="res://assets/textures/ui/arrow.png" id="6_hianv"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="6_tqamw"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="10_o31yj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rdck4"]
+font = ExtResource("1_o3857")
+font_size = 18
+font_color = Color(0.244776, 0.244776, 0.244776, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvv0c"]
 radius = 2015.11
@@ -68,6 +74,19 @@ color = Color(0.617083, 0.760594, 1, 1)
 emission_curve = SubResource("CurveTexture_qe4xo")
 
 [node name="BlackHole" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -250.0
+offset_top = -241.075
+offset_right = 250.0
+offset_bottom = -173.075
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "Good luck ..."
+label_settings = SubResource("LabelSettings_rdck4")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.099986, 0.099986, 0.099986, 1)

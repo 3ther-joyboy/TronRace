@@ -1,16 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4206rv2sna6s"]
+[gd_scene load_steps=9 format=3 uid="uid://c4206rv2sna6s"]
 
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="1_a1210"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="1_mt86p"]
+[ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="1_pwgfm"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_llh2w"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="3_tkvu7"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="5_6smma"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nmfxb"]
+font = ExtResource("1_pwgfm")
+font_size = 18
+font_color = Color(0.244776, 0.244776, 0.244776, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ip5m1"]
 a = Vector2(-354, -138)
 b = Vector2(487, 161)
 
 [node name="FirstSteps" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 153.0
+offset_top = 365.0
+offset_right = 582.0
+offset_bottom = 433.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "Let's try somthihng more complex"
+label_settings = SubResource("LabelSettings_nmfxb")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="ShortCuts" parent="." instance=ExtResource("1_mt86p")]
 
@@ -42,3 +61,16 @@ color = Color(0, 0.74902, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
 shape = SubResource("SegmentShape2D_ip5m1")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1091.0
+offset_top = -1228.0
+offset_right = 1520.0
+offset_bottom = -1160.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "Yout need to be precise"
+label_settings = SubResource("LabelSettings_nmfxb")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
