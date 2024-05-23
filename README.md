@@ -52,7 +52,7 @@ je dodatečné nastavení k toumu aby target byl zaregistrován i přez stěny
 ### spawner_component
 spawnuje v uvedeném intervalu konzistentně objekty
 ### replay_component
-ma zaůkol přehrávání i nahrávání replayů ty nahrává do formátu classy [RecordFormat](####RecordFormat)
+ma zaůkol přehrávání i nahrávání replayů ty nahrává do formátu classy [RecordFormat](#RecordFormat)
 ## privky map
 ### [tile map](https://docs.godotengine.org/en/3.5/tutorials/2d/using_tilemaps.html)
 v projektu máme jen jeden druch tile mapy (hexagony) s jedním terénem který nám zajištuje automatické propojování políček s korespondečním stillem (leví roh - prostředek - praví roh)
