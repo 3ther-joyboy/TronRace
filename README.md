@@ -91,7 +91,7 @@ konečný [Json objekt](https://learn.microsoft.com/en-us/dotnet/api/system.text
 ```
 #### public static [RecordFormat](#RecordFormat)[] GetReplay([String](https://docs.godotengine.org/en/stable/classes/class_string.html))
 funkce bere jako argument jméno (nebo cestu + jméno, stejně jako funkce [SaveReplay](#public-static-void-SaveReplay(String)) začíná v "user://replays/" a  automaticky přidává příponu)
-využívá funkce [GetJson](#public-static-JsonNode-GetJson(String)) který potom oddělá nepotřebné informace jako je mapa, id uživatele, jméno uživatele, datum, čas, tick speed a pomocí konstruktoru [RecordFormat](####RecordFormat)u na [Json objekty](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) vytvořý replay který returne
+využívá funkce [GetJson](#public-static-JsonNode-GetJson(String)) který potom oddělá nepotřebné informace jako je mapa, id uživatele, jméno uživatele, datum, čas, tick speed a pomocí konstruktoru [RecordFormat](##RecordFormat)u na [Json objekty](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject?view=net-8.0) vytvořý replay který returne
 #### RecordFormat
 Je jednoducá classa do která drží informace hráče v jednotlivích framech
 ```cs
