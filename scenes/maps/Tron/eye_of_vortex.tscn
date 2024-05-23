@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c03r2i7x2oakq"]
+[gd_scene load_steps=22 format=3 uid="uid://c03r2i7x2oakq"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_2ht6a"]
 [ext_resource type="Texture2D" uid="uid://daig7rt2lhpn5" path="res://assets/textures/ui/restart.png" id="1_n6rjt"]
@@ -73,6 +73,9 @@ scale_max = 0.05
 color = Color(0.617083, 0.760594, 1, 1)
 emission_curve = SubResource("CurveTexture_qe4xo")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ev2q"]
+size = Vector2(409.018, 1000.05)
+
 [node name="BlackHole" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
@@ -140,3 +143,17 @@ rotation = -0.963095
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_6evco")
 texture = ExtResource("6_tqamw")
+
+[node name="PushFeald" parent="." instance=ExtResource("5_7fknw")]
+position = Vector2(-227, -1958)
+_toPoint = false
+_pushForce = 2000
+_sight = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushFeald"]
+position = Vector2(72.3798, 94.2211)
+rotation = -0.526867
+shape = SubResource("RectangleShape2D_6ev2q")
+
+[node name="Marker2D" type="Marker2D" parent="PushFeald"]
+position = Vector2(356, 565)

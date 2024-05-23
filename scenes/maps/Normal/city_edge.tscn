@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdbgg388psyp6"]
+[gd_scene load_steps=24 format=3 uid="uid://cdbgg388psyp6"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_1rucx"]
 [ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="1_akbyr"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dyjxrrqavx2n4" path="res://scenes/enemies/Mine.tscn" id="5_2tu52"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="6_6lm71"]
 [ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="7_lir6g"]
+[ext_resource type="Material" uid="uid://1j5k4kyhinbo" path="res://assets/particles/endline.tres" id="8_3mttd"]
 [ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="8_c51yr"]
+[ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="9_0pku1"]
 [ext_resource type="Texture2D" uid="uid://krv36bmm5p4l" path="res://assets/textures/canon.png" id="9_gch7o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lvpiy"]
@@ -261,6 +263,14 @@ position = Vector2(2146, -5667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
 shape = SubResource("SegmentShape2D_bbphq")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Finish"]
+z_index = -1
+position = Vector2(-96, -58)
+rotation = -0.944525
+amount = 50
+process_material = ExtResource("8_3mttd")
+texture = ExtResource("9_0pku1")
 
 [node name="PushFeald" parent="." instance=ExtResource("7_lir6g")]
 z_index = -1
