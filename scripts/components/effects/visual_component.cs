@@ -36,4 +36,8 @@ public partial class visual_component : Node2D
 	public void RotationAngle(float angle){
 		this.Rotation = angle;
 	}
+	// cange color 
+	public void ToggleCollor(Color color) {
+		GetNode<Node2D>("variable").Modulate = color;
+	}
 }
