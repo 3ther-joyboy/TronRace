@@ -7,6 +7,17 @@ public partial class flag_control : Node
 	private int _loop = 1;
 	private int _currentLoop = 0;
 	private int _touchedFlags = 0;
+	[Export]
+	private Color completeModulate;
+
+	public override void _Ready(){
+		var _childrns = GetChildren();
+		 
+		for (int i = 0; i < this.GetChildCount(); i++)
+			((flag)_childrns[i]).blink = completeModulate;
+
+
+	}
 
 	public void Count(){
 		_touchedFlags++;

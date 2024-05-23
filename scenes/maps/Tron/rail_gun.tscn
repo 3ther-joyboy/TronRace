@@ -194,12 +194,15 @@ shape = SubResource("RectangleShape2D_40tin")
 position = Vector2(-544, 1908)
 
 [node name="louncher-ship" parent="." instance=ExtResource("8_4huve")]
-position = Vector2(-135.999, -12204)
+position = Vector2(-178.001, -12268)
 rotation = 0.773415
+movingState = false
+metadata/_edit_group_ = true
 
 [node name="louncher-ship2" parent="." instance=ExtResource("8_4huve")]
 position = Vector2(155, -12103)
 rotation = -2.41464
+movingState = false
 
 [node name="decoration" type="Node" parent="."]
 

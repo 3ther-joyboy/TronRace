@@ -12,6 +12,11 @@ public partial class pause : Control
 		_button = GetNode<TextureButton>("ButtonPause");
 		if (!replay_component.playBackMode)
 			GetNode<Label>("Replay").Show();
+
+		var audio = GetNode("MenuMain/VBoxContainer/Audio/VBoxContainer");
+		audio.GetNode<HSlider>("Master").Value = Mathf.DbToLinear(AudioServer.GetBusVolumeDb( AudioServer.GetBusIndex("Master") ));
+		audio.GetNode<HSlider>("Music").Value = Mathf.DbToLinear(AudioServer.GetBusVolumeDb( AudioServer.GetBusIndex("Music") ));
+		audio.GetNode<HSlider>("SFX").Value = Mathf.DbToLinear(AudioServer.GetBusVolumeDb( AudioServer.GetBusIndex("SFX") ));
     }
 
     private void Pause()

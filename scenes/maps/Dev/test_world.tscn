@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxf82bht74hmx"]
+[gd_scene load_steps=21 format=3 uid="uid://bxf82bht74hmx"]
 
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_1dnd7"]
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="2_200pc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="10_jv7mi"]
 [ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="11_7ulno"]
 [ext_resource type="PackedScene" uid="uid://dyjxrrqavx2n4" path="res://scenes/enemies/Mine.tscn" id="11_csnq1"]
+[ext_resource type="PackedScene" uid="uid://bcibwvn4fi8pl" path="res://scenes/components/visualComponent.tscn" id="11_v8csn"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="12_8t0bo"]
 [ext_resource type="PackedScene" uid="uid://b2i56vglc5hgp" path="res://scenes/components/path_follower.tscn" id="12_gj3oe"]
 [ext_resource type="PackedScene" uid="uid://cyk4vnd0238iw" path="res://scenes/enemies/cannon-ship.tscn" id="13_ggjo0"]
@@ -104,12 +105,20 @@ texture = ExtResource("12_8t0bo")
 position = Vector2(-148, -82)
 
 [node name="flag control" parent="." instance=ExtResource("5_v07uj")]
+completeModulate = Color(0, 0.74902, 0, 1)
 
 [node name="flag" parent="flag control" instance=ExtResource("6_jv71h")]
 position = Vector2(3305, 697)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flag control/flag"]
 shape = SubResource("SegmentShape2D_2ixay")
+
+[node name="visual" parent="flag control/flag" instance=ExtResource("11_v8csn")]
+
+[node name="variable" type="Node2D" parent="flag control/flag/visual"]
+
+[node name="Sprite2D" type="Sprite2D" parent="flag control/flag/visual/variable"]
+texture = ExtResource("12_8t0bo")
 
 [node name="flag2" parent="flag control" instance=ExtResource("6_jv71h")]
 position = Vector2(1963, 1090)
