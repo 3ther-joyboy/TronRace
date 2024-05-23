@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmbtcvm3ccbot"]
+[gd_scene load_steps=14 format=3 uid="uid://dbjewf4skmy8i"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_gyc48"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_pv8nw"]
-[ext_resource type="PackedScene" uid="uid://b2i56vglc5hgp" path="res://scenes/components/path_follower.tscn" id="3_1bpes"]
+[ext_resource type="PackedScene" path="res://scenes/components/path_follower.tscn" id="3_1bpes"]
 [ext_resource type="PackedScene" uid="uid://cyk4vnd0238iw" path="res://scenes/enemies/cannon-ship.tscn" id="4_u7f5u"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="5_kbxag"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="6_j42by"]

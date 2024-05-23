@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdbgg388psyp6"]
+[gd_scene load_steps=22 format=3 uid="uid://cdbgg388psyp6"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_1rucx"]
+[ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="1_akbyr"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="2_xyeia"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="3_uffu5"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="4_g7wgn"]
@@ -9,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://behv7vvb4csu4" path="res://scenes/components/PushFeald.tscn" id="7_lir6g"]
 [ext_resource type="PackedScene" uid="uid://dt8vi8w2wo53" path="res://scenes/components/rotate_to.tscn" id="8_c51yr"]
 [ext_resource type="Texture2D" uid="uid://krv36bmm5p4l" path="res://assets/textures/canon.png" id="9_gch7o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lvpiy"]
+font = ExtResource("1_akbyr")
+font_size = 18
+font_color = Color(0.244776, 0.244776, 0.244776, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bbphq"]
 a = Vector2(5, -206)
@@ -65,6 +71,32 @@ alpha_curve = SubResource("CurveTexture_ujxjj")
 radius = 893.212
 
 [node name="CittyEdge" type="Node2D"]
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1580.0
+offset_top = -5811.0
+offset_right = 2080.0
+offset_bottom = -5743.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "Ou ... you actually did it!"
+label_settings = SubResource("LabelSettings_lvpiy")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -211.0
+offset_top = -1583.0
+offset_right = 289.0
+offset_bottom = -1515.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "I have bad news for you ... you will die now"
+label_settings = SubResource("LabelSettings_lvpiy")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="player" parent="." instance=ExtResource("1_1rucx")]
 position = Vector2(154, 316)

@@ -1,17 +1,75 @@
-[gd_scene load_steps=9 format=3 uid="uid://cucw188y8sfnl"]
+[gd_scene load_steps=11 format=3 uid="uid://bswxaurr6gmql"]
 
 [ext_resource type="PackedScene" uid="uid://di1iawws2d8ni" path="res://scenes/playeblcharacter.tscn" id="1_3evdt"]
+[ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="1_oro25"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="2_w3w2f"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="3_lac54"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="4_siftr"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="5_actl8"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="6_7488i"]
-[ext_resource type="Material" uid="uid://1j5k4kyhinbo" path="res://assets/particles/endline.tres" id="6_tsn88"]
+[ext_resource type="Material" uid="uid://cvusdv33errc8" path="res://assets/particles/endline.tres" id="6_tsn88"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2s00h"]
+font = ExtResource("1_oro25")
+font_size = 18
+font_color = Color(0.244776, 0.244776, 0.244776, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn48h"]
 size = Vector2(1032, 152)
 
 [node name="EnterTheGrid" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -168.0
+offset_top = -138.0
+offset_right = 168.0
+offset_bottom = -70.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "Tap and hold to move"
+label_settings = SubResource("LabelSettings_2s00h")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -29.0
+offset_top = -828.0
+offset_right = 401.0
+offset_bottom = -760.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "Your glider heve unlimited speed"
+label_settings = SubResource("LabelSettings_2s00h")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1933.0
+offset_top = -1185.0
+offset_right = 2465.0
+offset_bottom = -1117.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "You have to glide to the other side to brake"
+label_settings = SubResource("LabelSettings_2s00h")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 2575.0
+offset_top = 24.0
+offset_right = 3107.0
+offset_bottom = 92.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "This is the finish ... for now"
+label_settings = SubResource("LabelSettings_2s00h")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="player" parent="." instance=ExtResource("1_3evdt")]
 

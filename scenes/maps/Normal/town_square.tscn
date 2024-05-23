@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://cggukj2vbvyfq"]
+[gd_scene load_steps=25 format=3 uid="uid://cggukj2vbvyfq"]
 
+[ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="1_dpl4g"]
 [ext_resource type="TileSet" uid="uid://0y150v5r2b21" path="res://assets/tilemaps/hexaPlaceholder.tres" id="1_mikwl"]
 [ext_resource type="PackedScene" uid="uid://bqhtoweajmmxg" path="res://scenes/map_control/End.tscn" id="2_iwm76"]
 [ext_resource type="Texture2D" uid="uid://bdw2ru784bsnh" path="res://assets/textures/icon.svg" id="2_m786f"]
@@ -7,8 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dyjxrrqavx2n4" path="res://scenes/enemies/Mine.tscn" id="4_aj8jd"]
 [ext_resource type="PackedScene" uid="uid://cx7vfhoah1sex" path="res://scenes/short_cuts.tscn" id="5_qli4u"]
 [ext_resource type="PackedScene" uid="uid://eqwcewka68ie" path="res://scenes/ui/pause.tscn" id="6_s3wo0"]
-[ext_resource type="PackedScene" uid="uid://l1fhh13unexd" path="res://scenes/components/spawner.tscn" id="7_647uy"]
-[ext_resource type="PackedScene" uid="uid://dx4ch5w8mkvf2" path="res://scenes/enemies/enemy_ship.tscn" id="8_qif7k"]
+[ext_resource type="PackedScene" path="res://scenes/components/spawner.tscn" id="7_647uy"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy_ship.tscn" id="8_qif7k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_060q4"]
+font = ExtResource("1_dpl4g")
+font_size = 18
+font_color = Color(0.244776, 0.244776, 0.244776, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_db4kh"]
 size = Vector2(388, 151)
@@ -96,6 +102,19 @@ color = Color(0.617083, 0.760594, 1, 1)
 emission_curve = SubResource("CurveTexture_qe4xo")
 
 [node name="TownSquare" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 56.695
+offset_top = -90.655
+offset_right = 556.696
+offset_bottom = -22.655
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "We're probably not alone here"
+label_settings = SubResource("LabelSettings_060q4")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_mikwl")
