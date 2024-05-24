@@ -108,7 +108,7 @@ shape = SubResource("RectangleShape2D_0guqy")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="StaticBody2D/CollisionShape2D"]
 position = Vector2(220.087, -98.5021)
-amount = 100
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_x78g6")
 texture = ExtResource("7_i6pnc")
 
@@ -118,7 +118,7 @@ shape = SubResource("RectangleShape2D_0guqy")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="StaticBody2D/CollisionShape2D2"]
 position = Vector2(-203.116, 89.4481)
-amount = 100
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_x78g6")
 texture = ExtResource("7_i6pnc")
 
@@ -129,7 +129,7 @@ shape = SubResource("RectangleShape2D_5v2c8")
 [node name="GPUParticles2D3" type="GPUParticles2D" parent="StaticBody2D/CollisionShape2D3"]
 position = Vector2(168.284, -162.136)
 rotation = -1.64349
-amount = 100
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_x78g6")
 texture = ExtResource("7_i6pnc")
 

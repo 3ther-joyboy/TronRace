@@ -68,6 +68,10 @@ right={
 ]
 }
 
+[editor]
+
+movie_writer/movie_file="/home/ether/Videos/menu-showcase-askdf.avi"
+
 [input]
 
 ui_accept={
