@@ -99,14 +99,19 @@ public partial class main_menu : Control
 		GetTree().ChangeSceneToFile("res://scenes/maps/" + replay_handler.lastPlayedMap + ".tscn");
 	}
 
-	private void _PlayReplay(int index) {
-		String what = _replay.GetNode<ItemList>("VBoxContainer/ItemList").GetItemText(index);
-		GetTree().Root.GetNode<replay_handler>("ReplayHandler").Play(what);
+	private void _PlayReplay(int index, Vector2 vec, int mouse_button) {
+		GD.Print("Mouse button: " + mouse_button);
+
+		if (mouse_button != 5 && mouse_button != 4)
+		{
+			String what = GetNode<ItemList>("VBoxContainer/Replas/VBoxContainer/ItemList").GetItemText(index);
+			GetTree().Root.GetNode<replay_handler>("ReplayHandler").Play(what);
+		}
 	}
 
 	private void _ShowReplays(){
 		// lukaš moment
-		var list = _replay.GetNode<ItemList>("VBoxContainer/ItemList");
+		var list = GetNode<ItemList>("VBoxContainer/Replas/VBoxContainer/ItemList");
 		list.Clear();
 		var texture = new PlaceholderTexture2D();
 		texture.Size = Vector2.Zero;

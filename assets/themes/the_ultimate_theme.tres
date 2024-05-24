@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://mcohagi4iqke"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://mcohagi4iqke"]
 
 [ext_resource type="StyleBox" uid="uid://b55g02e4y8j8n" path="res://assets/themes/style_box_flat.tres" id="1_h7ih5"]
 [ext_resource type="FontFile" uid="uid://c2xy50ecb86d7" path="res://assets/fonts/nasalization.otf" id="2_xi5it"]
@@ -160,6 +160,15 @@ border_color = Color(0, 0.666667, 0.8, 1)
 corner_radius_top_left = 20
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgmqm"]
+bg_color = Color(0, 0.666667, 0.8, 1)
+corner_radius_top_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmca8"]
+content_margin_left = 18.0
+
 [resource]
 default_font = ExtResource("2_xi5it")
 Button/styles/disabled = SubResource("StyleBoxFlat_po8o7")
@@ -177,7 +186,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_cmsji")
 HSlider/styles/slider = SubResource("StyleBoxFlat_bdqbs")
 ItemList/constants/h_separation = 12
 ItemList/constants/v_separation = 12
-ItemList/font_sizes/font_size = 12
+ItemList/font_sizes/font_size = 14
 ItemList/styles/focus = SubResource("StyleBoxEmpty_dmr1m")
 ItemList/styles/panel = SubResource("StyleBoxFlat_4ob2k")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_vtk46")
@@ -194,3 +203,7 @@ TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_ac8nu")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_d2ifb")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_jxall")
 VBoxContainer/constants/separation = 16
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_dgmqm")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_dgmqm")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_dgmqm")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_pmca8")
